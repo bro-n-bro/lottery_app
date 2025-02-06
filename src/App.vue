@@ -1,30 +1,42 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+	<!-- Main component -->
+	<component :is="layout" />
+
+	<!-- Notifications -->
+	<notifications width="280px" position="top left" group="default">
+		<template #body="props">
+			<div class="notification">
+
+			</div>
+		</template>
+	</notifications>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
-}
+<script setup>
+    import { computed, onBeforeMount } from 'vue'
+	import { useGlobalStore } from '@/store'
+    import { useRoute } from 'vue-router'
+	import { useTitle } from '@vueuse/core'
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+	const store = useGlobalStore(),
+		route = useRoute(),
+        title = useTitle(),
+        layout = computed(() => route.meta.layout || 'default-layout')
+
+
+	onBeforeMount(() => {
+		// Set page title
+		title.value = 'Bro_n_Bro lottery'
+
+		// Init
+		// store.init()
+
+		// Change Keplr account
+		window.addEventListener('keplr_keystorechange', () => {
+			// Reload page
+			window.location.reload()
+		})
+	})
+</script>

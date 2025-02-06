@@ -1,25 +1,54 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+import defaultLayout from '@/layouts/Default.vue'
+import errorLayout from '@/layouts/Error.vue'
+
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+	{
+		path: '/',
+		name: 'IndexPage',
+		component: () => import('@/views/IndexPage.vue'),
+		meta: {
+			layout: defaultLayout,
+			accessDenied: []
+		}
+	},
+	{
+        path: '/keplr_error',
+        name: 'KeplrErrorPage',
+        component: () => import('@/views/KeplrErrorPage.vue'),
+        meta: {
+            layout: errorLayout,
+            accessDenied: ['with_keplr']
+        }
+    },
 ]
 
+
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+	history: createWebHistory(process.env.BASE_URL),
+	routes
 })
+
+
+router.beforeResolve((to, from, next) => {
+	// Check access
+	to.matched.some(record => {
+		let access = record.meta.accessDenied
+
+		if (access.length) {
+			// Forbidden without keplr
+			if(access.includes('without_keplr') && !window.keplr) {
+				next({ name: 'KeplrError' })
+
+				return false
+			}
+		}
+	})
+
+	next()
+})
+
 
 export default router

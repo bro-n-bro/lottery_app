@@ -7,14 +7,20 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@cosmjs/crypto": "^0.33.0",
+    "@cosmjs/stargate": "^0.33.0",
+    "@kyvg/vue3-notification": "^3.4.1",
+    "@vueuse/core": "^12.5.0",
     "core-js": "^3.8.3",
+    "pinia": "^2.3.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
-    "@vue/cli-service": "~5.0.0"
+    "@vue/cli-service": "~5.0.0",
+    "node-polyfill-webpack-plugin": "^4.1.0"
   },
   "browserslist": [
     "> 1%",
