@@ -10,8 +10,12 @@
 
 		<title><%= htmlWebpackPlugin.options.title %></title>
 
-		<meta name="msapplication-TileColor" content="#950FFF">
-		<meta name="theme-color" content="#950FFF">
+		<meta name="msapplication-TileColor" content="#051348">
+		<meta name="theme-color" content="#051348">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
 		<link rel="stylesheet" href="<%= BASE_URL %>css/styles.css" async>
 	</head>
@@ -19,5 +23,8 @@
     <body>
 		<!-- APP -->
         <div class="wrap" id="app"></div>
+
+        <!-- Including js files -->
+        <script src="<%= BASE_URL %>js/scripts.js"></script>
     </body>
 </html>

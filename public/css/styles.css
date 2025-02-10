@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
 
-    scroll-margin-top: 24px;
+    scroll-margin-top: 114px;
 }
 
 *:before,
@@ -102,26 +102,25 @@ input[type=number]
 -------------------*/
 :root
 {
-    --bg: #333;
-    --sidebar_width: 200px;
+    --bg: #040d22;
     --scroll_width: 17px;
     --text_color: #fff;
-    --font_size: 16px;
-    --font_size_title: 30px;
-    --font_family: 'Fontname', 'Arial', sans-serif;
+    --font_size: 18px;
+    --font_size_title: 48px;
+    --font_family: 'Outfit', 'Arial', sans-serif;
 }
 
 
 ::selection
 {
     color: #fff;
-    background: #ffb7b7;
+    background: #1b3594;
 }
 
 ::-moz-selection
 {
     color: #fff;
-    background: #ffb7b7;
+    background: #1b3594;
 }
 
 
@@ -146,7 +145,7 @@ html.custom_scroll ::-webkit-scrollbar
 
 html.custom_scroll ::-webkit-scrollbar-thumb
 {
-    background-color: #343448;
+    background-color: #1b3594;
 }
 
 
@@ -218,9 +217,9 @@ button
 .cont
 {
     width: 100%;
-    max-width: 1288px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 20px;
 }
 
 
