@@ -1,2 +1,2 @@
 # lottery_app
-Bro lottery front-end side
+Bro lottery front-end side 
