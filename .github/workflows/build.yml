@@ -3,7 +3,7 @@ name: build_app
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   build_app:
