@@ -19,11 +19,8 @@ export const createKeplrOfflineSinger = async chain_id => {
         // Get Keplr account
         let accounts = await store.Keplr.offlineSinger.getAccounts()
 
-        // Set user address
+        // Set user data
         store.user.address = accounts[0].address
-
-        // Keplr connected status
-        store.isKeplrConnected = true
     } catch (error) {
         throw error
     }

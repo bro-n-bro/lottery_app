@@ -102,7 +102,7 @@ input[type=number]
 -------------------*/
 :root
 {
-    --bg: #040d22;
+    --bg: #19002f;
     --scroll_width: 17px;
     --text_color: #fff;
     --font_size: 18px;
@@ -114,13 +114,13 @@ input[type=number]
 ::selection
 {
     color: #fff;
-    background: #1b3594;
+    background: #597BF5;
 }
 
 ::-moz-selection
 {
     color: #fff;
-    background: #1b3594;
+    background: #597BF5;
 }
 
 
@@ -145,7 +145,7 @@ html.custom_scroll ::-webkit-scrollbar
 
 html.custom_scroll ::-webkit-scrollbar-thumb
 {
-    background-color: #1b3594;
+    background-color: #597BF5;
 }
 
 

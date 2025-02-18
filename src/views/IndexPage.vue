@@ -9,7 +9,7 @@
     <ThePrizePool />
 
     <!-- Leaderboard -->
-    <TheLeaderboard />
+    <!-- <TheLeaderboard /> -->
 
     <!-- Our bros -->
     <TheOurBros />
@@ -23,7 +23,7 @@
     import TheFirstSecton from '@/components/FirstSecton.vue'
     import TheSteps from '@/components/Steps.vue'
     import ThePrizePool from '@/components/PrizePool.vue'
-    import TheLeaderboard from '@/components/Leaderboard.vue'
+    // import TheLeaderboard from '@/components/Leaderboard.vue'
     import TheOurBros from '@/components/OurBros.vue'
 
 

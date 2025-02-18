@@ -31,13 +31,13 @@
             <template v-else>
             <div class="balance">
                 <div class="staked">
-                    <div class="val">0 {{ store.currentNetwork.symbol }}</div>
+                    <div class="val">{{ store.user.delegated_tokens_after_snapshot }} {{ store.currentNetwork.symbol }}</div>
 
                     <div class="label">Staked</div>
                 </div>
 
                 <div class="tickets">
-                    <span>0</span>
+                    <span>{{ store.user.tickets_number }}</span>
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="29" height="23" viewBox="0 0 29 23" fill="none">
                         <path d="M19.691 18.4L14.5 15.0938L9.309 18.4L10.875 12.4775L6.1045 8.625L12.267 8.25125L14.5 2.5875L16.733 8.25125L22.8955 8.625L18.125 12.4775M26.1 11.5C26.1 10.7375 26.4055 10.0062 26.9494 9.46707C27.4932 8.9279 28.2309 8.625 29 8.625V2.875C29 2.1125 28.6945 1.38123 28.1506 0.842068C27.6068 0.302901 26.8691 0 26.1 0H2.9C2.13087 0 1.39325 0.302901 0.84939 0.842068C0.305535 1.38123 0 2.1125 0 2.875V8.625C0.769128 8.625 1.50675 8.9279 2.05061 9.46707C2.59447 10.0062 2.9 10.7375 2.9 11.5C2.9 12.2625 2.59447 12.9938 2.05061 13.5329C1.50675 14.0721 0.769128 14.375 0 14.375V20.125C0 20.8875 0.305535 21.6188 0.84939 22.1579C1.39325 22.6971 2.13087 23 2.9 23H26.1C26.8691 23 27.6068 22.6971 28.1506 22.1579C28.6945 21.6188 29 20.8875 29 20.125V14.375C28.2309 14.375 27.4932 14.0721 26.9494 13.5329C26.4055 12.9938 26.1 12.2625 26.1 11.5Z" fill="currentColor"/>
@@ -118,7 +118,7 @@
         top: 0;
 
         color: #fff;
-        background: #051348;
+        background: #32007E;
     }
 
 
@@ -240,7 +240,7 @@
         padding: 13px 20px;
 
         border-radius: 10px;
-        background: #1b3594;
+        background: #597BF5;
 
         gap: 15px;
     }
@@ -279,7 +279,7 @@
         text-transform: capitalize;
 
         border-radius: 10px;
-        background: #1b3594;
+        background: #597BF5;
 
         gap: 13px;
     }

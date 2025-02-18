@@ -26,12 +26,9 @@
         layout = computed(() => route.meta.layout || 'default-layout')
 
 
-	onBeforeMount(() => {
+	onBeforeMount(async () => {
 		// Set page title
 		title.value = 'Bro_n_Bro lottery'
-
-		// Init
-		// store.init()
 
 		// Change Keplr account
 		window.addEventListener('keplr_keystorechange', () => {

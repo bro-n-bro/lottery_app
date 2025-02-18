@@ -1,5 +1,9 @@
 import { defineStore } from 'pinia'
-import { createKeplrOfflineSinger } from '@/utils'
+
+import {
+    createKeplrOfflineSinger,
+    addressConfirmation
+} from '@/utils'
 
 
 export const useGlobalStore = defineStore('global', {
@@ -7,19 +11,17 @@ export const useGlobalStore = defineStore('global', {
         isKeplrConnected: false,
         isKeplrConnecting: false,
         isAvailableBalancesGot: false,
-        isStakedBalancesGot: false,
-        isStakedToUs: false,
+        isUserInfoGot: false,
 
         Keplr: {},
         StargateClient: {},
 
         availableBalances: [],
-        stakedBalances: [],
-        stakedToUs: [],
+        prizePool: [],
 
-        user: {
-            ticketsAmount: 0
-        },
+        user: {},
+
+        apiURL: 'https://api.lottery.bronbro.io',
 
         currentNetwork: {
             name: 'Cosmos Hub',
@@ -36,13 +38,32 @@ export const useGlobalStore = defineStore('global', {
             gas_adjustment: 1.6
         },
 
+        lottery_id: 1,
         currentTxHash: '',
-        ticketPrice: 10,
         validatorAddress: 'cosmosvaloper106yp7zw35wftheyyv9f9pe69t8rteumjrx52jg',
+        addressConfirmationString: "i’m in brottery"
     }),
 
 
     actions: {
+        // Load prize poll
+        async loadPrizePool() {
+            try {
+                // Send request
+                const response = await fetch(`/prize_pools/lottery_${this.lottery_id}/index.json`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch prize poll JSON. Status: ' + response.status)
+                }
+
+                // Set data
+                this.prizePool = await response.json()
+            } catch (error) {
+                throw error
+            }
+        },
+
+
         // Connect Keplr
         async connectKeplr() {
             try {
@@ -58,12 +79,12 @@ export const useGlobalStore = defineStore('global', {
                     // Get available balances
                     this.getAvailableBalances(),
 
-                    // Get staked balances
-                    this.getStakedBalances()
+                    // Get user info
+                    this.getUserInfo()
                 ])
 
-                // Calculate the number of tickets
-                this.calcTicketsAmount()
+                // Keplr connected status
+                this.isKeplrConnected = true
             } catch (error) {
                 throw error
             }
@@ -79,17 +100,21 @@ export const useGlobalStore = defineStore('global', {
             this.availableBalances = []
 
             try {
-                // Request
-                await fetch(`${this.currentNetwork.lcd_api}/cosmos/bank/v1beta1/balances/${this.user.address}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.balances.length) {
-                            // Set data
-                            this.availableBalances = data.balances.filter(
-                                el => el.amount > 0 && el.denom === this.currentNetwork.denom
-                            )
-                        }
-                    })
+                // Send request
+                const response = await fetch(`${this.currentNetwork.lcd_api}/cosmos/bank/v1beta1/balances/${this.user.address}`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch available balances. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                if (data.balances.length) {
+                    // Set data
+                    this.availableBalances = data.balances.filter(
+                        el => el.amount > 0 && el.denom === this.currentNetwork.denom
+                    )
+                }
 
                 // Available balances status
                 this.isAvailableBalancesGot = true
@@ -99,50 +124,93 @@ export const useGlobalStore = defineStore('global', {
         },
 
 
-        // Get staked balances
-        async getStakedBalances() {
-            // Staked balances status
-            this.isStakedBalancesGot = false
-
-            // Reset staked balances
-            this.stakedBalances = []
+        // Get user info
+        async getUserInfo() {
+            // User info status
+            this.isUserInfoGot = false
 
             try {
-                // Request
-                await fetch(`${this.currentNetwork.lcd_api}/cosmos/staking/v1beta1/delegations/${this.user.address}`)
-                    .then(response => response.json())
-                    .then(async data => {
-                        if (data.delegation_responses) {
-                            // Set data
-                            this.stakedBalances = data.delegation_responses.filter(
-                                el => el.balance.amount > 0 && el.balance.denom === store.currentNetwork.denom
-                            )
+                // Send request
+                const response = await fetch(`${this.apiURL}/address/${this.user.address}`)
 
-                            // Staked to us
-                            this.stakedToUs = this.stakedBalances.find(
-                                balance => balance.delegation.validator_address === store.validatorAddress
-                            ) || []
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user info. Status: ' + response.status)
+                }
 
-                            // Is staked to us
-                            this.isStakedToUs = this.stakedBalances.some(
-                                balance => balance.delegation.validator_address === store.validatorAddress
-                            )
-                        }
-                    })
+                const data = await response.json()
 
-                // Staked balances status
-                this.isStakedBalancesGot = true
+                // Set data
+                Object.assign(this.user, data)
+
+                // User info status
+                this.isUserInfoGot = true
             } catch (error) {
                 throw error
             }
         },
 
 
-        // Calculate the number of tickets
-        calcTicketsAmount() {
-            if (this.stakedToUs.length) {
-                // Set tickets amount
-                this.user.ticketsAmount = parseInt(this.stakedToUs.amount / Math.pow(10, this.currentNetwork.exponent) / this.ticketPrice)
+        // Register user
+        async registerUser() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/initial-delegator/${this.user.address}/participate/`, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        address: this.user.address,
+                        referral_code: this.user.referralCode,
+                        pub_key: this.user.signDoc.pub_key,
+                        signature: this.user.signDoc.signature
+                    })
+                })
+
+                if (!response.ok) {
+                    throw new Error('Failed to register user. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Result
+                if (data.is_participate) {
+                    // Registered
+                } else {
+                    throw error
+                }
+            } catch (error) {
+                throw error
+            }
+        },
+
+
+        // Claim prize
+        async claimPrize() {
+            try {
+                // Request
+                const response = await fetch(`${this.apiURL}/${this.user.address}/claim-prizes/`, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        address: this.user.address
+                    })
+                })
+
+                // Check the response status
+                if (!response.ok) {
+                    // Get the response body
+                    const errorData = await response.json()
+
+                    throw new Error(`Error ${response.status}: ${errorData.detail || 'Unknown error'}`)
+                }
+
+                // Process the response
+                const data = await response.json()
+            } catch (error) {
+                throw error
             }
         }
     }

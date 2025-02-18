@@ -6,53 +6,45 @@
                     <div class="title">Our Bros</div>
 
                     <div class="row">
-                        <div class="item">
+                        <a href="https://www.stargaze.zone/m/cosmonibblecollection" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-
+                                <img src="@/assets/our_bros/CosmosNibble.png" alt="" loading="lazy">
                             </div>
 
-                            <div class="name">Who the fuckis this???</div>
-                        </div>
+                            <div class="name">CosmosNibble</div>
+                        </a>
 
-                        <div class="item">
+                        <a href="https://www.stargaze.zone/m/stars12c9nrpkqrfmdvrx4ex8d6qfs8rwrnclsk5jtk4r6u4gy9mjl97js626dtp/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-
+                                <img src="@/assets/our_bros/CryptoGopniks.png" alt="" loading="lazy">
                             </div>
 
-                            <div class="name">Who the fuckis this???</div>
-                        </div>
+                            <div class="name">CryptoGopniks</div>
+                        </a>
 
-                        <div class="item">
+                        <a href="https://www.stargaze.zone/m/stars1peea6sz2qh34w5c9x8dmde89ykkaxwgt7e9kg7dnh2hvd2mtptcqswa9xq/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-
+                                <img src="@/assets/our_bros/Red Planet DAO.png" alt="" loading="lazy">
                             </div>
 
-                            <div class="name">Who the fuckis this???</div>
-                        </div>
+                            <div class="name">Red Planet DAO</div>
+                        </a>
 
-                        <div class="item">
+                        <a href="https://www.stargaze.zone/m/stars19fv7az3mdpl3kpz22dqwfrp8n8tm82de0efyzmnrrvpf8qysuscsv26mal/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-
+                                <img src="@/assets/our_bros/Sin Garden.png" alt="" loading="lazy">
                             </div>
 
-                            <div class="name">Who the fuckis this???</div>
-                        </div>
+                            <div class="name">Sin Garden</div>
+                        </a>
 
-                        <div class="item">
+                        <a href="https://www.stargaze.zone/m/stamps/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-
+                                <img src="@/assets/our_bros/Stamps by Expedition NFT.png" alt="" loading="lazy">
                             </div>
 
-                            <div class="name">Who the fuckis this???</div>
-                        </div>
-
-                        <div class="item">
-                            <div class="thumb">
-
-                            </div>
-
-                            <div class="name">Who the fuckis this???</div>
-                        </div>
+                            <div class="name">Stamps by Expedition NFT</div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -80,7 +72,7 @@
         padding: 1px;
 
         border-radius: 20px;
-        background: linear-gradient(to bottom,  #2342b5 0%,#041142 100%);
+        background: linear-gradient(to bottom,  #7b1dd8 0%,#3d0376 100%);
     }
 
 
@@ -119,9 +111,8 @@
 
         padding: 19px 19px 29px;
 
-        border: 1px solid #2849c7;
         border-radius: 19px;
-        background: radial-gradient(106.93% 106.93% at 50% 0%, rgba(69, 140, 255, .40) 0%, rgba(69, 140, 255, .00) 100%), #051348;
+        background: radial-gradient(123.39% 123.39% at 50% 0%, rgba(165, 120, 255, .40) 0%, rgba(165, 120, 255, .00) 100%), #400080;
     }
 
 
@@ -140,6 +131,7 @@
     {
         align-content: stretch;
         align-items: stretch;
+        justify-content: center;
 
         margin-bottom: -32px;
         margin-left: -32px;
@@ -166,8 +158,14 @@
 
     .our_bros .item
     {
+        display: block;
+
         padding: 19px;
 
+        transition: box-shadow .2s linear;
+        text-decoration: none;
+
+        color: currentColor;
         border-radius: 23px;
         background: #060606;
     }
@@ -181,7 +179,7 @@
         padding-bottom: 100%;
 
         border-radius: 12px;
-        background: #333;
+        /* background: #333; */
     }
 
 
@@ -208,5 +206,11 @@
         font-weight: 500;
 
         text-transform: capitalize;
+    }
+
+
+    .our_bros .item:hover
+    {
+        box-shadow: 0 11px 11px 0 rgba(0, 5, 38, .45);
     }
 </style>

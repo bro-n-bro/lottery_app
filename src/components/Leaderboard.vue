@@ -132,7 +132,7 @@
         padding: 1px;
 
         border-radius: 20px;
-        background: linear-gradient(to bottom,  #2342b5 0%,#041142 100%);
+        background: linear-gradient(to bottom,  #7b1dd8 0%,#3d0376 100%);
     }
 
 
@@ -171,9 +171,8 @@
 
         padding: 19px 19px 29px;
 
-        border: 1px solid #2849c7;
         border-radius: 19px;
-        background: radial-gradient(106.93% 106.93% at 50% 0%, rgba(69, 140, 255, .40) 0%, rgba(69, 140, 255, .00) 100%), #051348;
+        background: radial-gradient(123.39% 123.39% at 50% 0%, rgba(165, 120, 255, .40) 0%, rgba(165, 120, 255, .00) 100%), #400080;
     }
 
 
