@@ -50,7 +50,7 @@ export const useGlobalStore = defineStore('global', {
         async loadPrizePool() {
             try {
                 // Send request
-                const response = await fetch(`/prize_pools/lottery_${this.lottery_id}/index.json`)
+                const response = await fetch(`/prize_pools/round_${this.lottery_id}.json`)
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch prize poll JSON. Status: ' + response.status)
