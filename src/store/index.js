@@ -75,13 +75,11 @@ export const useGlobalStore = defineStore('global', {
                 // Create Keplr offline singer
                 await createKeplrOfflineSinger(this.currentNetwork.chain_id)
 
-                await Promise.all([
-                    // Get available balances
-                    this.getAvailableBalances(),
+                // Register user
+                // await this.registerUser()
 
-                    // Get user info
-                    this.getUserInfo()
-                ])
+                // Get user info
+                await this.getUserInfo()
 
                 // Keplr connected status
                 this.isKeplrConnected = true
@@ -131,7 +129,7 @@ export const useGlobalStore = defineStore('global', {
 
             try {
                 // Send request
-                const response = await fetch(`${this.apiURL}/address/${this.user.address}`)
+                const response = await fetch(`${this.apiURL}/lottery/current/${this.user.address}/info`)
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch user info. Status: ' + response.status)
@@ -140,7 +138,7 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                Object.assign(this.user, data)
+                Object.assign(this.user, data.address_info)
 
                 // User info status
                 this.isUserInfoGot = true
@@ -167,17 +165,20 @@ export const useGlobalStore = defineStore('global', {
                     })
                 })
 
-                if (!response.ok) {
-                    throw new Error('Failed to register user. Status: ' + response.status)
-                }
+                if (response.status === 200) {
+                    const data = await response.json();
 
-                const data = await response.json()
-
-                // Result
-                if (data.is_participate) {
-                    // Registered
+                    // Result
+                    if (data.is_participate) {
+                        // Registered status
+                        this.user.isRegistered = true
+                    } else {
+                        throw new Error('Failed to register user.')
+                    }
+                } else if (response.status === 403) {
+                    return
                 } else {
-                    throw error
+                    throw new Error('Failed to register user. Status: ' + response.status)
                 }
             } catch (error) {
                 throw error

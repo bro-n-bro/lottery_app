@@ -1,5 +1,5 @@
 <template>
-    <section class="steps">
+    <section class="steps" id="steps">
         <div class="cont">
             <div class="row">
                 <div class="item_wrap">

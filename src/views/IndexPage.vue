@@ -2,6 +2,9 @@
     <!-- Frist section -->
     <TheFirstSecton v-if="!store.isKeplrConnected" />
 
+    <!-- Account info -->
+    <TheAccountInfo v-if="store.isKeplrConnected" />
+
     <!-- Steps -->
     <TheSteps />
 
@@ -21,6 +24,7 @@
 
     // Components
     import TheFirstSecton from '@/components/FirstSecton.vue'
+    import TheAccountInfo from '@/components/AccountInfo.vue'
     import TheSteps from '@/components/Steps.vue'
     import ThePrizePool from '@/components/PrizePool.vue'
     // import TheLeaderboard from '@/components/Leaderboard.vue'
