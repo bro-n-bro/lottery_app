@@ -1,4 +1,5 @@
 <template>
+        <TheAccountInfo />
     <!-- Frist section -->
     <TheFirstSecton v-if="!store.isKeplrConnected" />
 

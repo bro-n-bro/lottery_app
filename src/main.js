@@ -3,7 +3,9 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+
 import Notifications from '@kyvg/vue3-notification'
+import VueCountdown from '@chenfengyuan/vue-countdown'
 
 
 // Create App
@@ -18,6 +20,10 @@ const pinia = createPinia()
 app.use(pinia)
 app.use(router)
 app.use(Notifications)
+
+
+// VueCountdown
+app.component(VueCountdown.name, VueCountdown)
 
 
 // Mount

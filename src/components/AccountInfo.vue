@@ -7,6 +7,9 @@
 
         <!-- Invite button -->
         <TheInviteButton />
+
+        <!-- Claim -->
+        <TheClaim />
     </section>
 </template>
 
@@ -15,14 +18,15 @@
     // Components
     import TheInviteButton from '@/components/account/InviteButton.vue'
     import TheMainData from '@/components/account/MainData.vue'
+    import TheClaim from '@/components/account/Claim.vue'
 </script>
 
 
 <style scoped>
-.account_info
-{
-    position: relative;
+    .account_info
+    {
+        position: relative;
 
-    padding: 69px 0 97px;
-}
+        padding: 69px 0 97px;
+    }
 </style>

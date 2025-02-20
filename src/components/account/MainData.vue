@@ -1,17 +1,30 @@
 <template>
     <div class="main_data">
+        <!-- Title -->
         <div class="title">
             <img src="@/assets/brottery_logo.svg" alt="" loading="lazy">
         </div>
 
+
+        <!-- Wheel -->
         <div class="wheel">
+            <!-- Wheel image -->
             <img src="@/assets/wheel_of_fortune.png" alt="" loading="lazy">
 
-            <div class="timer">6:23:59:59</div>
+            <!-- Timer -->
+            <vue-countdown  class="timer" :time="dateCalc('2025-03-06T10:18:44.319129Z') - new Date()" v-slot="{ days, hours, minutes, seconds }">
+                <span v-if="days">{{ days.toString().padStart(2, '0') }} : </span>
+                <span>{{ hours.toString().padStart(2, '0') }}</span> :
+                <span>{{ minutes.toString().padStart(2, '0') }}</span> :
+                <span>{{ seconds.toString().padStart(2, '0') }}</span>
+            </vue-countdown>
         </div>
 
+
+        <!-- Data -->
         <div class="data_wrap">
             <div class="data">
+                <!-- Info -->
                 <div class="info">
                     <div>
                         <div class="label">Staked:</div>
@@ -32,6 +45,7 @@
                     </div>
                 </div>
 
+                <!-- Data exp -->
                 <div class="exp">
                     <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.99622 16.5634C4.10377 17.6057 6.20551 18.6596 8.31016 19.7107C8.60917 19.8586 8.90527 20.0137 9.26814 20.1992C9.26379 20.2021 9.25798 20.205 9.25362 20.2065L11.9113 21.5373C12.6486 21.907 13.6211 22.3926 14.7344 22.9493C14.7359 22.9508 14.7373 22.9508 14.7388 22.9508C14.7997 22.9711 14.8563 22.9957 14.9071 23.0204C17.9625 24.5411 21.0208 26.0517 24.0558 27.6116C24.2213 27.6957 24.3868 27.7812 24.5522 27.8667C24.6408 27.9131 24.7293 27.9552 24.8164 27.9929C25.5741 28.3234 26.281 28.3611 27.027 28.1074C27.0285 28.1074 27.0314 28.1059 27.0328 28.1045C27.2128 28.0436 27.3957 27.9639 27.5829 27.8682C30.7805 26.2213 34.0057 24.6266 37.228 23.0305C37.3021 22.9943 37.392 22.9638 37.4849 22.945C37.4907 22.9421 37.4966 22.9392 37.5024 22.9363C37.4864 22.9406 37.469 22.945 37.453 22.9493C38.5663 22.3926 39.5388 21.907 40.2761 21.5373L42.9164 20.2152C42.9033 20.2079 42.8888 20.1992 42.8743 20.192C44.8556 19.2033 46.7846 18.2363 48.7049 17.2795C49.1824 17.0418 49.66 16.804 50.1375 16.5677C51.0302 16.1256 51.5556 15.4253 51.5629 14.4308C51.5701 13.4378 51.0606 12.7231 50.168 12.278C42.5158 8.44936 34.8636 4.61778 27.2114 0.786203C26.4464 0.40348 25.6873 0.40493 24.9195 0.790552C17.2702 4.62213 9.62085 8.4537 1.97009 12.2795C1.07453 12.7274 0.566509 13.4349 0.572315 14.4279C0.576669 15.4239 1.10211 16.1227 1.99622 16.5634Z" fill="currentColor"/>
@@ -51,13 +65,17 @@
                     </svg>
                 </div>
 
+                <!-- Data button -->
                 <button class="btn" v-if="!store.user.delegation_tickets">PLAY</button>
 
+                <!-- Data button -->
                 <button class="btn" v-else>GET MORE TIKETS</button>
             </div>
         </div>
 
-        <div class="bulb bulb1"></div>
+
+        <!-- Bulbs -->
+        <div class="bulb bulb1"><span></span></div>
         <div class="bulb bulb2"></div>
         <div class="bulb bulb3"></div>
         <div class="bulb bulb4"></div>
@@ -88,6 +106,7 @@
 
 <script setup>
     import { useGlobalStore } from '@/store'
+    import { dateCalc } from '@/utils'
 
 
     const store = useGlobalStore()
@@ -95,212 +114,469 @@
 
 
 <style scoped>
-.main_data
-{
-    position: relative;
+    .main_data
+    {
+        position: relative;
 
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
 
-    width: 978px;
-    max-width: 100%;
-    height: 600px;
-    margin: 0 auto;
-    padding: 73px 69px 65px;
+        width: 978px;
+        max-width: 100%;
+        height: 600px;
+        margin: 0 auto;
+        padding: 73px 69px 65px;
 
-    background: url('@/assets/bg_main_data.svg') 50%/100% 100% no-repeat;
-}
+        background: url('@/assets/bg_main_data.svg') 50%/100% 100% no-repeat;
+    }
 
 
-.title
-{
-    position: absolute;
-    z-index: 3;
-    top: -36px;
-    right: 0;
-    left: 0;
+    .title
+    {
+        position: absolute;
+        z-index: 3;
+        top: -36px;
+        right: 0;
+        left: 0;
 
-    width: 380px;
-    margin: 0 auto;
+        width: 380px;
+        margin: 0 auto;
 
-    pointer-events: none;
-}
+        pointer-events: none;
+    }
 
 
 
-.title img
-{
-    display: block;
+    .title img
+    {
+        display: block;
 
-    width: 100%;
-}
+        width: 100%;
+    }
 
 
 
-.wheel
-{
-    position: relative;
+    .wheel
+    {
+        position: relative;
 
-    width: 362px;
-    max-width: 100%;
-}
+        width: 362px;
+        max-width: 100%;
+    }
 
 
-.wheel img
-{
-    position: relative;
-    z-index: 2;
+    .wheel:before
+    {
+        position: absolute;
+        z-index: 1;
+        top: -61px;
+        left: 50%;
 
-    display: block;
+        display: block;
 
-    max-width: 100%;
-    margin: 0 auto;
-}
+        width: 511px;
+        height: 512px;
 
+        content: '';
+        transform: translateX(-50%);
 
-.wheel .timer
-{
-    font-size: 28px;
-    font-weight: 500;
+        background: url('@/assets/bg_wheel_of_fortune.svg') 0 0/100% 100% no-repeat;
+    }
 
-    position: absolute;
-    z-index: 3;
-    right: 0;
-    bottom: 4px;
-    left: 0;
 
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
+    .wheel img
+    {
+        position: relative;
+        z-index: 2;
 
-    width: 262px;
-    height: 47px;
-    margin: 0 auto;
+        display: block;
 
-    text-align: center;
+        max-width: 100%;
+        margin: 0 auto;
+    }
 
-    color: #000;
-    background: url('@/assets/bg_timer.svg') 50%/100% 100% no-repeat;
-}
 
+    .wheel .timer
+    {
+        font-size: 28px;
+        font-weight: 500;
 
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        bottom: 4px;
+        left: 0;
 
-.data_wrap
-{
-    width: 424px;
-    max-width: 100%;
-    margin-left: auto;
-    padding: 3px;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
 
-    border-radius: 20px;
-    background: linear-gradient(to bottom,  #7559f5 0%,#1c0046 100%);
-}
+        width: 262px;
+        height: 47px;
+        margin: 0 auto;
 
+        text-align: center;
 
-.data
-{
-    display: flex;
-    flex-direction: column;
+        color: #000;
+        background: url('@/assets/bg_timer.svg') 50%/100% 100% no-repeat;
+    }
 
-    min-height: 456px;
-    padding: 17px;
 
-    border-radius: 17px;
-    background: linear-gradient(180deg, #3a0094 0%, #2b006e 100%);
-}
 
+    .data_wrap
+    {
+        width: 424px;
+        max-width: 100%;
+        margin-left: auto;
+        padding: 3px;
 
-.data .info
-{
-    font-size: 24px;
+        border-radius: 20px;
+        background: linear-gradient(to bottom,  #7559f5 0%,#1c0046 100%);
+    }
 
-    display: flex;
-    flex-direction: column;
 
-    gap: 6px;
-}
+    .data
+    {
+        display: flex;
+        flex-direction: column;
 
+        min-height: 456px;
+        padding: 17px;
 
-.data .info > *
-{
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
+        border-radius: 17px;
+        background: linear-gradient(180deg, #3a0094 0%, #2b006e 100%);
+    }
 
 
-.data .info .label
-{
-    font-weight: 100;
-}
+    .data .info
+    {
+        font-size: 24px;
 
+        display: flex;
+        flex-direction: column;
 
-.data .info .val
-{
-    font-weight: 500;
-}
+        gap: 6px;
+    }
 
 
-.data .exp
-{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 90%;
+    .data .info > *
+    {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
 
-    margin-top: auto;
+    .data .info .label
+    {
+        font-weight: 100;
+    }
 
-    text-align: center;
 
-    color: #f4bf20;
+    .data .info .val
+    {
+        font-weight: 500;
+    }
 
-    gap: 12px;
-}
 
+    .data .exp
+    {
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 90%;
 
-.data .exp svg
-{
-    display: block;
-}
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
 
+        margin-top: auto;
 
-.data .exp svg.last
-{
-    margin-left: -8px;
-}
+        text-align: center;
 
+        color: #f4bf20;
 
-.data .btn
-{
-    font-size: 32px;
-    font-weight: 900;
+        gap: 12px;
+    }
 
-    width: 384px;
-    height: 88px;
-    margin: 0 auto;
-    margin-top: auto;
 
-    text-transform: capitalize;
+    .data .exp svg
+    {
+        display: block;
+    }
 
-    background: url('@/assets/bg_btn.svg') 50%/100% 100% no-repeat;
-}
 
+    .data .exp svg.last
+    {
+        margin-left: -8px;
+    }
 
 
+    .data .btn
+    {
+        font-size: 32px;
+        font-weight: 900;
 
+        width: 384px;
+        height: 88px;
+        margin: 0 auto;
+        margin-top: auto;
 
+        text-transform: capitalize;
 
+        background: url('@/assets/bg_btn.svg') 50%/100% 100% no-repeat;
+    }
 
+
+
+    .bulb
+    {
+        position: absolute;
+
+        display: block;
+
+        width: 17px;
+        height: 17px;
+
+        pointer-events: none;
+
+        border-radius: 50%;
+        background: radial-gradient(71.12% 71.12% at 49.96% 18.88%, #ffffa9 12.05%, #fffea7 36.43%, #fffca0 45.22%, #fff895 51.48%, #fff384 56.54%, #ffec6e 60.83%, #ffe65d 63.36%, #fee45c 76.91%, #fadc5a 83.81%, #f2cf56 89.21%, #e8bc50 93.83%, #dba448 97.92%, #d39443 100%);
+    }
+
+
+    .bulb:before
+    {
+        position: absolute;
+        z-index: 2;
+        bottom: -4px;
+        left: 50%;
+
+        display: block;
+
+        width: 23px;
+        height: 20px;
+
+        content: '';
+        transform: translateX(-50%);
+
+        opacity: .6;
+        border-radius: 50%;
+        background: radial-gradient(49.99% 50.02% at 50.01% 49.92%, #fff 0%, #f3f3f3 8.79%, #d3d3d3 24.72%, #9f9f9f 45.98%, #575757 71.79%, #000 100%);
+
+        mix-blend-mode: lighten;
+    }
+
+
+    .bulb:after
+    {
+        position: absolute;
+        z-index: 3;
+        top: -8px;
+        left: 50%;
+
+        display: block;
+
+        width: 36px;
+        height: 31px;
+
+        content: '';
+        transform: translateX(-50%);
+
+        opacity: .39;
+        border-radius: 50%;
+        background: radial-gradient(50% 49.99% at 50.04% 49.96%, #ffff69 0%, #f3f364 8.79%, #d3d357 24.72%, #9f9f41 45.98%, #575724 71.79%, #000 100%);
+
+        mix-blend-mode: lighten;
+    }
+
+
+    .bulb span
+    {
+        position: absolute;
+        z-index: 4;
+        top: -8px;
+        left: 50%;
+
+        display: block;
+
+        width: 36px;
+        height: 31px;
+
+        content: '';
+        transition: opacity .1s linear;
+        transform: translateX(-50%);
+
+        opacity: 0;
+        opacity: .5;
+        border-radius: 50%;
+        background: radial-gradient(50% 49.99% at 50.04% 49.96%, #ffff69 0%, #f3f364 8.79%, #d3d357 24.72%, #9f9f41 45.98%, #575724 71.79%, #000 100%);
+
+        mix-blend-mode: lighten;
+    }
+
+
+    .bulb1
+    {
+        top: -3px;
+        left: 5.01%;
+    }
+
+    .bulb2
+    {
+        top: -3px;
+        left: 16.053%;
+    }
+
+    .bulb3
+    {
+        top: -3px;
+        left: 27.096%;
+    }
+
+    .bulb4
+    {
+        top: -3px;
+        right: 27.096%;
+    }
+
+    .bulb5
+    {
+        top: -3px;
+        right: 16.053%;
+    }
+
+    .bulb6
+    {
+        top: -3px;
+        right: 5.01%;
+    }
+
+    .bulb7
+    {
+        top: 12.166%;
+        right: -3px;
+    }
+
+    .bulb8
+    {
+        top: 30.166%;
+        right: -3px;
+    }
+
+    .bulb9
+    {
+        top: 48.166%;
+        right: -3px;
+    }
+
+    .bulb10
+    {
+        top: 66.166%;
+        right: -3px;
+    }
+
+    .bulb11
+    {
+        top: 84.166%;
+        right: -3px;
+    }
+
+    .bulb12
+    {
+        right: 5.01%;
+        bottom: -3px;
+    }
+
+    .bulb13
+    {
+        right: 16.053%;
+        bottom: -3px;
+    }
+
+    .bulb14
+    {
+        right: 27.096%;
+        bottom: -3px;
+    }
+
+    .bulb15
+    {
+        right: 38.139%;
+        bottom: -3px;
+    }
+
+    .bulb16
+    {
+        right: 49.182%;
+        bottom: -3px;
+    }
+
+    .bulb17
+    {
+        right: 60.224%;
+        bottom: -3px;
+    }
+
+    .bulb18
+    {
+        bottom: -3px;
+        left: 27.096%;
+    }
+
+    .bulb19
+    {
+        bottom: -3px;
+        left: 16.053%;
+    }
+
+    .bulb20
+    {
+        bottom: -3px;
+        left: 5.01%;
+    }
+
+    .bulb21
+    {
+        top: 84.166%;
+        left: -3px;
+    }
+
+    .bulb22
+    {
+        top: 66.166%;
+        left: -3px;
+    }
+
+    .bulb23
+    {
+        top: 48.166%;
+        left: -3px;
+    }
+
+    .bulb24
+    {
+        top: 30.166%;
+        left: -3px;
+    }
+
+    .bulb25
+    {
+        top: 12.166%;
+        left: -3px;
+    }
+
+
+    .bulb.active span
+    {
+        opacity: 1;
+    }
 </style>
