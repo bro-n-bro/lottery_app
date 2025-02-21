@@ -6,6 +6,7 @@
         @touchmove="onDrag"
         @mouseup="stopDrag"
         @touchend="stopDrag"
+        @click.prevent="openModal()"
     >
         <svg width="80" height="46" viewBox="0 0 80 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.674375 26.776V21.848H16.3224V26.776H0.674375ZM5.98638 16.056H11.0424V32.504H5.98638V16.056Z" fill="white"/>
@@ -18,13 +19,14 @@
 
 
 <script setup>
-    import { ref, onUnmounted } from 'vue'
+    import { ref, inject, onUnmounted } from 'vue'
 
 
-    const offsetY = ref(0),
+    const emitter = inject('emitter'),
+        offsetY = ref(0),
         startPosition = ref(0),
         isDragging = ref(false),
-        threshold = 80
+        threshold = 100
 
 
     onUnmounted(() => {
@@ -89,7 +91,8 @@
 
     // Open modal
     function openModal() {
-        console.log(1111111111)
+        // Event "show_referral_modal"
+        emitter.emit('show_referral_modal')
     }
 </script>
 

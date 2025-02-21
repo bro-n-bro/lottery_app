@@ -114,13 +114,13 @@ input[type=number]
 ::selection
 {
     color: #fff;
-    background: #597BF5;
+    background: #597bf5;
 }
 
 ::-moz-selection
 {
     color: #fff;
-    background: #597BF5;
+    background: #597bf5;
 }
 
 
@@ -145,7 +145,7 @@ html.custom_scroll ::-webkit-scrollbar
 
 html.custom_scroll ::-webkit-scrollbar-thumb
 {
-    background-color: #597BF5;
+    background-color: #597bf5;
 }
 
 
@@ -230,4 +230,205 @@ button
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: flex-start;
+}
+
+
+
+/*-----------
+    Modal
+-----------*/
+.modal_overlay
+{
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    animation: .2s fadeIn forwards linear;
+
+    background: rgba(0, 0, 0, .60);
+
+    backdrop-filter: blur(13.7px);
+    -webkit-ackdrop-filter: blur(13.7px);
+}
+
+
+.modal_overlay.closing
+{
+    animation: .2s fadeOut forwards linear;
+}
+
+
+
+.modal
+{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    min-height: -moz-available;
+    min-height: -webkit-fill-available;
+    min-height:         fill-available;
+
+    animation: .2s fadeIn forwards linear;
+    pointer-events: none;
+}
+
+
+.modal.closing
+{
+    animation: .2s fadeOut forwards linear;
+}
+
+
+.modal_content
+{
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    overflow: auto;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 138px 48px 48px;
+
+    background: url('/images/bg_modal_lights.svg') 50%/100% 100% no-repeat;
+}
+
+
+.modal .data
+{
+    position: relative;
+
+    width: 760px;
+    max-width: 100%;
+    padding: 44px;
+
+    pointer-events: auto;
+
+    border-radius: 42px;
+    background: radial-gradient(112.86% 36.74% at 49.34% 69.88%, #652cae 0%, #490a8b 100%);
+    box-shadow: 0 0 44px 0 #2a005d inset;
+}
+
+
+.modal .close_btn
+{
+    position: absolute;
+    z-index: 9;
+    top: -18px;
+    right: -17px;
+
+    width: 50px;
+    height: 52px;
+
+    background: url('/images/ic_close.svg') 0 0/100% 100% no-repeat;
+}
+
+
+.modal_title
+{
+    font-size: 30px;
+    font-weight: 900;
+
+    position: absolute;
+    z-index: 3;
+    top: -64px;
+    right: 0;
+    left: 0;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 361px;
+    height: 95px;
+    margin: 0 auto;
+    padding-bottom: 8px;
+
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+
+    background: url('/images/bg_modal_title.svg') 0 0/100% 100% no-repeat;
+}
+
+
+.modal_title span:first-child
+{
+    position: relative;
+    z-index: 2;
+
+    display: block;
+
+    background: linear-gradient(168deg, #ffce2b 20.31%, #ffe590 29.2%, #ffce2b 37.73%, #d6a20e 48.05%, #ffce2b 51.25%, #e7a006 59.79%, #fed34a 67.25%, #d79300 78.63%, #d79300 91.44%);
+    -webkit-background-clip: text;
+            background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+.modal_title span:last-child
+{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    margin-top: -4px;
+
+    transform: translate(-50%, -50%);
+
+    color: #5f2b00;
+    text-shadow: 0 7px 5px #5f2b00;
+
+    -webkit-text-stroke: 7px #5f2b00;
+}
+
+
+
+/*----------------
+    Animations
+----------------*/
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeOut
+{
+    from
+    {
+        opacity: 1;
+    }
+    to
+    {
+        opacity: 0;
+    }
 }

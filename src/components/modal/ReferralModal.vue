@@ -1,0 +1,187 @@
+<template>
+    <!-- Referral modal -->
+    <section class="modal" :class="{ closing: isClosing }">
+        <div class="modal_content">
+            <div class="data">
+                <!-- Close button -->
+                <button class="close_btn" @click.prevent="closeHandler()"></button>
+
+                <!-- Modal title -->
+                <div class="modal_title">
+                    <span>Extra tickets</span>
+                    <span>Extra tickets</span>
+                </div>
+
+                <!-- Modal data -->
+                <div class="text">Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets.</div>
+
+                <div class="field_wrap">
+                    <div class="field">
+                        <span>{{ refURL }}</span>
+
+                        <button class="copy_btn" @click.prevent="copyHandler()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.2857 15.5137H11.1429C10.7696 15.5137 10.4643 15.2043 10.4643 14.8262V3.82617C10.4643 3.44805 10.7696 3.13867 11.1429 3.13867H17.0846L19.9643 6.05625V14.8262C19.9643 15.2043 19.6589 15.5137 19.2857 15.5137ZM11.1429 17.5762H19.2857C20.7828 17.5762 22 16.343 22 14.8262V6.05625C22 5.51055 21.7837 4.98633 21.402 4.59961L18.5266 1.68203C18.1449 1.29531 17.6275 1.07617 17.0888 1.07617H11.1429C9.64576 1.07617 8.42857 2.30938 8.42857 3.82617V14.8262C8.42857 16.343 9.64576 17.5762 11.1429 17.5762ZM5.71429 6.57617C4.21719 6.57617 3 7.80937 3 9.32617V20.3262C3 21.843 4.21719 23.0762 5.71429 23.0762H13.8571C15.3542 23.0762 16.5714 21.843 16.5714 20.3262V18.9512H14.5357V20.3262C14.5357 20.7043 14.2304 21.0137 13.8571 21.0137H5.71429C5.34107 21.0137 5.03571 20.7043 5.03571 20.3262V9.32617C5.03571 8.94805 5.34107 8.63867 5.71429 8.63867H7.07143V6.57617H5.71429Z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal overlay -->
+    <div class="modal_overlay" :class="{ closing: isClosing }" @click.prevent="closeHandler()"></div>
+</template>
+
+
+<script setup>
+    import { ref, inject } from 'vue'
+    import { useClipboard } from '@vueuse/core'
+
+
+    const emitter = inject('emitter'),
+        isClosing = ref(false),
+        refCode = ref('123456'),
+        refURL = ref(`https://lotter.brondro.io?ref=${refCode.value}`),
+        { copy } = useClipboard()
+
+
+    // Close modal
+    function closeHandler() {
+        // Closing animation
+        isClosing.value = true
+
+        setTimeout(() => {
+            // Event "hide_referral_modal"
+            emitter.emit('hide_referral_modal')
+        }, 200)
+    }
+
+
+    // Copy handler
+    function copyHandler() {
+        // Copy
+        copy(refURL.value)
+
+        // // Clean notifications
+        // notification.notify({
+        //     group: 'default',
+        //     clean: true
+        // })
+
+        // // Show notification
+        // notification.notify({
+        //     group: 'default',
+        //     speed: 200,
+        //     duration: 1000,
+        //     title: i18n.global.t('message.notification_copied_title'),
+        //     type: 'copied'
+        // })
+    }
+</script>
+
+
+<style scoped>
+    .data
+    {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        height: 252px;
+    }
+
+
+    .data:before
+    {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        content: '';
+        pointer-events: none;
+
+        background: url('@/assets/bg_referral_modal.svg') 0 0/100% 100% no-repeat;
+    }
+
+
+    .text
+    {
+        font-size: 16px;
+        font-weight: 500;
+
+        width: 100%;
+        margin-bottom: 27px;
+    }
+
+
+
+    .field_wrap
+    {
+        width: 100%;
+        padding: 1px;
+
+        border-radius: 10px;
+        background: linear-gradient(to bottom,  #734fd2 0%,#1f064d 100%);
+    }
+
+
+    .field
+    {
+        position: relative;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        height: 46px;
+        padding: 3px 15px;
+
+        white-space: nowrap;
+
+        border-radius: 9px;
+        background: #06000e;
+    }
+
+
+
+    .field .copy_btn
+    {
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        right: 16px;
+        bottom: 0;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        width: 24px;
+        height: 100%;
+        margin: auto 0;
+    }
+
+
+    .field .copy_btn svg
+    {
+        display: block;
+
+        width: 24px;
+        height: 24px;
+    }
+</style>

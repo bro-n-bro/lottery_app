@@ -16,7 +16,7 @@ export const useGlobalStore = defineStore('global', {
         Keplr: {},
         StargateClient: {},
 
-        availableBalances: [],
+        availableBalance: [],
         prizePool: [],
 
         user: {},
@@ -89,13 +89,13 @@ export const useGlobalStore = defineStore('global', {
         },
 
 
-        // Get available balances
-        async getAvailableBalances() {
-            // Available balances status
-            this.isAvailableBalancesGot = false
+        // Get available balance
+        async getAvailableBalance() {
+            // Available balance status
+            this.isAvailableBalanceGot = false
 
-            // Reset available balances
-            this.availableBalances = []
+            // Reset available balance
+            this.availableBalance = []
 
             try {
                 // Send request
@@ -109,13 +109,13 @@ export const useGlobalStore = defineStore('global', {
 
                 if (data.balances.length) {
                     // Set data
-                    this.availableBalances = data.balances.filter(
+                    this.availableBalance = data.balances.filter(
                         el => el.amount > 0 && el.denom === this.currentNetwork.denom
                     )
                 }
 
-                // Available balances status
-                this.isAvailableBalancesGot = true
+                // Available balance status
+                this.isAvailableBalanceGot = true
             } catch (error) {
                 throw error
             }

@@ -2,7 +2,8 @@
     <div class="main_data">
         <!-- Title -->
         <div class="title">
-            <img src="@/assets/brottery_logo.svg" alt="" loading="lazy">
+            <span>Brottery</span>
+            <span>Brottery</span>
         </div>
 
 
@@ -66,10 +67,14 @@
                 </div>
 
                 <!-- Data button -->
-                <button class="btn" v-if="!store.user.delegation_tickets">PLAY</button>
+                <button class="btn" v-if="!store.user.delegation_tickets" @click.prevent="emitter.emit('show_delegate_modal')">
+                    <span>PLAY</span>
+                </button>
 
                 <!-- Data button -->
-                <button class="btn" v-else>GET MORE TIKETS</button>
+                <button class="btn" v-else @click.prevent="emitter.emit('show_delegate_modal')">
+                    <span>GET MORE TIKETS</span>
+                </button>
             </div>
         </div>
 
@@ -105,11 +110,13 @@
 
 
 <script setup>
+    import { inject } from 'vue'
     import { useGlobalStore } from '@/store'
     import { dateCalc } from '@/utils'
 
 
-    const store = useGlobalStore()
+    const store = useGlobalStore(),
+        emitter = inject('emitter')
 </script>
 
 
@@ -130,31 +137,73 @@
         margin: 0 auto;
         padding: 73px 69px 65px;
 
-        background: url('@/assets/bg_main_data.svg') 50%/100% 100% no-repeat;
+        border-radius: 42px;
+        background: url('@/assets/bg_main_data.svg') 50%/100% 100% no-repeat, linear-gradient(180deg, #4a0093 -15.63%, #120041 100%);
     }
 
 
     .title
     {
+        font-size: 48px;
+        font-weight: 900;
+
         position: absolute;
         z-index: 3;
         top: -36px;
         right: 0;
         left: 0;
 
-        width: 380px;
-        margin: 0 auto;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
 
+        width: 380px;
+        height: 90px;
+        margin: 0 auto;
+        padding-bottom: 8px;
+
+        text-align: center;
+        text-transform: uppercase;
         pointer-events: none;
+
+        background: url('@/assets/bg_brottery_logo.svg') 0 0/100% 100% no-repeat;
     }
 
 
-
-    .title img
+    .title span:first-child
     {
+        position: relative;
+        z-index: 2;
+
         display: block;
 
-        width: 100%;
+        background: linear-gradient(168deg, #ffce2b 20.31%, #ffe590 29.2%, #ffce2b 37.73%, #d6a20e 48.05%, #ffce2b 51.25%, #e7a006 59.79%, #fed34a 67.25%, #d79300 78.63%, #d79300 91.44%);
+        -webkit-background-clip: text;
+                background-clip: text;
+
+        -webkit-text-fill-color: transparent;
+    }
+
+
+    .title span:last-child
+    {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+
+        margin-top: -4px;
+
+        transform: translate(-50%, -50%);
+
+        color: #5f2b00;
+        text-shadow: 0 7px 5px #5f2b00;
+
+        -webkit-text-stroke: 7px #5f2b00;
     }
 
 

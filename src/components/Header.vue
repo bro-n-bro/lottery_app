@@ -124,7 +124,7 @@
     header
     {
         position: sticky;
-        z-index: 10;
+        z-index: 101;
         top: 0;
 
         color: #fff;
