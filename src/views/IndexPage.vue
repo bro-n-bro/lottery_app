@@ -5,8 +5,8 @@
     <!-- Account info -->
     <TheAccountInfo v-if="store.isKeplrConnected" />
 
-    <!-- Steps -->
-    <TheSteps />
+    <!-- Rules -->
+    <TheRules />
 
     <!-- Prize pool -->
     <ThePrizePool />
@@ -16,6 +16,9 @@
 
     <!-- Our bros -->
     <TheOurBros />
+
+    <!-- Loader -->
+    <TheLoader v-if="store.isKeplrConnecting" class="fixed" />
 </template>
 
 
@@ -25,10 +28,11 @@
     // Components
     import TheFirstSecton from '@/components/FirstSecton.vue'
     import TheAccountInfo from '@/components/AccountInfo.vue'
-    import TheSteps from '@/components/Steps.vue'
+    import TheRules from '@/components/Rules.vue'
     import ThePrizePool from '@/components/PrizePool.vue'
     // import TheLeaderboard from '@/components/Leaderboard.vue'
     import TheOurBros from '@/components/OurBros.vue'
+    import TheLoader from '@/components/Loader.vue'
 
 
     const store = useGlobalStore()

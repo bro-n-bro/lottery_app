@@ -16,6 +16,7 @@ export const useGlobalStore = defineStore('global', {
         Keplr: {},
         StargateClient: {},
 
+        prices: [],
         availableBalance: [],
         prizePool: [],
 
@@ -39,13 +40,41 @@ export const useGlobalStore = defineStore('global', {
         },
 
         lottery_id: 1,
+        currentCurrency: 'USD',
+        currentCurrencySymbol: '$',
         currentTxHash: '',
         validatorAddress: 'cosmosvaloper106yp7zw35wftheyyv9f9pe69t8rteumjrx52jg',
-        addressConfirmationString: "i’m in brottery"
+        addressConfirmationString: "i’m in brottery",
+
+        formatableTokens: [
+            {
+                token_name: 'USD',
+                format_token_name: 'usdt',
+                exponent: 0
+            }
+        ]
     }),
 
 
     actions: {
+        // Get prices
+        async getPrices() {
+            try {
+                // Send request
+                const response = await fetch('https://rpc.bronbro.io/price_feed_api/tokens/')
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch prices. Status: ' + response.status)
+                }
+
+                // Set data
+                this.prices = await response.json()
+            } catch (error) {
+                console.error(error)
+            }
+        },
+
+
         // Load prize poll
         async loadPrizePool() {
             try {

@@ -12,6 +12,10 @@
                     <span>Get your tickets</span>
                 </div>
 
+                <!-- Loader -->
+                <TheLoader v-if="loading" />
+
+                <template v-else>
                 <!-- Modal data -->
                 <div class="tabs">
                     <button class="btn" @click.prevent="activeTab = 1" :class="{ active: activeTab === 1 }">
@@ -44,23 +48,20 @@
 
                                 <div class="val">
                                     <span v-if="!store.availableBalance.length">0</span>
-                                    <span v-else>{{ (store.availableBalance[0].amount / Math.pow(10, store.currentNetwork.exponent)).toLocaleString('ru-RU', { maximumFractionDigits: 5 }).replace(',', '.') }}</span>
-
-                                    <span class="symbol">{{ store.currentNetwork.symbol }}</span>
+                                    <span v-else>{{ formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent).toLocaleString('ru-RU', { maximumFractionDigits: 5 }).replace(',', '.') }}</span> <span class="symbol">{{ store.currentNetwork.symbol }}</span>
                                 </div>
 
-                                <div class="cost">$0.01</div>
+                                <div class="cost">${{ calcTokenCost(formatTokenCost(formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent))) }}</div>
                             </div>
 
                             <div>
                                 <div class="label">Total Staked</div>
 
                                 <div class="val">
-                                    <span>{{ store.user.amount }}</span>
-                                    <span class="symbol">{{ store.currentNetwork.symbol }}</span>
+                                    <span>{{ store.user.amount }}</span> <span class="symbol">{{ store.currentNetwork.symbol }}</span>
                                 </div>
 
-                                <div class="cost">$0.01</div>
+                                <div class="cost">${{ calcTokenCost(formatTokenCost(store.user.amount)) }}</div>
                             </div>
                         </div>
 
@@ -108,6 +109,7 @@
                         </button>
                     </div>
                 </form>
+            </template>
             </div>
         </div>
     </section>
@@ -121,6 +123,10 @@
 <script setup>
     import { ref, inject, onBeforeMount } from 'vue'
     import { useGlobalStore } from '@/store'
+    import { formatTokenAmount, formatTokenCost, calcTokenCost } from '@/utils'
+
+    // Components
+    import TheLoader from '@/components/Loader.vue'
 
 
     const store = useGlobalStore(),
@@ -133,8 +139,13 @@
 
     onBeforeMount(async () => {
         try {
-            // Get available balance
-            await store.getAvailableBalance()
+            await Promise.all([
+                // Get prices
+                store.getPrices(),
+
+                // Get available balance
+                store.getAvailableBalance()
+            ])
 
             // Hide loading
             loading.value = false
@@ -185,6 +196,19 @@
         pointer-events: none;
 
         background: url('@/assets/bg_delegate_modal.svg') 0 0/100% 100% no-repeat;
+    }
+
+
+    .loader_wrap
+    {
+        z-index: 10;
+
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        margin: auto;
+        border-radius: 33px;
+
+        inset: 0;
     }
 
 
@@ -608,4 +632,5 @@
 
         background: url('@/assets/bg_delegate_btn.svg') 0 0 /100% 100% no-repeat;
     }
+
 </style>
