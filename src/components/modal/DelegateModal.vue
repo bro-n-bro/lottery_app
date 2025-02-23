@@ -4,7 +4,11 @@
         <div class="modal_content">
             <div class="data">
                 <!-- Close button -->
-                <button class="close_btn" @click.prevent="closeHandler()"></button>
+                <button class="close_btn" @click.prevent="closeHandler()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.7992 1.41416C19.0181 0.633107 17.7518 0.633107 16.9707 1.41416L12.0209 6.36396L7.07125 1.41427C6.29021 0.633226 5.02388 0.633226 4.24283 1.41427L1.4144 4.2427C0.633351 5.02375 0.633351 6.29008 1.4144 7.07113L6.36409 12.0208L1.4144 16.9705C0.633351 17.7516 0.633351 19.0179 1.4144 19.7989L4.24283 22.6274C5.02388 23.4084 6.29021 23.4084 7.07125 22.6274L12.0209 17.6777L16.9707 22.6275C17.7518 23.4085 19.0181 23.4085 19.7992 22.6275L22.6276 19.799C23.4087 19.018 23.4087 17.7517 22.6276 16.9706L17.6778 12.0208L22.6276 7.07101C23.4087 6.28996 23.4087 5.02363 22.6276 4.24258L19.7992 1.41416Z" fill="currentColor"/>
+                    </svg>
+                </button>
 
                 <!-- Modal title -->
                 <div class="modal_title">
@@ -22,7 +26,7 @@
                         <span>Delegate</span>
                     </button>
 
-                    <button class="btn" @click.prevent="activeTab = 2" :class="{ active: activeTab === 2 }">
+                    <button class="btn" @click.prevent="activeTab = 2" :class="{ active: activeTab === 2 }" v-if="store.redelegations.length">
                         <span>Redelegate</span>
                     </button>
                 </div>
@@ -48,7 +52,9 @@
 
                                 <div class="val">
                                     <span v-if="!store.availableBalance.length">0</span>
-                                    <span v-else>{{ formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent).toLocaleString('ru-RU', { maximumFractionDigits: 5 }).replace(',', '.') }}</span> <span class="symbol">{{ store.currentNetwork.symbol }}</span>
+                                    <span v-else>{{ formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent).toLocaleString('ru-RU', { maximumFractionDigits: 5 }).replace(',', '.') }}</span>
+
+                                    <span class="symbol">{{ store.currentNetwork.symbol }}</span>
                                 </div>
 
                                 <div class="cost">${{ calcTokenCost(formatTokenCost(formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent))) }}</div>
@@ -58,7 +64,9 @@
                                 <div class="label">Total Staked</div>
 
                                 <div class="val">
-                                    <span>{{ store.user.amount }}</span> <span class="symbol">{{ store.currentNetwork.symbol }}</span>
+                                    <span>{{ store.user.amount }}</span>
+
+                                    <span class="symbol">{{ store.currentNetwork.symbol }}</span>
                                 </div>
 
                                 <div class="cost">${{ calcTokenCost(formatTokenCost(store.user.amount)) }}</div>
@@ -66,10 +74,10 @@
                         </div>
 
                         <div class="from_validator" v-if="activeTab === 2">
-                            <div class="label">Change validator from <b>(15)</b>:</div>
+                            <div class="label">Change validator from <b>({{ store.redelegations.length }})</b>:</div>
 
                             <div class="field">
-                                <input type="text" readonly v-model="from_validator" class="input" placeholder="Choose your validator">
+                                <input type="text" readonly v-model="validatorFrom" class="input" placeholder="Choose your validator">
 
                                 <svg class="arr" width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 11.3497L14.5 18.3497L21.5 11.3497" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -81,11 +89,15 @@
                             <div class="label">
                                 <span>Amount:</span>
 
-                                <span class="cost">48$</span>
+                                <span class="cost" v-if="isAmountReady">
+                                    ${{ calcTokenCost(formatTokenCost(amount)) }}
+                                </span>
                             </div>
 
-                            <div class="field">
-                                <input type="text" v-model="amount" class="input" :placeholder="`${store.currentNetwork.symbol} Amount`">
+                            <div class="field" :class="{ disabled: activeTab === 2 && !validatorFrom }">
+                                <input type="number" inputmode="decimal" class="input big" v-model="amount"
+                                    :placeholder="`${store.currentNetwork.symbol} Amount`"
+                                    @input="validateAmount()">
 
                                 <button type="button" class="max_btn" @click.prevent="setMaxAmount()">MAX</button>
 
@@ -94,8 +106,8 @@
 
                                     <span>{{ tickets }}</span>
 
-                                    <svg width="40" height="36" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M28.8826 22.4488L21.7976 21.5478L17.7896 27.4591L16.707 20.6019L9.81716 18.9352L16.2278 15.5761L15.9782 8.66352L20.9996 13.4208L27.758 10.8319L24.4535 17.103M32.5198 12.2473C32.165 11.4617 32.1512 10.5609 32.4814 9.74298C32.8116 8.92505 33.4588 8.25702 34.2806 7.88584L31.605 1.96205C31.2502 1.17651 30.5835 0.570586 29.7515 0.277587C28.9195 -0.0154126 27.9904 0.0285075 27.1686 0.399687L2.37985 11.596C1.55805 11.9671 0.910853 12.6352 0.580637 13.4531C0.250422 14.271 0.264235 15.1718 0.619039 15.9574L3.29462 21.8812C4.11642 21.51 5.0455 21.4661 5.87749 21.7591C6.70947 22.0521 7.3762 22.658 7.731 23.4435C8.08581 24.2291 8.09962 25.1299 7.7694 25.9478C7.43919 26.7657 6.79199 27.4338 5.97019 27.805L8.64577 33.7287C9.00058 34.5143 9.6673 35.1202 10.4993 35.4132C11.3313 35.7062 12.2604 35.6623 13.0822 35.2911L37.8709 24.0948C38.6927 23.7237 39.3399 23.0556 39.6701 22.2377C40.0004 21.4198 39.9866 20.519 39.6317 19.7334L36.9562 13.8096C36.1344 14.1808 35.2053 14.2247 34.3733 13.9317C33.5413 13.6387 32.8746 13.0328 32.5198 12.2473Z" fill="currentColor"/>
+                                    <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.8982 17.027L13.9162 13.9675L8.93418 17.027L10.4371 11.5465L5.85871 7.98146L11.7731 7.6356L13.9162 2.39452L16.0593 7.6356L21.9736 7.98146L17.3952 11.5465M25.0491 10.6419C25.0491 9.93631 25.3423 9.25961 25.8643 8.76068C26.3863 8.26175 27.0942 7.98146 27.8323 7.98146V2.66057C27.8323 1.95497 27.5391 1.27828 27.0172 0.779348C26.4952 0.280418 25.7873 0.00012207 25.0491 0.00012207H2.78323C2.04507 0.00012207 1.33715 0.280418 0.81519 0.779348C0.293233 1.27828 0 1.95497 0 2.66057V7.98146C0.73816 7.98146 1.44609 8.26175 1.96804 8.76068C2.49 9.25961 2.78323 9.93631 2.78323 10.6419C2.78323 11.3475 2.49 12.0242 1.96804 12.5231C1.44609 13.022 0.73816 13.3023 0 13.3023V18.6232C0 19.3288 0.293233 20.0055 0.81519 20.5045C1.33715 21.0034 2.04507 21.2837 2.78323 21.2837H25.0491C25.7873 21.2837 26.4952 21.0034 27.0172 20.5045C27.5391 20.0055 27.8323 19.3288 27.8323 18.6232V13.3023C27.0942 13.3023 26.3863 13.022 25.8643 12.5231C25.3423 12.0242 25.0491 11.3475 25.0491 10.6419Z" fill="currentColor"/>
                                     </svg>
                                 </div>
                             </div>
@@ -103,7 +115,7 @@
                     </div>
 
                     <div class="submit">
-                        <button type="submit" class="submit_btn">
+                        <button type="submit" class="submit_btn" :class="{ disabled: !isFormValid }">
                             <span v-if="activeTab === 1">DELEGATE</span>
                             <span v-if="activeTab === 2">REDELEGATE</span>
                         </button>
@@ -121,9 +133,10 @@
 
 
 <script setup>
-    import { ref, inject, onBeforeMount } from 'vue'
+    import { ref, inject, onBeforeMount, watch, computed } from 'vue'
     import { useGlobalStore } from '@/store'
     import { formatTokenAmount, formatTokenCost, calcTokenCost } from '@/utils'
+    import { MsgDelegate, MsgBeginRedelegate } from 'cosmjs-types/cosmos/staking/v1beta1/tx'
 
     // Components
     import TheLoader from '@/components/Loader.vue'
@@ -133,8 +146,21 @@
         emitter = inject('emitter'),
         isClosing = ref(false),
         activeTab = ref(1),
+        validatorFrom = ref(null),
+        isAmountReady = ref(false),
+        amount = ref(''),
         tickets = ref(0),
-        loading = ref(true)
+        msgAny = ref([]),
+        loading = ref(true),
+        isFormValid = computed(() => {
+            if (!isAmountReady.value) return false
+
+            if (activeTab.value === 2) {
+                return !!validatorFrom.value
+            }
+
+            return true
+        })
 
 
     onBeforeMount(async () => {
@@ -144,13 +170,51 @@
                 store.getPrices(),
 
                 // Get available balance
-                store.getAvailableBalance()
+                store.getAvailableBalance(),
+
+                // Get redelegations
+                store.getRedelegations()
             ])
 
             // Hide loading
             loading.value = false
         } catch (error) {
             console.error(`DelegateModal.vue: ${error.message}`)
+        }
+    })
+
+
+    watch(computed(() => isFormValid.value), () => {
+        if (isFormValid.value && activeTab.value === 1) {
+            // Set messeges
+            msgAny.value = [{
+                typeUrl: '/cosmos.staking.v1beta1.MsgDelegate',
+                value: MsgDelegate.fromPartial({
+                    delegatorAddress: store.user.address,
+                    validatorAddress: store.validatorAddress,
+                    amount: {
+                        denom: store.currentNetwork.denom,
+                        amount: `${parseFloat((amount.value).toString().replace(',', '.')).toFixed(store.currentNetwork.exponent) * Math.pow(10, store.currentNetwork.exponent)}`
+                    }
+                })
+            }]
+        }
+
+
+        if (isFormValid.value && activeTab.value === 2) {
+            // Set messeges
+            msgAny.value = [{
+                typeUrl: '/cosmos.staking.v1beta1.MsgBeginRedelegate',
+                value: MsgBeginRedelegate.fromPartial({
+                    delegatorAddress: store.user.address,
+                    validatorSrcAddress: validatorFrom.operator_address,
+                    validatorDstAddress: store.validatorAddress,
+                    amount: {
+                        denom: store.currentNetwork.denom,
+                        amount: `${parseFloat((amount.value).toString().replace(',', '.')).toFixed(store.currentNetwork.exponent) * Math.pow(10, store.currentNetwork.exponent)}`
+                    }
+                })
+            }]
         }
     })
 
@@ -164,6 +228,69 @@
             // Event "hide_delegate_modal"
             emitter.emit('hide_delegate_modal')
         }, 200)
+    }
+
+
+    // Validate amount
+    function validateAmount() {
+        // Set amount status
+        isAmountReady.value = false
+
+        setTimeout(() => {
+            // Separator replacement
+            Number(String(amount.value).replace(/,/g, "."))
+
+            // Negative value
+            if (String(amount.value).length && amount.value < 0) {
+                // Set empty
+                amount.value = ''
+            }
+
+            // Acceptable value
+            if (amount.value && amount.value > 0 && amount.value < formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent)) {
+                // Set amount status
+                isAmountReady.value = true
+            }
+
+            // More than available balance
+            if (amount.value > formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent)) {
+                // Set MAX amount
+                setMaxAmount()
+            }
+
+            // Calc new tickets
+            calcNewTickets()
+        })
+    }
+
+
+    // Set MAX amount
+    function setMaxAmount() {
+        // Set amount status
+        isAmountReady.value = false
+
+        setTimeout(() => {
+            // Set amount
+            amount.value = formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent)
+
+            // Calc new tickets
+            calcNewTickets()
+
+            // Set amount status
+            isAmountReady.value = true
+        })
+    }
+
+
+    // Calc new tickets
+    function calcNewTickets() {
+        const scale = 1000000,
+            ticketCount = Math.floor(amount.value / store.ticketPrice),
+            remainder = (Math.round(amount.value * scale) % Math.round(store.ticketPrice * scale)) / scale,
+            stakedRemainder = (Math.round(store.user.amount * scale) % Math.round(store.ticketPrice * scale)) / scale
+
+        // set data
+        tickets.value = ticketCount + Math.floor((remainder +  stakedRemainder) / store.ticketPrice)
     }
 </script>
 
@@ -206,6 +333,7 @@
         width: calc(100% - 10px);
         height: calc(100% - 10px);
         margin: auto;
+
         border-radius: 33px;
 
         inset: 0;
@@ -279,6 +407,28 @@
         flex-direction: column;
 
         gap: 16px;
+    }
+
+
+    .form ::-webkit-input-placeholder
+    {
+        color: rgba(255,255,255,.6);
+    }
+
+    .form :-moz-placeholder
+    {
+        color: rgba(255,255,255,.6);
+    }
+
+    .form ::-moz-placeholder
+    {
+        opacity: 1;
+        color: rgba(255,255,255,.6);
+    }
+
+    .form :-ms-input-placeholder
+    {
+        color: rgba(255,255,255,.6);
     }
 
 
@@ -392,7 +542,7 @@
     {
         font-weight: 400;
 
-        margin-left: 6px;
+        margin-left: 2px;
     }
 
 
@@ -489,25 +639,11 @@
     }
 
 
-    .form ::-webkit-input-placeholder
+    .form .field.disabled
     {
-        color: rgba(255,255,255,.6);
-    }
+        pointer-events: none;
 
-    .form :-moz-placeholder
-    {
-        color: rgba(255,255,255,.6);
-    }
-
-    .form ::-moz-placeholder
-    {
-        opacity: 1;
-        color: rgba(255,255,255,.6);
-    }
-
-    .form :-ms-input-placeholder
-    {
-        color: rgba(255,255,255,.6);
+        opacity: .5;
     }
 
 
@@ -594,7 +730,7 @@
         justify-content: flex-start;
 
         height: 48px;
-        margin-left: 9px;
+        margin-left: 8px;
 
         white-space: nowrap;
 
@@ -606,8 +742,8 @@
     {
         display: block;
 
-        width: 40px;
-        height: 36px;
+        width: 28px;
+        height: 22px;
     }
 
 
@@ -633,4 +769,11 @@
         background: url('@/assets/bg_delegate_btn.svg') 0 0 /100% 100% no-repeat;
     }
 
+
+    .form .submit_btn.disabled
+    {
+        pointer-events: none;
+
+        opacity: .5;
+    }
 </style>

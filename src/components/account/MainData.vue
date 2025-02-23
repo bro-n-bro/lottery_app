@@ -14,7 +14,7 @@
 
             <!-- Timer -->
             <vue-countdown  class="timer" :time="dateCalc('2025-03-06T10:18:44.319129Z') - new Date()" v-slot="{ days, hours, minutes, seconds }">
-                <span v-if="days">{{ days.toString().padStart(2, '0') }} : </span>
+                <span v-if="days">{{ days.toString().padStart(2, '0') }}:</span>
                 <span>{{ hours.toString().padStart(2, '0') }}</span> :
                 <span>{{ minutes.toString().padStart(2, '0') }}</span> :
                 <span>{{ seconds.toString().padStart(2, '0') }}</span>

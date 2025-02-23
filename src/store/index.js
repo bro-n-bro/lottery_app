@@ -17,6 +17,7 @@ export const useGlobalStore = defineStore('global', {
         StargateClient: {},
 
         prices: [],
+        redelegations: [],
         availableBalance: [],
         prizePool: [],
 
@@ -39,7 +40,8 @@ export const useGlobalStore = defineStore('global', {
             gas_adjustment: 1.6
         },
 
-        lottery_id: 1,
+        lotterID: 1,
+        ticketPrice: 10,
         currentCurrency: 'USD',
         currentCurrencySymbol: '$',
         currentTxHash: '',
@@ -79,7 +81,7 @@ export const useGlobalStore = defineStore('global', {
         async loadPrizePool() {
             try {
                 // Send request
-                const response = await fetch(`/prize_pools/round_${this.lottery_id}.json`)
+                const response = await fetch(`/prize_pools/round_${this.lotterID}.json`)
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch prize poll JSON. Status: ' + response.status)
@@ -147,6 +149,27 @@ export const useGlobalStore = defineStore('global', {
                 this.isAvailableBalanceGot = true
             } catch (error) {
                 throw error
+            }
+        },
+
+
+        // Get redelegations
+        async getRedelegations() {
+            try {
+                // Send request
+                const response = await fetch(`${this.currentNetwork.lcd_api}/cosmos/staking/v1beta1/delegators/${this.user.address}/redelegations`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch redelegations. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                this.redelegations = data.redelegation_responses
+            } catch (error) {
+                // Throw error
+                throw new Error(`getRedelegations() failed: ${error.message}`)
             }
         },
 
