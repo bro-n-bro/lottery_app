@@ -70,6 +70,9 @@
 <style scoped>
     .rules
     {
+        position: relative;
+        z-index: 3;
+
         margin-bottom: 69px;
     }
 

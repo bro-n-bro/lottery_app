@@ -1,60 +1,41 @@
 <template>
+    <!-- First section -->
     <section class="first_section" id="first_section">
         <div class="cont">
+            <!-- First section - Title -->
             <div class="title">Lottery by Bro_n_Bro</div>
 
+            <!-- First section - Description -->
             <div class="desc">Stake atom and get your chance to win NFT once a week</div>
 
+            <!-- First section - Button -->
             <button class="btn" @click.prevent="connectKeplr()" :class="{ process: store.isKeplrConnecting }">
                 Connect your wallet
             </button>
 
+            <!-- First section - Explanation -->
             <div class="exp">Stake with Bro and increase your chances!</div>
         </div>
 
 
-        <div id="parallax">
-            <div class="layer layer1" data-depth-x="0.1" data-depth-y="0.3">
-                <img src="@/assets/parallax_layer1.svg" alt="" loading="lazy">
-            </div>
+        <!-- First section - Image left -->
+        <div class="image_left">
+            <img src="@/assets/first_section_img_left.png" alt="" loading="lazy">
+        </div>
 
-            <div class="layer layer2" data-depth-x="0.05" data-depth-y="0.5">
-                <img src="@/assets/parallax_layer2.svg" alt="" loading="lazy">
-            </div>
-
-            <div class="layer layer3" data-depth-x="0.2" data-depth-y="0.4">
-                <img src="@/assets/parallax_layer3.svg" alt="" loading="lazy">
-            </div>
-
-            <div class="layer layer4" data-depth-x="0.05" data-depth-y="0.5">
-                <img src="@/assets/parallax_layer4.svg" alt="" loading="lazy">
-            </div>
-
-            <div class="layer layer5" data-depth-x="0.2" data-depth-y="0.4">
-                <img src="@/assets/parallax_layer5.svg" alt="" loading="lazy">
-            </div>
-
-            <div class="layer layer6" data-depth-x="0.1" data-depth-y="0.3">
-                <img src="@/assets/parallax_layer6.svg" alt="" loading="lazy">
-            </div>
+        <!-- First section - Image right -->
+        <div class="image_right">
+            <img src="@/assets/first_section_img_right.png" alt="" loading="lazy">
         </div>
     </section>
 </template>
 
 
 <script setup>
-    import { onMounted } from 'vue'
     import { useGlobalStore } from '@/store'
-    import Parallax from 'parallax-js'
 
 
     const store = useGlobalStore()
-
-
-    onMounted(() => {
-        // Parallax
-        new Parallax(document.getElementById('parallax'))
-    })
 
 
     // Connect Keplr
@@ -82,8 +63,9 @@
     .first_section
     {
         position: relative;
+        z-index: 1;
 
-        padding: 84px 0 88px;
+        padding: 84px 0 116px;
 
         text-align: center;
     }
@@ -96,14 +78,14 @@
     }
 
 
-    .first_section .title
+    .title
     {
         font-size: var(--font_size_title);
         font-weight: 500;
     }
 
 
-    .first_section .desc
+    .desc
     {
         font-size: 32px;
         font-weight: 500;
@@ -112,7 +94,7 @@
     }
 
 
-    .first_section .btn
+    .btn
     {
         font-size: 18px;
         font-weight: 700;
@@ -125,7 +107,7 @@
     }
 
 
-    .first_section .btn.process
+    .btn.process
     {
         pointer-events: none;
 
@@ -133,7 +115,7 @@
     }
 
 
-    .first_section .exp
+    .exp
     {
         font-size: 24px;
         font-weight: 500;
@@ -143,84 +125,93 @@
 
 
 
-    #parallax
+    .image_left
     {
         position: absolute;
         z-index: 1;
-        top: 0;
-        left: 0;
+        top: 50%;
+        left: 50%;
 
-        width: 100%;
-        height: 100%;
+        margin-left: -914px;
 
+        transform: translateY(-50%);
         pointer-events: none;
     }
 
 
-    #parallax .layer
+    .image_left:before
     {
-        position: absolute !important;
-    }
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
 
-
-    #parallax .layer1
-    {
-        top: 20px !important;
-        left: 50% !important;
-
-        margin-left: -520px;
-    }
-
-    #parallax .layer2
-    {
-        top: 50% !important;
-        left: 50% !important;
-
-        margin-top: -12px;
-        margin-left: -640px;
-    }
-
-    #parallax .layer3
-    {
-        top: auto !important;
-        bottom: 16px !important;
-        left: 50% !important;
-
-        margin-left: -472px;
-    }
-
-    #parallax .layer4
-    {
-        top: 28px !important;
-        right: 50% !important;
-        left: auto !important;
-
-        margin-right: -520px;
-    }
-
-    #parallax .layer5
-    {
-        top: 50% !important;
-        right: 50% !important;
-        left: auto !important;
-
-        margin-top: 24px;
-        margin-right: -600px;
-    }
-
-    #parallax .layer6
-    {
-        top: auto !important;
-        right: 50% !important;
-        bottom: 0 !important;
-        left: auto !important;
-
-        margin-right: -472px;
-    }
-
-
-    #parallax img
-    {
         display: block;
+
+        width: 813px;
+        height: 811px;
+
+        content: '';
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        background: url('@/assets/first_section_light.svg') 0 0 /100% 100% no-repeat;
+    }
+
+
+    .image_left img
+    {
+        position: relative;
+        z-index: 2;
+
+        display: block;
+
+        width: 412px;
+    }
+
+
+
+    .image_right
+    {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: 50%;
+
+        margin-right: -914px;
+
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+
+    .image_right:before
+    {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+
+        width: 813px;
+        height: 811px;
+
+        content: '';
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        background: url('@/assets/first_section_light.svg') 0 0 /100% 100% no-repeat;
+    }
+
+
+    .image_right img
+    {
+        position: relative;
+        z-index: 2;
+
+        display: block;
+
+        width: 353px;
     }
 </style>

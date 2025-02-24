@@ -11,7 +11,7 @@
 
                 <div><button class="btn scroll_btn" data-anchor="prize_pool">Prize pool</button></div>
 
-                <!-- <div><button class="btn scroll_btn" data-anchor="leaderboard">Leaderboard</button></div> -->
+                <div><button class="btn scroll_btn" data-anchor="leaderboard">Leaderboard</button></div>
 
                 <div><button class="btn scroll_btn" data-anchor="our_bros">Bros</button></div>
 
@@ -19,7 +19,7 @@
             </div>
 
             <!-- Connect wallet button -->
-            <button class="connect_btn" @click.prevent="connectKeplr()" v-if="!store.isKeplrConnected" :class="{ process: store.isKeplrConnecting }">
+            <button class="connect_btn" @click.prevent="connectKeplr()" v-if="!store.isUserInfoGot" :class="{ process: store.isKeplrConnecting }">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" viewBox="0 0 26 24" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 8C0 5.79086 1.79086 4 4 4H16C18.2091 4 20 5.79086 20 8H18C15.7909 8 14 9.79086 14 12C14 14.2091 15.7909 16 18 16H20C20 18.2091 18.2091 20 16 20H4C1.79086 20 0 18.2091 0 16V8ZM3 8C3 7.44772 3.44772 7 4 7H8C8.55228 7 9 7.44772 9 8C9 8.55228 8.55228 9 8 9H4C3.44772 9 3 8.55228 3 8Z" fill="currentColor"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M18 9C16.3431 9 15 10.3431 15 12C15 13.6569 16.3431 15 18 15H21.3636C21.7151 15 22 14.7151 22 14.3636V9.63636C22 9.28491 21.7151 9 21.3636 9H18ZM18 13C18.5523 13 19 12.5523 19 12C19 11.4477 18.5523 11 18 11C17.4477 11 17 11.4477 17 12C17 12.5523 17.4477 13 18 13Z" fill="currentColor"/>

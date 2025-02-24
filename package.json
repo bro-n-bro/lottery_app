@@ -14,7 +14,6 @@
     "@vueuse/core": "^12.5.0",
     "core-js": "^3.8.3",
     "mitt": "^3.0.1",
-    "parallax-js": "^3.1.0",
     "pinia": "^2.3.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"

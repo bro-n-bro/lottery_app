@@ -1,9 +1,5 @@
 import { defineStore } from 'pinia'
-
-import {
-    createKeplrOfflineSinger,
-    addressConfirmation
-} from '@/utils'
+import { createKeplrOfflineSinger } from '@/utils'
 
 
 export const useGlobalStore = defineStore('global', {
@@ -12,6 +8,8 @@ export const useGlobalStore = defineStore('global', {
         isKeplrConnecting: false,
         isAvailableBalancesGot: false,
         isUserInfoGot: false,
+
+        showRegisterModal: false,
 
         Keplr: {},
         StargateClient: {},
@@ -106,14 +104,20 @@ export const useGlobalStore = defineStore('global', {
                 // Create Keplr offline singer
                 await createKeplrOfflineSinger(this.currentNetwork.chain_id)
 
-                // Register user
-                // await this.registerUser()
-
-                // Get user info
-                await this.getUserInfo()
-
                 // Keplr connected status
                 this.isKeplrConnected = true
+
+                try {
+                    // Get user info
+                    const { success } = await this.getUserInfo()
+
+                    if (!success) {
+                        // Show register modal
+                        this.showRegisterModal = true
+                    }
+                } catch (error) {
+                    throw error
+                }
             } catch (error) {
                 throw error
             }
@@ -183,19 +187,29 @@ export const useGlobalStore = defineStore('global', {
                 // Send request
                 const response = await fetch(`${this.apiURL}/lottery/current/${this.user.address}/info`)
 
-                if (!response.ok) {
+                if (response.status === 200) {
+                    const data = await response.json()
+
+                    // Set data
+                    Object.assign(this.user, data.address_info)
+
+                    // User info status
+                    this.isUserInfoGot = true
+
+                    return { success: true }
+                } else if (response.status === 400) {
+                    return {
+                        success: false,
+                        message: 'User not found'
+                    }
+                } else {
                     throw new Error('Failed to fetch user info. Status: ' + response.status)
                 }
-
-                const data = await response.json()
-
-                // Set data
-                Object.assign(this.user, data.address_info)
-
-                // User info status
-                this.isUserInfoGot = true
             } catch (error) {
-                throw error
+                return {
+                    success: false,
+                    error: error.message
+                }
             }
         },
 
@@ -212,8 +226,8 @@ export const useGlobalStore = defineStore('global', {
                     body: JSON.stringify({
                         address: this.user.address,
                         referral_code: this.user.referralCode,
-                        pub_key: this.user.signDoc.pub_key,
-                        signature: this.user.signDoc.signature
+                        pubkey: this.user.signDoc.pub_key,
+                        signatures: this.user.signDoc.signature
                     })
                 })
 

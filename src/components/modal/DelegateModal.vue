@@ -26,7 +26,7 @@
                         <span>Delegate</span>
                     </button>
 
-                    <button class="btn" @click.prevent="activeTab = 2" :class="{ active: activeTab === 2 }" v-if="store.redelegations.length">
+                    <button class="btn" @click.prevent="activeTab = 2" :class="{ active: activeTab === 2, disabled:!store.redelegations.length }">
                         <span>Redelegate</span>
                     </button>
                 </div>
@@ -368,6 +368,14 @@
         transition: color .2s linear;
 
         color: #d09408;
+    }
+
+
+    .tabs .btn.disabled
+    {
+        pointer-events: none;
+
+        opacity: .5;
     }
 
 
