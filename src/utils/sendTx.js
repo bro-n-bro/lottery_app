@@ -6,7 +6,7 @@ export const sendTx = async txBytes => {
     let store = useGlobalStore()
 
     // Broadcast
-    await store.StargateClient.broadcastTx(txBytes, store.StargateClient.broadcastTimeoutMs, store.StargateClient.broadcastPollIntervalMs)
+    return await store.StargateClient.broadcastTx(txBytes, store.StargateClient.broadcastTimeoutMs, store.StargateClient.broadcastPollIntervalMs)
 }
 
 

@@ -26,7 +26,7 @@
         <div class="data_wrap">
             <div class="data">
                 <!-- Info -->
-                <div class="info">
+                <div class="info" v-if="store.user.delegation_tickets">
                     <div>
                         <div class="label">Staked:</div>
 

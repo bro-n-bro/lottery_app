@@ -5,28 +5,28 @@ import { sha256 } from '@cosmjs/crypto'
 
 // Sign Tx
 export const signTx = async (msg, memo = '') => {
-    let store = useGlobalStore()
+    const store = useGlobalStore()
 
     // Simulate gas
-    let gasUsed = await store.StargateClient.simulate(store.user.address, msg, memo)
+    const gasUsed = await store.StargateClient.simulate(store.user.address, msg, memo)
 
     // Fee
-    let fee = {
+    const fee = {
         amount: [{
             denom: store.currentNetwork.denom,
             amount: '0'
         }],
-        gas: gasUsed.toString()
+        gas: Math.round(gasUsed * 1.6).toString()
     }
 
     // Sign
-    let txRaw = await store.StargateClient.sign(store.currentAddress, msg, fee, memo)
+    const txRaw = await store.StargateClient.sign(store.user.address, msg, fee, memo)
 
     // Encode TxRaw
-    let txBytes = TxRaw.encode(txRaw).finish()
+    const txBytes = TxRaw.encode(txRaw).finish()
 
     // Hash transaction bytes
-    let txHash = sha256(txBytes)
+    const txHash = sha256(txBytes)
 
     // Convert hash bytes to hex string
     store.currentTxHash = Buffer.from(txHash).toString('hex')

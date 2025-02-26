@@ -44,7 +44,7 @@ export const useGlobalStore = defineStore('global', {
         currentCurrencySymbol: '$',
         currentTxHash: '',
         validatorAddress: 'cosmosvaloper106yp7zw35wftheyyv9f9pe69t8rteumjrx52jg',
-        addressConfirmationString: "i’m in brottery",
+        addressConfirmationString: "i am in brottery",
 
         formatableTokens: [
             {
@@ -57,6 +57,26 @@ export const useGlobalStore = defineStore('global', {
 
 
     actions: {
+        // Init
+        async init() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/lotteries/current`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch current lottery. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                this.lotterID = data.id
+            } catch (error) {
+                console.error(error)
+            }
+        },
+
+
         // Get prices
         async getPrices() {
             try {
@@ -157,20 +177,36 @@ export const useGlobalStore = defineStore('global', {
         },
 
 
-        // Get redelegations
-        async getRedelegations() {
+        // Get user validators
+        async getUserValidators() {
             try {
                 // Send request
-                const response = await fetch(`${this.currentNetwork.lcd_api}/cosmos/staking/v1beta1/delegators/${this.user.address}/redelegations`)
+                const validators = await fetch(`${this.currentNetwork.lcd_api}/cosmos/staking/v1beta1/delegators/${this.user.address}/validators?status=BOND_STATUS_BONDED&pagination.limit=200`)
 
-                if (!response.ok) {
+                if (!validators.ok) {
                     throw new Error('Failed to fetch redelegations. Status: ' + response.status)
                 }
 
-                const data = await response.json()
+                const validatorsData = await validators.json()
 
                 // Set data
-                this.redelegations = data.redelegation_responses
+                this.user.validators = validatorsData.validators.filter(el => el.operator_address !== this.validatorAddress)
+
+
+                if (this.user.validators.length) {
+                    // Send request
+                    const delegations = await fetch(`${this.currentNetwork.lcd_api}/cosmos/staking/v1beta1/delegations/${this.user.address}`)
+
+                    if (!delegations.ok) {
+                        throw new Error('Failed to fetch delegations. Status: ' + response.status)
+                    }
+
+                    const delegationData = await delegations.json()
+
+                    this.user.validators.forEach(validator => {
+                        validator.balance = (delegationData.delegation_responses.find(el => el.delegation.validator_address === validator.operator_address)).balance
+                    })
+                }
             } catch (error) {
                 // Throw error
                 throw new Error(`getRedelegations() failed: ${error.message}`)
@@ -192,6 +228,9 @@ export const useGlobalStore = defineStore('global', {
 
                     // Set data
                     Object.assign(this.user, data.address_info)
+
+                    // Get user prizes
+                    await this.getUserPrizes()
 
                     // User info status
                     this.isUserInfoGot = true
@@ -218,7 +257,7 @@ export const useGlobalStore = defineStore('global', {
         async registerUser() {
             try {
                 // Send request
-                const response = await fetch(`${this.apiURL}/initial-delegator/${this.user.address}/participate/`, {
+                const response = await fetch(`${this.apiURL}/initial-delegator/${this.user.address}/participate`, {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -226,13 +265,13 @@ export const useGlobalStore = defineStore('global', {
                     body: JSON.stringify({
                         address: this.user.address,
                         referral_code: this.user.referralCode,
-                        pubkey: this.user.signDoc.pub_key,
+                        pubkey: this.user.signDoc.pub_key.value,
                         signatures: this.user.signDoc.signature
                     })
                 })
 
                 if (response.status === 200) {
-                    const data = await response.json();
+                    const data = await response.json()
 
                     // Result
                     if (data.is_participate) {
@@ -252,11 +291,31 @@ export const useGlobalStore = defineStore('global', {
         },
 
 
+        // Get user prizes
+        async getUserPrizes() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/${this.user.address}/prizes`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user prizes. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                this.user.prizes = data
+            } catch (error) {
+                throw error
+            }
+        },
+
+
         // Claim prize
         async claimPrize() {
             try {
                 // Request
-                const response = await fetch(`${this.apiURL}/${this.user.address}/claim-prizes/`, {
+                const response = await fetch(`${this.apiURL}/${this.user.address}/claim-prizes`, {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',

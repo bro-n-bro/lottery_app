@@ -9,7 +9,7 @@
         <TheInviteButton />
 
         <!-- Claim -->
-        <TheClaim />
+        <TheClaim v-if="store.user.prizes.length" />
     </section>
 
     <!-- Referral modal -->
@@ -22,6 +22,7 @@
 
 <script setup>
     import { ref, inject } from 'vue'
+	import { useGlobalStore } from '@/store'
 
     // Components
     import TheInviteButton from '@/components/account/InviteButton.vue'
@@ -32,7 +33,8 @@
     import TheDelegateModal from '@/components/modal/DelegateModal.vue'
 
 
-    const emitter = inject('emitter'),
+    const store = useGlobalStore(),
+        emitter = inject('emitter'),
         showReferralModal = ref(false),
         showDelegateModal = ref(false)
 

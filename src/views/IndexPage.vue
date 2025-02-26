@@ -26,7 +26,7 @@
 
 
 <script setup>
-    import { ref, inject } from 'vue'
+    import { inject } from 'vue'
     import { useGlobalStore } from '@/store'
 
     // Components

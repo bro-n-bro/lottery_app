@@ -27,13 +27,20 @@
 
 
 	onBeforeMount(async () => {
-		// Set page title
-		title.value = 'Bro_n_Bro lottery'
+		try {
+			// Set page title
+			title.value = 'Bro_n_Bro lottery'
 
-		// Change Keplr account
-		window.addEventListener('keplr_keystorechange', () => {
-			// Reload page
-			window.location.reload()
-		})
+			// Change Keplr account
+			window.addEventListener('keplr_keystorechange', () => {
+				// Reload page
+				window.location.reload()
+			})
+
+			// Init
+			await store.init()
+		} catch (error) {
+            console.error('Error initializating app:', error)
+        }
 	})
 </script>

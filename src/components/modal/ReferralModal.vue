@@ -42,13 +42,14 @@
 
 <script setup>
     import { ref, inject } from 'vue'
+    import { useGlobalStore } from '@/store'
     import { useClipboard } from '@vueuse/core'
 
 
-    const emitter = inject('emitter'),
+    const store = useGlobalStore(),
+        emitter = inject('emitter'),
         isClosing = ref(false),
-        refCode = ref('123456'),
-        refURL = ref(`https://lotter.brondro.io?ref=${refCode.value}`),
+        refURL = ref(`https://lottery.brondro.io?ref=${store.user.referral_token}`),
         { copy } = useClipboard()
 
 

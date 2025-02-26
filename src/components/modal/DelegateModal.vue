@@ -17,22 +17,22 @@
                 </div>
 
                 <!-- Loader -->
-                <TheLoader v-if="loading" />
+                <TheLoader v-if="loading || isProcess" />
 
-                <template v-else>
+                <template v-if="!loading">
                 <!-- Modal data -->
                 <div class="tabs">
                     <button class="btn" @click.prevent="activeTab = 1" :class="{ active: activeTab === 1 }">
                         <span>Delegate</span>
                     </button>
 
-                    <button class="btn" @click.prevent="activeTab = 2" :class="{ active: activeTab === 2, disabled:!store.redelegations.length }">
+                    <button class="btn" @click.prevent="activeTab = 2" :class="{ active: activeTab === 2, disabled: !store.user.validators.length }">
                         <span>Redelegate</span>
                     </button>
                 </div>
 
 
-                <form action="" class="form">
+                <div class="form">
                     <div class="bg">
                         <div class="validator">
                             <div class="logo"><div>
@@ -46,7 +46,7 @@
                             </div>
                         </div>
 
-                        <div class="balances">
+                        <div class="balances" v-if="activeTab === 1">
                             <div>
                                 <div class="label">Available</div>
 
@@ -69,19 +69,45 @@
                                     <span class="symbol">{{ store.currentNetwork.symbol }}</span>
                                 </div>
 
-                                <div class="cost">${{ calcTokenCost(formatTokenCost(store.user.amount)) }}</div>
+                                <div class="cost">${{ formatTokenCost(calcTokenCost(store.user.amount)) }}</div>
                             </div>
                         </div>
 
                         <div class="from_validator" v-if="activeTab === 2">
-                            <div class="label">Change validator from <b>({{ store.redelegations.length }})</b>:</div>
+                            <div class="label">Change validator from <b>({{ store.user.validators.length }})</b>:</div>
 
-                            <div class="field">
-                                <input type="text" readonly v-model="validatorFrom" class="input" placeholder="Choose your validator">
+                            <div class="field" @click.prevent="toggleDropdown()">
+                                <div class="input">
+                                    <div v-if="!validatorFrom">Choose your validator</div>
+
+                                    <template v-else>
+                                    <div class="name">
+                                        {{ validatorFrom.description.moniker }}
+                                    </div>
+
+                                    <div class="amount">
+                                        {{ formatTokenAmount(validatorFrom.balance.amount, store.currentNetwork.exponent).toLocaleString('ru-RU', { maximumFractionDigits: 5 }).replace(',', '.') }} {{ store.currentNetwork.symbol }}
+                                    </div>
+                                    </template>
+                                </div>
 
                                 <svg class="arr" width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.5 11.3497L14.5 18.3497L21.5 11.3497" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                                 </svg>
+                            </div>
+
+                            <div class="dropdown" v-if="showValidatorsDropdown">
+                                <div class="scroll">
+                                    <div v-for="(validator, index) in store.user.validators" :key="index" @click.stop.prevent="setFromValidator(validator)">
+                                        <div class="name">
+                                            {{ validator.description.moniker }}
+                                        </div>
+
+                                        <div class="amount">
+                                            {{ formatTokenAmount(validator.balance.amount, store.currentNetwork.exponent).toLocaleString('ru-RU', { maximumFractionDigits: 5 }).replace(',', '.') }} {{ store.currentNetwork.symbol }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -90,12 +116,12 @@
                                 <span>Amount:</span>
 
                                 <span class="cost" v-if="isAmountReady">
-                                    ${{ calcTokenCost(formatTokenCost(amount)) }}
+                                    ${{ formatTokenCost(calcTokenCost(amount)) }}
                                 </span>
                             </div>
 
                             <div class="field" :class="{ disabled: activeTab === 2 && !validatorFrom }">
-                                <input type="number" inputmode="decimal" class="input big" v-model="amount"
+                                <input type="number" inputmode="decimal" class="input" v-model="amount"
                                     :placeholder="`${store.currentNetwork.symbol} Amount`"
                                     @input="validateAmount()">
 
@@ -115,12 +141,12 @@
                     </div>
 
                     <div class="submit">
-                        <button type="submit" class="submit_btn" :class="{ disabled: !isFormValid }">
+                        <button type="submit" class="submit_btn" :class="{ disabled: !isFormValid }" @click.prevent="onSubmit()">
                             <span v-if="activeTab === 1">DELEGATE</span>
                             <span v-if="activeTab === 2">REDELEGATE</span>
                         </button>
                     </div>
-                </form>
+                </div>
             </template>
             </div>
         </div>
@@ -135,7 +161,7 @@
 <script setup>
     import { ref, inject, onBeforeMount, watch, computed } from 'vue'
     import { useGlobalStore } from '@/store'
-    import { formatTokenAmount, formatTokenCost, calcTokenCost } from '@/utils'
+    import { formatTokenAmount, formatTokenCost, calcTokenCost, signTx, sendTx } from '@/utils'
     import { MsgDelegate, MsgBeginRedelegate } from 'cosmjs-types/cosmos/staking/v1beta1/tx'
 
     // Components
@@ -145,8 +171,10 @@
     const store = useGlobalStore(),
         emitter = inject('emitter'),
         isClosing = ref(false),
+        isProcess = ref(false),
         activeTab = ref(1),
         validatorFrom = ref(null),
+        showValidatorsDropdown = ref(false),
         isAmountReady = ref(false),
         amount = ref(''),
         tickets = ref(0),
@@ -172,8 +200,8 @@
                 // Get available balance
                 store.getAvailableBalance(),
 
-                // Get redelegations
-                store.getRedelegations()
+                // Get user validators
+                store.getUserValidators()
             ])
 
             // Hide loading
@@ -181,6 +209,15 @@
         } catch (error) {
             console.error(`DelegateModal.vue: ${error.message}`)
         }
+    })
+
+
+    watch(computed(() => activeTab.value), () => {
+        // Rset data
+        isAmountReady.value = false
+        validatorFrom.value = null
+        amount.value = ''
+        tickets.value = 0
     })
 
 
@@ -207,7 +244,7 @@
                 typeUrl: '/cosmos.staking.v1beta1.MsgBeginRedelegate',
                 value: MsgBeginRedelegate.fromPartial({
                     delegatorAddress: store.user.address,
-                    validatorSrcAddress: validatorFrom.operator_address,
+                    validatorSrcAddress: validatorFrom.value.operator_address,
                     validatorDstAddress: store.validatorAddress,
                     amount: {
                         denom: store.currentNetwork.denom,
@@ -237,6 +274,9 @@
         isAmountReady.value = false
 
         setTimeout(() => {
+            // Max. amount
+            const maxAmount = activeTab.value === 1 ? store.availableBalance[0].amount : validatorFrom.value.balance.amount
+
             // Separator replacement
             Number(String(amount.value).replace(/,/g, "."))
 
@@ -247,13 +287,13 @@
             }
 
             // Acceptable value
-            if (amount.value && amount.value > 0 && amount.value < formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent)) {
+            if (amount.value && amount.value > 0 && amount.value < formatTokenAmount(maxAmount, store.currentNetwork.exponent)) {
                 // Set amount status
                 isAmountReady.value = true
             }
 
             // More than available balance
-            if (amount.value > formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent)) {
+            if (amount.value > formatTokenAmount(maxAmount, store.currentNetwork.exponent)) {
                 // Set MAX amount
                 setMaxAmount()
             }
@@ -270,8 +310,11 @@
         isAmountReady.value = false
 
         setTimeout(() => {
+            // Max. amount
+            const maxAmount = activeTab.value === 1 ? store.availableBalance[0].amount : validatorFrom.value.balance.amount
+
             // Set amount
-            amount.value = formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent)
+            amount.value = formatTokenAmount(maxAmount, store.currentNetwork.exponent)
 
             // Calc new tickets
             calcNewTickets()
@@ -291,6 +334,59 @@
 
         // set data
         tickets.value = ticketCount + Math.floor((remainder +  stakedRemainder) / store.ticketPrice)
+    }
+
+
+    // Toggle dropdown
+    function toggleDropdown() {
+        // Set status
+        showValidatorsDropdown.value = !showValidatorsDropdown.value
+    }
+
+
+    // Set from validator
+    function setFromValidator(validator) {
+        // Set data
+        validatorFrom.value = validator
+
+        // Toggle dropdown
+        toggleDropdown()
+    }
+
+
+    // Submit
+    async function onSubmit() {
+        // Set process status
+        isProcess.value = true
+
+        try {
+            // Sign Tx
+            const txBytes = await signTx(msgAny.value)
+
+            // Send Tx
+            const result = await sendTx(txBytes)
+
+            console.log(result)
+
+            if (result.code === 0) {
+                // Set Tx hash
+                store.currentTxHash = result.transactionHash
+
+                // Set process status
+                isProcess.value = false
+
+                // Close modal
+                closeHandler()
+
+                // Update user info
+                await store.getUserInfo()
+            }
+        } catch (error) {
+            console.error(`DelegateModal.vue: ${error.message}`)
+
+            // Set process status
+            isProcess.value = false
+        }
     }
 </script>
 
@@ -565,6 +661,8 @@
 
     .form .from_validator
     {
+        position: relative;
+
         margin-bottom: 4px;
     }
 
@@ -587,7 +685,34 @@
 
     .form .from_validator .input
     {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        padding-right: 47px;
+
+        white-space: nowrap;
         pointer-events: none;
+    }
+
+    .form .from_validator .input .name
+    {
+        overflow: hidden;
+
+        width: 100%;
+
+        text-overflow: ellipsis;
+    }
+
+
+    .form .from_validator .input .amount
+    {
+        width: auto;
+        margin-left: 20px;
+
+        opacity: .5;
     }
 
 
@@ -697,6 +822,78 @@
     .form .input.success
     {
         border-color: #00aa63;
+    }
+
+
+    .form .dropdown
+    {
+        font-size: 14px;
+
+        position: absolute;
+        z-index: 5;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+        margin-top: 4px;
+        padding: 8px 4px 8px 15px;
+
+        border-radius: 10px;
+        background: #06000e;
+    }
+
+
+    .form .dropdown .scroll
+    {
+        display: flex;
+        overflow: auto;
+        flex-direction: column;
+
+        max-height: 128px;
+        padding-right: 4px;
+
+        gap: 8px;
+    }
+
+
+    .form .dropdown .scroll::-webkit-scrollbar
+    {
+        width: 4px;
+        height: 4px;
+
+        border-radius: 5px;
+    }
+
+
+    .form .dropdown .scroll > *
+    {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+
+    .form .dropdown .name
+    {
+        overflow: hidden;
+
+        width: 100%;
+
+        text-overflow: ellipsis;
+    }
+
+
+    .form .dropdown .amount
+    {
+        width: auto;
+        margin-left: 20px;
+
+        opacity: .5;
     }
 
 

@@ -73,7 +73,7 @@
         position: relative;
         z-index: 3;
 
-        margin-bottom: 69px;
+        margin-bottom: 80px;
     }
 
 

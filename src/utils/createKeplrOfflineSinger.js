@@ -13,6 +13,10 @@ export const createKeplrOfflineSinger = async chain_id => {
         // Get Offline Singer
         store.Keplr.offlineSinger = await window.getOfflineSignerAuto(chain_id)
 
+        Object.assign(store.Keplr.offlineSinger, {
+            signAmino: store.Keplr.offlineSinger.signAmino ?? store.Keplr.offlineSinger.sign
+        })
+
         // Get Stargate Client
         store.StargateClient = await SigningStargateClient.connectWithSigner(store.currentNetwork.rpc_api, store.Keplr.offlineSinger)
 

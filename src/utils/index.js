@@ -16,6 +16,9 @@ export { default as formatTokenCost } from './formatTokenCost'
 // Calc token cost in current cucrrency
 export { default as calcTokenCost } from './calcTokenCost'
 
+// Get referral code from URL
+export { default as getReferralCodeFromURL } from './getReferralCodeFromURL'
+
 // Sign Tx
 export { default as signTx } from './signTx'
 
