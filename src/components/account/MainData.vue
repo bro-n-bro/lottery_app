@@ -81,30 +81,30 @@
 
         <!-- Bulbs -->
         <div class="bulb bulb1"><span></span></div>
-        <div class="bulb bulb2"></div>
-        <div class="bulb bulb3"></div>
-        <div class="bulb bulb4"></div>
-        <div class="bulb bulb5"></div>
-        <div class="bulb bulb6"></div>
-        <div class="bulb bulb7"></div>
-        <div class="bulb bulb8"></div>
-        <div class="bulb bulb9"></div>
-        <div class="bulb bulb10"></div>
-        <div class="bulb bulb11"></div>
-        <div class="bulb bulb12"></div>
-        <div class="bulb bulb13"></div>
-        <div class="bulb bulb14"></div>
-        <div class="bulb bulb15"></div>
-        <div class="bulb bulb16"></div>
-        <div class="bulb bulb17"></div>
-        <div class="bulb bulb18"></div>
-        <div class="bulb bulb19"></div>
-        <div class="bulb bulb20"></div>
-        <div class="bulb bulb21"></div>
-        <div class="bulb bulb22"></div>
-        <div class="bulb bulb23"></div>
-        <div class="bulb bulb24"></div>
-        <div class="bulb bulb25"></div>
+        <div class="bulb bulb2"><span></span></div>
+        <div class="bulb bulb3"><span></span></div>
+        <div class="bulb bulb4"><span></span></div>
+        <div class="bulb bulb5"><span></span></div>
+        <div class="bulb bulb6"><span></span></div>
+        <div class="bulb bulb7"><span></span></div>
+        <div class="bulb bulb8"><span></span></div>
+        <div class="bulb bulb9"><span></span></div>
+        <div class="bulb bulb10"><span></span></div>
+        <div class="bulb bulb11"><span></span></div>
+        <div class="bulb bulb12"><span></span></div>
+        <div class="bulb bulb13"><span></span></div>
+        <div class="bulb bulb14"><span></span></div>
+        <div class="bulb bulb15"><span></span></div>
+        <div class="bulb bulb16"><span></span></div>
+        <div class="bulb bulb17"><span></span></div>
+        <div class="bulb bulb18"><span></span></div>
+        <div class="bulb bulb19"><span></span></div>
+        <div class="bulb bulb20"><span></span></div>
+        <div class="bulb bulb21"><span></span></div>
+        <div class="bulb bulb22"><span></span></div>
+        <div class="bulb bulb23"><span></span></div>
+        <div class="bulb bulb24"><span></span></div>
+        <div class="bulb bulb25"><span></span></div>
     </div>
 </template>
 
@@ -461,11 +461,9 @@
         height: 31px;
 
         content: '';
-        transition: opacity .1s linear;
         transform: translateX(-50%);
 
         opacity: 0;
-        opacity: .5;
         border-radius: 50%;
         background: radial-gradient(50% 49.99% at 50.04% 49.96%, #ffff69 0%, #f3f364 8.79%, #d3d357 24.72%, #9f9f41 45.98%, #575724 71.79%, #000 100%);
 
@@ -624,8 +622,27 @@
     }
 
 
-    .bulb.active span
+    .bulb:nth-child(odd) span
     {
-        opacity: 1;
+        animation: blink 1s infinite steps(1, end);
+    }
+
+    .bulb:nth-child(even) span
+    {
+        animation: blink 1s infinite steps(1, end) reverse;
+    }
+
+
+    @keyframes blink
+    {
+        0%,
+        100%
+        {
+            opacity: 1;
+        }
+        50%
+        {
+            opacity: 0;
+        }
     }
 </style>
