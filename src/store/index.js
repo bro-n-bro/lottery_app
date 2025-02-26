@@ -38,7 +38,7 @@ export const useGlobalStore = defineStore('global', {
             gas_adjustment: 1.6
         },
 
-        lotterID: 1,
+        currentLottery: null,
         ticketPrice: 10,
         currentCurrency: 'USD',
         currentCurrencySymbol: '$',
@@ -70,7 +70,10 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                this.lotterID = data.id
+                this.currentLottery = data
+
+                // Load prize poll
+                await this.loadPrizePool()
             } catch (error) {
                 console.error(error)
             }
@@ -99,7 +102,7 @@ export const useGlobalStore = defineStore('global', {
         async loadPrizePool() {
             try {
                 // Send request
-                const response = await fetch(`/prize_pools/round_${this.lotterID}.json`)
+                const response = await fetch(`/prize_pools/round_${this.currentLottery.id}.json`)
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch prize poll JSON. Status: ' + response.status)
@@ -206,6 +209,9 @@ export const useGlobalStore = defineStore('global', {
                     this.user.validators.forEach(validator => {
                         validator.balance = (delegationData.delegation_responses.find(el => el.delegation.validator_address === validator.operator_address)).balance
                     })
+
+                    // Filter validators
+                    this.user.validators = this.user.validators.filter(validator => validator.balance.amount > 0)
                 }
             } catch (error) {
                 // Throw error

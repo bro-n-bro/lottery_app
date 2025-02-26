@@ -85,7 +85,16 @@
             await addressConfirmation()
 
             // Register user
-            // await store.registerUser()
+            await store.registerUser()
+
+            // Get user info
+            await store.getUserInfo()
+
+            // Hide loading
+            loading.value = false
+
+            // Close modal
+            closeHandler()
         } catch (error) {
             console.error('Error registering user:', error)
 

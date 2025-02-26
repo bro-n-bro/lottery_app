@@ -13,7 +13,7 @@
             <img src="@/assets/wheel_of_fortune.png" alt="" loading="lazy">
 
             <!-- Timer -->
-            <vue-countdown  class="timer" :time="dateCalc('2025-03-06T10:18:44.319129Z') - new Date()" v-slot="{ days, hours, minutes, seconds }">
+            <vue-countdown  class="timer" :time="dateCalc(store.currentLottery.start_at) - new Date()" v-slot="{ days, hours, minutes, seconds }">
                 <span v-if="days">{{ days.toString().padStart(2, '0') }}:</span>
                 <span>{{ hours.toString().padStart(2, '0') }}</span> :
                 <span>{{ minutes.toString().padStart(2, '0') }}</span> :
@@ -42,7 +42,7 @@
                     <div>
                         <div class="label">Chances:</div>
 
-                        <div class="val">1:{{ store.user.win_probability }}</div>
+                        <div class="val">1:{{ (1 / store.user.win_probability).toFixed(2) }}</div>
                     </div>
                 </div>
 

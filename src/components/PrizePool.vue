@@ -37,21 +37,10 @@
 
 
 <script setup>
-    import { onBeforeMount } from 'vue'
 	import { useGlobalStore } from '@/store'
 
 
     const store = useGlobalStore()
-
-
-    onBeforeMount(async () => {
-        try {
-            // Load prize poll
-            await store.loadPrizePool()
-        } catch (error) {
-            console.error('PrizePool.vue:', error)
-        }
-    })
 </script>
 
 
