@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<!-- Adapting the page for mobile devices -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<!-- Prohibition of phone number recognition -->
+		<meta name="format-detection" content="telephone=no">
+		<meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+
+		<!-- Page title -->
+		<title>Bro_n_bro - Lottery</title>
+
+		<!-- Meta description -->
+		<meta name="description" content="">
+
+		<!-- Meta Keywords -->
+		<meta name="keywords" content="">
+
+		<!-- Changing the color of the mobile browser panel -->
+		<meta name="msapplication-TileColor" content="#19002F">
+		<meta name="theme-color" content="#19002F">
+
+		<!-- Connecting fonts from Google -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+		<!-- Connecting style files -->
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="main">
+				<div class="bg">
+					<img src="images/bg.jpg" alt="" loading="lazy">
+				</div>
+
+				<div class="main_data">
+					<div class="title">
+						<span>Brottery</span>
+						<span>Brottery</span>
+					</div>
+
+					<div class="wheel">
+						<img src="images/wheel_of_fortune.png" alt="" loading="lazy">
+					</div>
+
+					<div class="data_wrap">
+						<div class="data">
+							<div class="text">
+								<span>Forget Aidrops - The Real Rewards Are Here!</span>
+								<span>Forget Aidrops - The Real Rewards Are Here!</span>
+							</div>
+
+							<div class="text">
+								<span>Free NFTs?<br> Free Crypto?<br> Yeah, We Are Serious!!!</span>
+								<span>Free NFTs?<br> Free Crypto?<br> Yeah, We Are Serious!!!</span>
+							</div>
+
+							<div>
+								<div class="text">
+									<span>Lottery Starts In:</span>
+									<span>Lottery Starts In:</span>
+								</div>
+
+								<div class="timer" data-date="2025/03/10 00:00:00">
+									<div class="days"><span>6</span> Days</div>
+									<div class="hours"><span></span>h</div>
+									<div class="minutes"><span></span>m</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="link">
+						<img src="images/link_arrow.png" alt="" class="arrow" loading="lazy">
+
+						<a href="https://t.me/bro_n_bro_community/5009" class="btn" target="_blank" rel="noopener nofollow">HERE</a>
+					</div>
+
+					<div class="bulb bulb1"><span></span></div>
+					<div class="bulb bulb2"><span></span></div>
+					<div class="bulb bulb3"><span></span></div>
+					<div class="bulb bulb4"><span></span></div>
+					<div class="bulb bulb5"><span></span></div>
+					<div class="bulb bulb6"><span></span></div>
+					<div class="bulb bulb7"><span></span></div>
+					<div class="bulb bulb8"><span></span></div>
+					<div class="bulb bulb9"><span></span></div>
+					<div class="bulb bulb10"><span></span></div>
+					<div class="bulb bulb11"><span></span></div>
+					<div class="bulb bulb12"><span></span></div>
+					<div class="bulb bulb13"><span></span></div>
+					<div class="bulb bulb14"><span></span></div>
+					<div class="bulb bulb15"><span></span></div>
+					<div class="bulb bulb16"><span></span></div>
+					<div class="bulb bulb17"><span></span></div>
+					<div class="bulb bulb18"><span></span></div>
+					<div class="bulb bulb19"><span></span></div>
+					<div class="bulb bulb20"><span></span></div>
+					<div class="bulb bulb21"><span></span></div>
+					<div class="bulb bulb22"><span></span></div>
+					<div class="bulb bulb23"><span></span></div>
+					<div class="bulb bulb24"><span></span></div>
+					<div class="bulb bulb25"><span></span></div>
+				</div>
+
+				<div class="mob_link">
+					<img src="images/mob_link_arrow.png" alt="" class="arrow" loading="lazy">
+
+					<a href="https://t.me/bro_n_bro_community/5009" class="btn" target="_blank" rel="noopener nofollow">HERE</a>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Connecting javascript files -->
+		<script src="js/jquery-3.6.3.min.js"></script>
+		<script src="js/countdown.js"></script>
+
+		<script>
+			// Timer
+			$('.timer').each(function () {
+				$(this).countdown($(this).data('date'), function (event) {
+					if (event.strftime('%D') > 0) {
+						$(this).find('.minutes').hide()
+						$(this).find('.days').show()
+					} else {
+						$(this).find('.days').hide()
+						$(this).find('.minutes').show()
+					}
+
+					$(this).find('.days span').text(event.strftime('%D'))
+					$(this).find('.hours span').text(event.strftime('%H'))
+					$(this).find('.minutes span').text(event.strftime('%M'))
+				})
+			})
+		</script>
+	</body>
+</html>
