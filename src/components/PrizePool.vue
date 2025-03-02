@@ -7,6 +7,21 @@
                     <span>Prize Pool of this week</span>
                 </div>
 
+                <div class="title_bulbs">
+                    <div class="bulb bulb1"></div>
+                    <div class="bulb bulb2"></div>
+                    <div class="bulb bulb3"></div>
+                    <div class="bulb bulb4"></div>
+                    <div class="bulb bulb5"></div>
+                    <div class="bulb bulb6"></div>
+                    <div class="bulb bulb7"></div>
+                    <div class="bulb bulb8"></div>
+                    <div class="bulb bulb9"></div>
+                    <div class="bulb bulb10"></div>
+                    <div class="bulb bulb11"></div>
+                    <div class="bulb bulb12"></div>
+                </div>
+
                 <div class="row" v-if="store.prizePool.length">
                     <div class="item_wrap" v-for="(item, index) in store.prizePool" :key="index">
                         <div class="item" :class="{ best: item.best_offer }">
@@ -30,6 +45,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="bulbs">
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -50,28 +78,6 @@
         position: relative;
 
         margin-bottom: 40px;
-    }
-
-
-    .prize_pool:before
-    {
-        position: absolute;
-        z-index: 9;
-        top: -28px;
-        left: 50%;
-
-        display: block;
-
-        width: 705px;
-        height: 284px;
-
-        content: '';
-        transform: translateX(-50%);
-        pointer-events: none;
-
-        background: url('@/assets/bg_prize_pool_title_lights.svg') 0 0/100% 100% no-repeat;
-
-        mix-blend-mode: screen;
     }
 
 
@@ -108,29 +114,6 @@
         pointer-events: none;
 
         background: url('@/assets/bg_prize_pool_data.svg') 50% 100%/100% 100% no-repeat;
-    }
-
-
-    .prize_pool .data:after
-    {
-        position: absolute;
-        z-index: 2;
-        right: 0;
-        bottom: 58px;
-        left: 0;
-
-        display: block;
-
-        width: 1284px;
-        height: 89px;
-        margin: 0 auto;
-
-        content: '';
-        pointer-events: none;
-
-        background: url('@/assets/bg_prize_pool_data_light.svg') 0 0/100% 100% no-repeat;
-
-        mix-blend-mode: screen;
     }
 
 
@@ -196,6 +179,158 @@
         text-shadow: 0 7px 5px #5f2b00;
 
         -webkit-text-stroke: 7px #5f2b00;
+    }
+
+
+    .prize_pool .title_bulbs
+    {
+        position: absolute;
+        z-index: 3;
+        top: 40px;
+        right: 0;
+        left: 0;
+
+        width: 568px;
+        height: 147px;
+        margin: 0 auto;
+
+        pointer-events: none;
+    }
+
+
+    .prize_pool .title_bulbs .bulb
+    {
+        position: absolute;
+
+        width: 27px;
+        height: 30px;
+
+        background: url('@/assets/prize_pool_title_bulb.svg') 0 0/100% 100% no-repeat;
+    }
+
+
+    .prize_pool .title_bulbs .bulb1
+    {
+        top: 0;
+        left: 5.986%;
+    }
+
+    .prize_pool .title_bulbs .bulb2
+    {
+        top: 0;
+        left: 25.880%;
+    }
+
+    .prize_pool .title_bulbs .bulb3
+    {
+        top: 0;
+        left: 45.774%;
+    }
+
+    .prize_pool .title_bulbs .bulb4
+    {
+        top: 0;
+        left: 65.669%;
+    }
+
+    .prize_pool .title_bulbs .bulb5
+    {
+        top: 0;
+        left: 85.563%;
+    }
+
+    .prize_pool .title_bulbs .bulb6
+    {
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        margin: auto 0;
+
+        transform: rotate(90deg);
+    }
+
+    .prize_pool .title_bulbs .bulb7
+    {
+        bottom: 0;
+        left: 82.042%;
+
+        transform: rotate(180deg);
+    }
+
+    .prize_pool .title_bulbs .bulb8
+    {
+        bottom: 0;
+        left: 63.908%;
+
+        transform: rotate(180deg);
+    }
+
+    .prize_pool .title_bulbs .bulb9
+    {
+        bottom: 0;
+        left: 45.774%;
+
+        transform: rotate(180deg);
+    }
+
+    .prize_pool .title_bulbs .bulb10
+    {
+        bottom: 0;
+        left: 27.641%;
+
+        transform: rotate(180deg);
+    }
+
+    .prize_pool .title_bulbs .bulb11
+    {
+        bottom: 0;
+        left: 9.507%;
+
+        transform: rotate(180deg);
+    }
+
+    .prize_pool .title_bulbs .bulb12
+    {
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        margin: auto 0;
+
+        transform: rotate(-90deg);
+    }
+
+
+    .prize_pool .title_bulbs .bulb:before
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+
+        width: 143px;
+        height: 143px;
+
+        content: '';
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        opacity: 0;
+        border-radius: 50%;
+        background: radial-gradient(ellipse at center,  rgba(252,80,0,.3) 0%,rgba(255,238,152,0) 60%,rgba(255,255,169,0) 100%);
+    }
+
+
+    .prize_pool .title_bulbs .bulb:nth-child(odd):before
+    {
+        animation: blink 1s infinite steps(1, end);
+    }
+
+    .prize_pool .title_bulbs .bulb:nth-child(even):before
+    {
+        animation: blink 1s infinite steps(1, end) reverse;
     }
 
 
@@ -345,5 +480,71 @@
         font-weight: 500;
 
         text-transform: capitalize;
+    }
+
+
+
+    .prize_pool .bulbs
+    {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        bottom: 85px;
+        left: 0;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        width: calc(100% - 228px);
+        margin: 0 auto;
+
+        pointer-events: none;
+    }
+
+
+    .prize_pool .bulbs .bulb
+    {
+        position: relative;
+
+        width: 37px;
+        height: 23px;
+
+        background: url('@/assets/prize_pool_bottom_bulb.svg') 0 0/100% 100% no-repeat;
+    }
+
+
+    .prize_pool .bulbs .bulb:before
+    {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+
+        width: 85px;
+        height: 85px;
+
+        content: '';
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        opacity: 0;
+        border-radius: 50%;
+        background: radial-gradient(ellipse at center,  rgba(255,255,169,.3) 0%,rgba(255,244,152,0) 60%,rgba(255,255,169,0) 100%);
+    }
+
+
+    .prize_pool .bulbs .bulb:nth-child(odd):before
+    {
+        animation: blink 1s infinite steps(1, end);
+    }
+
+    .prize_pool .bulbs .bulb:nth-child(even):before
+    {
+        animation: blink 1s infinite steps(1, end) reverse;
     }
 </style>

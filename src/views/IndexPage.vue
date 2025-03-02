@@ -6,16 +6,24 @@
     <TheAccountInfo v-else />
 
     <!-- Rules -->
+    <KeepAlive>
     <TheRules />
+    </KeepAlive>
 
     <!-- Prize pool -->
+    <KeepAlive>
     <ThePrizePool />
+    </KeepAlive>
 
     <!-- Leaderboard -->
+    <KeepAlive>
     <TheLeaderboard />
+    </KeepAlive>
 
     <!-- Our bros -->
+    <KeepAlive>
     <TheOurBros />
+    </KeepAlive>
 
     <!-- Loader -->
     <TheLoader v-if="store.isKeplrConnecting" class="fixed" />

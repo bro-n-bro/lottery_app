@@ -6,10 +6,14 @@
         </div>
 
         <!-- Invite button -->
+        <KeepAlive>
         <TheInviteButton />
+        </KeepAlive>
 
         <!-- Claim -->
+        <KeepAlive>
         <TheClaim v-if="store.user.prizes.length" />
+        </KeepAlive>
     </section>
 
     <!-- Referral modal -->

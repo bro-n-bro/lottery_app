@@ -18,6 +18,8 @@ export const useGlobalStore = defineStore('global', {
         redelegations: [],
         availableBalance: [],
         prizePool: [],
+        lastWinners: [],
+        topStakers: [],
 
         user: {},
 
@@ -311,6 +313,46 @@ export const useGlobalStore = defineStore('global', {
 
                 // Set data
                 this.user.prizes = data
+            } catch (error) {
+                throw error
+            }
+        },
+
+
+        // Get last winners
+        async getLastWinners() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/lotteries/last`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch last lottery info. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                this.lastWinners =  data.winners
+            } catch (error) {
+                throw error
+            }
+        },
+
+
+        // Get top stakers
+        async getTopStakers() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/stakers/ranking`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch top stakers. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                this.topStakers =  data
             } catch (error) {
                 throw error
             }
