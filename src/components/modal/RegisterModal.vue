@@ -65,6 +65,7 @@
 <script setup>
     import { ref, inject, onBeforeMount } from 'vue'
     import { useGlobalStore } from '@/store'
+import { useNotification } from '@kyvg/vue3-notification'
     import { addressConfirmation, getReferralCodeFromURL } from '@/utils'
 
     // Components
@@ -74,7 +75,8 @@
     const store = useGlobalStore(),
         emitter = inject('emitter'),
         isClosing = ref(false),
-        loading = ref(false)
+        loading = ref(false),
+        notification = useNotification()
 
 
     onBeforeMount(() => {
