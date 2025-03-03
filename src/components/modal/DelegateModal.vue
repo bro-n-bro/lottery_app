@@ -148,6 +148,27 @@
                     </div>
                 </div>
             </template>
+
+            <div class="bulbs">
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+            </div>
             </div>
         </div>
     </section>
@@ -392,593 +413,770 @@
 
 
 <style scoped>
-    .data
-    {
-        display: flex;
-        flex-direction: column;
+.data
+{
+    display: flex;
+    flex-direction: column;
 
-        width: 450px;
-        height: 512px;
-        padding: 0 25px 25px;
-    }
+    width: 450px;
+    height: 512px;
+    padding: 0 25px 25px;
+}
 
 
-    .data:before
-    {
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
+.data:before
+{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
 
-        display: block;
+    display: block;
 
-        width: 100%;
-        height: 100%;
+    width: 100%;
+    height: 100%;
 
-        content: '';
-        pointer-events: none;
+    content: '';
+    pointer-events: none;
 
-        background: url('@/assets/bg_delegate_modal.svg') 0 0/100% 100% no-repeat;
-    }
+    background: url('@/assets/bg_delegate_modal.svg') 0 0/100% 100% no-repeat;
+}
 
 
-    .loader_wrap
-    {
-        z-index: 10;
+.data:after
+{
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
 
-        width: calc(100% - 10px);
-        height: calc(100% - 10px);
-        margin: auto;
+    display: block;
 
-        border-radius: 33px;
+    width: 508px;
+    height: 561px;
 
-        inset: 0;
-    }
+    content: '';
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 
+    background: url('@/assets/bg_delegate_modal_points.svg') 0 0/100% 100% no-repeat;
+}
 
 
-    .tabs
-    {
-        display: flex;
-        align-content: stretch;
-        align-items: stretch;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+.loader_wrap
+{
+    z-index: 10;
 
-        width: calc(100% + 50px);
-        margin-right: -25px;
-        margin-bottom: 16px;
-        margin-left: -25px;
-    }
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    margin: auto;
 
+    border-radius: 33px;
 
-    .tabs .btn
-    {
-        font-size: 28px;
-        font-weight: 900;
+    inset: 0;
+}
 
-        width: 226px;
-        height: 89px;
-        padding: 28px 12px 12px;
 
-        transition: color .2s linear;
 
-        color: #d09408;
-    }
+.tabs
+{
+    display: flex;
+    align-content: stretch;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 
+    width: calc(100% + 50px);
+    margin-right: -25px;
+    margin-bottom: 16px;
+    margin-left: -25px;
+}
 
-    .tabs .btn.disabled
-    {
-        pointer-events: none;
 
-        opacity: .5;
-    }
+.tabs .btn
+{
+    font-size: 28px;
+    font-weight: 900;
 
+    width: 226px;
+    height: 89px;
+    padding: 28px 12px 12px;
 
-    .btn:first-child
-    {
-        background: url('@/assets/bg_delegate_tab.svg') 0 0/100% 100% no-repeat;
-    }
+    transition: color .2s linear;
 
-    .btn:last-child
-    {
-        background: url('@/assets/bg_redelegate_tab.svg') 0 0/100% 100% no-repeat;
-    }
+    color: #d09408;
+}
 
 
-    .tabs .btn.active
-    {
-        color: #fff;
-        background: none;
-    }
+.tabs .btn.disabled
+{
+    pointer-events: none;
 
+    opacity: .5;
+}
 
 
-    .bg
-    {
-        padding: 18px 20px;
+.btn:first-child
+{
+    background: url('@/assets/bg_delegate_tab.svg') 0 0/100% 100% no-repeat;
+}
 
-        border-radius: 20px;
-        background: linear-gradient(180deg, #1b003b 0%, #2d0061 100%);
-    }
+.btn:last-child
+{
+    background: url('@/assets/bg_redelegate_tab.svg') 0 0/100% 100% no-repeat;
+}
 
 
+.tabs .btn.active
+{
+    color: #fff;
+    background: none;
+}
 
-    .form
-    {
-        display: flex;
-        flex: 1 0 auto;
-        flex-direction: column;
 
-        gap: 16px;
-    }
 
+.bg
+{
+    padding: 18px 20px;
 
-    .form ::-webkit-input-placeholder
-    {
-        color: rgba(255,255,255,.6);
-    }
+    border-radius: 20px;
+    background: linear-gradient(180deg, #1b003b 0%, #2d0061 100%);
+}
 
-    .form :-moz-placeholder
-    {
-        color: rgba(255,255,255,.6);
-    }
 
-    .form ::-moz-placeholder
-    {
-        opacity: 1;
-        color: rgba(255,255,255,.6);
-    }
 
-    .form :-ms-input-placeholder
-    {
-        color: rgba(255,255,255,.6);
-    }
+.form
+{
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
 
+    gap: 16px;
+}
 
-    .form .validator
-    {
-        display: flex;
-        align-content: flex-start;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        justify-content: space-between;
 
-        margin-bottom: 12px;
-    }
+.form ::-webkit-input-placeholder
+{
+    color: rgba(255,255,255,.6);
+}
 
+.form :-moz-placeholder
+{
+    color: rgba(255,255,255,.6);
+}
 
-    .form .validator .logo
-    {
-        padding: 1px;
+.form ::-moz-placeholder
+{
+    opacity: 1;
+    color: rgba(255,255,255,.6);
+}
 
-        border-radius: 50%;
-        background: linear-gradient(180deg, #ae47ff 0%, #5a0999 100%);
-    }
+.form :-ms-input-placeholder
+{
+    color: rgba(255,255,255,.6);
+}
 
 
-    .form .validator .logo div
-    {
-        display: flex;
-        align-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
+.form .validator
+{
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-        width: 52px;
-        height: 52px;
-        padding: 10px;
+    margin-bottom: 12px;
+}
 
-        border-radius: 50%;
-        background: #950fff;
-    }
 
+.form .validator .logo
+{
+    padding: 1px;
 
-    .form .validator .logo img
-    {
-        display: block;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #ae47ff 0%, #5a0999 100%);
+}
 
-        max-width: 100%;
-        max-height: 100%;
-    }
 
+.form .validator .logo div
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    .form .validator .logo + *
-    {
-        align-self: center;
+    width: 52px;
+    height: 52px;
+    padding: 10px;
 
-        width: calc(100% - 66px);
-    }
+    border-radius: 50%;
+    background: #950fff;
+}
 
 
-    .form .validator .label
-    {
-        font-size: 14px;
-    }
+.form .validator .logo img
+{
+    display: block;
 
+    max-width: 100%;
+    max-height: 100%;
+}
 
-    .form .validator .name
-    {
-        font-size: 32px;
-        font-weight: 600;
 
-        margin-top: -8px;
-    }
+.form .validator .logo + *
+{
+    align-self: center;
 
+    width: calc(100% - 66px);
+}
 
-    .form .balances
-    {
-        display: flex;
-        align-content: stretch;
-        align-items: stretch;
-        flex-wrap: wrap;
-        justify-content: space-between;
 
-        margin-bottom: 4px;
-    }
+.form .validator .label
+{
+    font-size: 14px;
+}
 
 
-    .form .balances > *
-    {
-        width: calc(50% - 6px);
-        padding: 4px 8px;
+.form .validator .name
+{
+    font-size: 32px;
+    font-weight: 600;
 
-        border-radius: 6px;
-        background: #06000e;
-    }
+    margin-top: -8px;
+}
 
 
-    .form .balances .label
-    {
-        font-size: 12px;
-        font-weight: 500;
-    }
+.form .balances
+{
+    display: flex;
+    align-content: stretch;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
+    margin-bottom: 4px;
+}
 
-    .form .balances .val
-    {
-        font-size: 12px;
-        font-weight: 300;
-    }
 
+.form .balances > *
+{
+    width: calc(50% - 6px);
+    padding: 4px 8px;
 
-    .form .balances .val .symbol
-    {
-        font-weight: 400;
+    border-radius: 6px;
+    background: #06000e;
+}
 
-        margin-left: 2px;
-    }
 
+.form .balances .label
+{
+    font-size: 12px;
+    font-weight: 500;
+}
 
-    .form .balances .cost
-    {
-        font-size: 12px;
-        font-weight: 300;
 
-        color: rgba(255, 255, 255, .60);
-    }
+.form .balances .val
+{
+    font-size: 12px;
+    font-weight: 300;
+}
 
 
-    .form .from_validator
-    {
-        position: relative;
+.form .balances .val .symbol
+{
+    font-weight: 400;
 
-        margin-bottom: 4px;
-    }
+    margin-left: 2px;
+}
 
 
-    .form .from_validator .field
-    {
-        position: relative;
+.form .balances .cost
+{
+    font-size: 12px;
+    font-weight: 300;
 
-        cursor: pointer;
-    }
+    color: rgba(255, 255, 255, .60);
+}
 
 
-    .form .from_validator .label
-    {
-        font-size: 14px;
+.form .from_validator
+{
+    position: relative;
 
-        padding: 0 10px;
-    }
+    margin-bottom: 4px;
+}
 
 
-    .form .from_validator .input
-    {
-        display: flex;
-        align-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+.form .from_validator .field
+{
+    position: relative;
 
-        padding-right: 47px;
+    cursor: pointer;
+}
 
-        white-space: nowrap;
-        pointer-events: none;
-    }
 
-    .form .from_validator .input .name
-    {
-        overflow: hidden;
+.form .from_validator .label
+{
+    font-size: 14px;
 
-        width: 100%;
+    padding: 0 10px;
+}
 
-        text-overflow: ellipsis;
-    }
 
+.form .from_validator .input
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 
-    .form .from_validator .input .amount
-    {
-        width: auto;
-        margin-left: 20px;
+    padding-right: 47px;
 
-        opacity: .5;
-    }
+    white-space: nowrap;
+    pointer-events: none;
+}
 
+.form .from_validator .input .name
+{
+    overflow: hidden;
 
-    .form .from_validator .arr
-    {
-        position: absolute;
-        z-index: 3;
-        top: 0;
-        right: 10px;
-        bottom: 0;
+    width: 100%;
 
-        display: block;
+    text-overflow: ellipsis;
+}
 
-        width: 28px;
-        height: 28px;
-        margin: auto 0;
 
-        pointer-events: none;
-    }
+.form .from_validator .input .amount
+{
+    width: auto;
+    margin-left: 20px;
 
+    opacity: .5;
+}
 
-    .form .amount
-    {
-        width: 280px;
-        max-width: 100%;
-    }
 
+.form .from_validator .arr
+{
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 10px;
+    bottom: 0;
 
-    .form .amount .label
-    {
-        font-size: 14px;
+    display: block;
 
-        display: flex;
-        align-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-between;
+    width: 28px;
+    height: 28px;
+    margin: auto 0;
 
-        padding: 0 10px;
-    }
+    pointer-events: none;
+}
 
 
-    .form .amount .label .cost
-    {
-        color: rgba(255, 255, 255, .70);
-    }
+.form .amount
+{
+    width: 280px;
+    max-width: 100%;
+}
 
 
-    .form .field
-    {
-        position: relative;
+.form .amount .label
+{
+    font-size: 14px;
 
-        padding: 1px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-        border-radius: 10px;
-        background: linear-gradient(to bottom,  #5d33ce 0%,#200750 100%);
-    }
+    padding: 0 10px;
+}
 
 
-    .form .field.disabled
-    {
-        pointer-events: none;
+.form .amount .label .cost
+{
+    color: rgba(255, 255, 255, .70);
+}
 
-        opacity: .5;
-    }
 
+.form .field
+{
+    position: relative;
 
-    .form .input,
-    .form .input:focus
-    {
-        font-family: inherit;
-        font-size: 16px;
-        font-weight: 500;
+    padding: 1px;
 
-        display: block;
+    border-radius: 10px;
+    background: linear-gradient(to bottom,  #5d33ce 0%,#200750 100%);
+}
 
-        width: 100%;
-        height: 46px;
-        padding: 0 15px;
 
-        color: currentColor;
-        border: 1px solid transparent;
-        border-radius: 9px;
-        background: #06000e;
-    }
+.form .field.disabled
+{
+    pointer-events: none;
 
+    opacity: .5;
+}
 
-    .form .input:-webkit-autofill
-    {
-        -webkit-box-shadow: inset 0 0 0 50px #170232 !important;
-    }
 
+.form .input,
+.form .input:focus
+{
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
 
-    .form .input:disabled
-    {
-        pointer-events: none;
+    display: block;
 
-        opacity: .6;
-    }
+    width: 100%;
+    height: 46px;
+    padding: 0 15px;
 
+    color: currentColor;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: #06000e;
+}
 
-    .form .input.error
-    {
-        border-color: #f00;
-    }
 
-    .form .input.success
-    {
-        border-color: #00aa63;
-    }
+.form .input:-webkit-autofill
+{
+    -webkit-box-shadow: inset 0 0 0 50px #170232 !important;
+}
 
 
-    .form .dropdown
-    {
-        font-size: 14px;
+.form .input:disabled
+{
+    pointer-events: none;
 
-        position: absolute;
-        z-index: 5;
-        top: 100%;
-        left: 0;
+    opacity: .6;
+}
 
-        width: 100%;
-        margin-top: 4px;
-        padding: 8px 4px 8px 15px;
 
-        border-radius: 10px;
-        background: #06000e;
-    }
+.form .input.error
+{
+    border-color: #f00;
+}
 
+.form .input.success
+{
+    border-color: #00aa63;
+}
 
-    .form .dropdown .scroll
-    {
-        display: flex;
-        overflow: auto;
-        flex-direction: column;
 
-        max-height: 128px;
-        padding-right: 4px;
+.form .dropdown
+{
+    font-size: 14px;
 
-        gap: 8px;
-    }
+    position: absolute;
+    z-index: 5;
+    top: 100%;
+    left: 0;
 
+    width: 100%;
+    margin-top: 4px;
+    padding: 8px 4px 8px 15px;
 
-    .form .dropdown .scroll::-webkit-scrollbar
-    {
-        width: 4px;
-        height: 4px;
+    border-radius: 10px;
+    background: #06000e;
+}
 
-        border-radius: 5px;
-    }
 
+.form .dropdown .scroll
+{
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
 
-    .form .dropdown .scroll > *
-    {
-        display: flex;
-        align-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
+    max-height: 128px;
+    padding-right: 4px;
 
-        cursor: pointer;
-        white-space: nowrap;
-    }
+    gap: 8px;
+}
 
 
-    .form .dropdown .name
-    {
-        overflow: hidden;
+.form .dropdown .scroll::-webkit-scrollbar
+{
+    width: 4px;
+    height: 4px;
 
-        width: 100%;
+    border-radius: 5px;
+}
 
-        text-overflow: ellipsis;
-    }
 
+.form .dropdown .scroll > *
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 
-    .form .dropdown .amount
-    {
-        width: auto;
-        margin-left: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
 
-        opacity: .5;
-    }
 
+.form .dropdown .name
+{
+    overflow: hidden;
 
-    .form .max_btn
-    {
-        font-size: 16px;
-        font-weight: 500;
+    width: 100%;
 
-        position: absolute;
-        z-index: 3;
-        top: 0;
-        right: 16px;
+    text-overflow: ellipsis;
+}
 
-        display: flex;
-        align-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
 
-        width: 36px;
-        height: 100%;
-        padding: 3px 0;
+.form .dropdown .amount
+{
+    width: auto;
+    margin-left: 20px;
 
-        text-align: center;
-        text-transform: uppercase;
-    }
+    opacity: .5;
+}
 
 
-    .form .tickets
-    {
-        position: absolute;
-        top: 0;
-        left: 100%;
+.form .max_btn
+{
+    font-size: 16px;
+    font-weight: 500;
 
-        display: flex;
-        align-content: center;
-        align-items: center;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 16px;
 
-        height: 48px;
-        margin-left: 8px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 
-        white-space: nowrap;
+    width: 36px;
+    height: 100%;
+    padding: 3px 0;
 
-        gap: 6px;
-    }
+    text-align: center;
+    text-transform: uppercase;
+}
 
 
-    .form .tickets svg
-    {
-        display: block;
+.form .tickets
+{
+    position: absolute;
+    top: 0;
+    left: 100%;
 
-        width: 28px;
-        height: 22px;
-    }
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 
+    height: 48px;
+    margin-left: 8px;
 
-    .form .submit
-    {
-        margin-top: auto;
-    }
+    white-space: nowrap;
 
+    gap: 6px;
+}
 
-    .form .submit_btn
-    {
-        font-size: 28px;
-        font-weight: 900;
 
-        display: block;
+.form .tickets svg
+{
+    display: block;
 
-        width: 264px;
-        height: 68px;
-        margin: 0 auto;
+    width: 28px;
+    height: 22px;
+}
 
-        text-transform: capitalize;
 
-        background: url('@/assets/bg_delegate_btn.svg') 0 0 /100% 100% no-repeat;
-    }
+.form .submit
+{
+    margin-top: auto;
+}
 
 
-    .form .submit_btn.disabled
-    {
-        pointer-events: none;
+.form .submit_btn
+{
+    font-size: 28px;
+    font-weight: 900;
 
-        opacity: .5;
-    }
+    display: block;
+
+    width: 264px;
+    height: 68px;
+    margin: 0 auto;
+
+    text-transform: capitalize;
+
+    background: url('@/assets/bg_delegate_btn.svg') 0 0 /100% 100% no-repeat;
+}
+
+
+.form .submit_btn.disabled
+{
+    pointer-events: none;
+
+    opacity: .5;
+}
+
+
+
+.bulbs
+{
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    width: 540px;
+    height: 577px;
+
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+
+.bulbs .bulb
+{
+    position: absolute;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+    background: radial-gradient(49.99% 49.99% at 50.01% 50%, #fff 0%, #fff 20.75%, rgba(255, 255, 216, .93) 26%, rgba(255, 255, 166, .84) 33.57%, rgba(255, 255, 121, .74) 41.53%, rgba(255, 255, 84, .63) 49.72%, rgba(255, 255, 53, .53) 58.21%, rgba(255, 255, 30, .42) 67.08%, rgba(255, 255, 13, .30) 76.51%, rgba(255, 255, 3, .17) 86.88%, rgba(255, 255, 0, .00) 100%);
+}
+
+
+.bulbs .bulb:nth-child(1)
+{
+    top: 2px;
+    left: 1.852%;
+}
+
+.bulbs .bulb:nth-child(2)
+{
+    top: 2px;
+    right: 1.852%;
+}
+
+.bulbs .bulb:nth-child(3)
+{
+    top: 13.338%;
+    right: 0;
+}
+
+.bulbs .bulb:nth-child(4)
+{
+    top: 29.104%;
+    right: 0;
+}
+
+.bulbs .bulb:nth-child(5)
+{
+    top: 45%;
+    right: 0;
+}
+
+.bulbs .bulb:nth-child(6)
+{
+    top: 60.5%;
+    right: 0;
+}
+
+.bulbs .bulb:nth-child(7)
+{
+    top: 76%;
+    right: 0;
+}
+
+.bulbs .bulb:nth-child(8)
+{
+    right: 2.818%;
+    bottom: 1.096%;
+}
+
+.bulbs .bulb:nth-child(9)
+{
+    right: 19.777%;
+    bottom: -8px;
+}
+
+.bulbs .bulb:nth-child(10)
+{
+    right: 36.5%;
+    bottom: -8px;
+}
+
+.bulbs .bulb:nth-child(11)
+{
+    right: 53.318%;
+    bottom: -8px;
+}
+
+.bulbs .bulb:nth-child(12)
+{
+    right: 70%;
+    bottom: -8px;
+}
+
+.bulbs .bulb:nth-child(13)
+{
+    bottom: 1.096%;
+    left: 4%;
+}
+
+.bulbs .bulb:nth-child(14)
+{
+    top: 76%;
+    left: 0;
+}
+
+.bulbs .bulb:nth-child(15)
+{
+    top: 60.5%;
+    left: 0;
+}
+
+.bulbs .bulb:nth-child(16)
+{
+    top: 45%;
+    left: 0;
+}
+
+.bulbs .bulb:nth-child(17)
+{
+    top: 29.104%;
+    left: 0;
+}
+
+.bulbs .bulb:nth-child(18)
+{
+    top: 13.646%;
+    left: 0;
+}
+
+
+.bulbs .bulb:nth-child(odd)
+{
+    animation: blink2 1s infinite steps(1, end);
+}
+
+.bulbs .bulb:nth-child(even)
+{
+    animation: blink2 1s infinite steps(1, end) reverse;
+}
+
+
+
 </style>

@@ -26,7 +26,7 @@
     </KeepAlive>
 
     <!-- Loader -->
-    <TheLoader v-if="store.isKeplrConnecting" class="fixed" />
+    <TheLoader v-if="store.isKeplrConnecting" :customClass="'fixed'" />
 
     <!-- Register modal -->
     <TheRegisterModal v-if="store.showRegisterModal" />

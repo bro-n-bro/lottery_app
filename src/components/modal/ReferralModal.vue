@@ -30,6 +30,27 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="bulbs">
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -120,6 +141,26 @@
     }
 
 
+    .data:after
+    {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+
+        width: 818px;
+        height: 311px;
+
+        content: '';
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        background: url('@/assets/bg_referral_modal_points.svg') 0 0/100% 100% no-repeat;
+    }
+
+
     .text
     {
         font-size: 16px;
@@ -188,5 +229,159 @@
 
         width: 24px;
         height: 24px;
+    }
+
+
+
+    .bulbs
+    {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        width: 850px;
+        height: 345px;
+
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+
+
+    .bulbs .bulb
+    {
+        position: absolute;
+
+        width: 43px;
+        height: 43px;
+
+        border-radius: 50%;
+        background: radial-gradient(49.99% 49.99% at 50.01% 50%, #fff 0%, #fff 20.75%, rgba(255, 255, 216, .93) 26%, rgba(255, 255, 166, .84) 33.57%, rgba(255, 255, 121, .74) 41.53%, rgba(255, 255, 84, .63) 49.72%, rgba(255, 255, 53, .53) 58.21%, rgba(255, 255, 30, .42) 67.08%, rgba(255, 255, 13, .30) 76.51%, rgba(255, 255, 3, .17) 86.88%, rgba(255, 255, 0, .00) 100%);
+    }
+
+
+    .bulbs .bulb:nth-child(1)
+    {
+        top: 0;
+        left: 5.8%;
+    }
+
+    .bulbs .bulb:nth-child(2)
+    {
+        top: 0;
+        left: 18.8%;
+    }
+
+    .bulbs .bulb:nth-child(3)
+    {
+        top: 0;
+        right: 18.8%;
+    }
+
+    .bulbs .bulb:nth-child(4)
+    {
+        top: 0;
+        right: 5.8%;
+    }
+
+    .bulbs .bulb:nth-child(5)
+    {
+        top: 22.029%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(6)
+    {
+        top: 48.216%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(7)
+    {
+        top: 75.503%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(8)
+    {
+        right: 9.8%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(9)
+    {
+        right: 20.651%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(10)
+    {
+        right: 31.5%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(11)
+    {
+        right: 42%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(12)
+    {
+        right: 52.5%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(13)
+    {
+        right: 63.2%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(14)
+    {
+        right: 74.2%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(15)
+    {
+        right: 85.9%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(16)
+    {
+        top: 75.503%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(17)
+    {
+        top: 48.216%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(18)
+    {
+        top: 22.029%;
+        left: 0;
+    }
+
+
+    .bulbs .bulb:nth-child(odd)
+    {
+        animation: blink2 1s infinite steps(1, end);
+    }
+
+    .bulbs .bulb:nth-child(even)
+    {
+        animation: blink2 1s infinite steps(1, end) reverse;
     }
 </style>

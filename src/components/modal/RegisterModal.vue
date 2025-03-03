@@ -33,6 +33,25 @@
                 <button class="btn" @click.prevent="register()">
                     <span>Registration</span>
                 </button>
+
+                <div class="bulbs">
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -133,6 +152,26 @@
         pointer-events: none;
 
         background: url('@/assets/bg_register_modal.svg') 0 0/100% 100% no-repeat;
+    }
+
+
+    .data:after
+    {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+
+        width: 508px;
+        height: 461px;
+
+        content: '';
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        background: url('@/assets/bg_register_modal_points.svg') 0 0/100% 100% no-repeat;
     }
 
 
@@ -261,5 +300,148 @@
         text-transform: capitalize;
 
         background: url('@/assets/bg_register_btn.svg') 0 0 /100% 100% no-repeat;
+    }
+
+
+
+    .bulbs
+    {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        width: 540px;
+        height: 477px;
+        margin-top: 10px;
+
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+
+
+    .bulbs .bulb
+    {
+        position: absolute;
+
+        width: 43px;
+        height: 43px;
+
+        border-radius: 50%;
+        background: radial-gradient(49.99% 49.99% at 50.01% 50%, #fff 0%, #fff 20.75%, rgba(255, 255, 216, .93) 26%, rgba(255, 255, 166, .84) 33.57%, rgba(255, 255, 121, .74) 41.53%, rgba(255, 255, 84, .63) 49.72%, rgba(255, 255, 53, .53) 58.21%, rgba(255, 255, 30, .42) 67.08%, rgba(255, 255, 13, .30) 76.51%, rgba(255, 255, 3, .17) 86.88%, rgba(255, 255, 0, .00) 100%);
+    }
+
+
+    .bulbs .bulb:nth-child(1)
+    {
+        top: 0;
+        left: 1.852%;
+    }
+
+    .bulbs .bulb:nth-child(2)
+    {
+        top: 0;
+        right: 1.852%;
+    }
+
+    .bulbs .bulb:nth-child(3)
+    {
+        top: 14.046%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(4)
+    {
+        top: 33.004%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(5)
+    {
+        top: 51.872%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(6)
+    {
+        top: 70.740%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(7)
+    {
+        right: 2.818%;
+        bottom: 2.096%;
+    }
+
+    .bulbs .bulb:nth-child(8)
+    {
+        right: 19.777%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(9)
+    {
+        right: 36.5%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(10)
+    {
+        right: 53.318%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(11)
+    {
+        right: 70%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(12)
+    {
+        bottom: 2.096%;
+        left: 3.918%;
+    }
+
+    .bulbs .bulb:nth-child(13)
+    {
+        top: 70.740%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(14)
+    {
+        top: 51.872%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(15)
+    {
+        top: 33.004%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(16)
+    {
+        top: 14.046%;
+        left: 0;
+    }
+
+
+    .bulbs .bulb:nth-child(odd)
+    {
+        animation: blink2 1s infinite steps(1, end);
+    }
+
+    .bulbs .bulb:nth-child(even)
+    {
+        animation: blink2 1s infinite steps(1, end) reverse;
     }
 </style>
