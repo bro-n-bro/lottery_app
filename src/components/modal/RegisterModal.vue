@@ -103,8 +103,26 @@
             // Address confirmation
             await addressConfirmation()
 
+            // Show notification
+            notification.notify({
+                group: 'default',
+                speed: 200,
+                duration: 1000,
+                title: 'Address confirmed',
+                type: 'success'
+            })
+
             // Register user
             await store.registerUser()
+
+            // Show notification
+            notification.notify({
+                group: 'default',
+                speed: 200,
+                duration: 1000,
+                title: 'User registered',
+                type: 'success'
+            })
 
             // Get user info
             await store.getUserInfo()
@@ -116,6 +134,15 @@
             closeHandler()
         } catch (error) {
             console.error('Error registering user:', error)
+
+            // Show notification
+            notification.notify({
+                group: 'default',
+                speed: 200,
+                duration: 1000,
+                title: 'User registration error',
+                type: 'error'
+            })
 
             // Hide loading
             loading.value = false

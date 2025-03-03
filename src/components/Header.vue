@@ -102,14 +102,8 @@
     // Connect Keplr
     async function connectKeplr() {
         try {
-            // Keplr connecting status
-            store.isKeplrConnecting = true
-
             // Connect Keplr
             await store.connectKeplr()
-
-            // Keplr connecting status
-            store.isKeplrConnecting = false
         } catch (error) {
             console.error('Error connecting to Keplr:', error)
 

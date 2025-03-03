@@ -1,5 +1,10 @@
 import { defineStore } from 'pinia'
+import { useNotification } from '@kyvg/vue3-notification'
 import { createKeplrOfflineSinger } from '@/utils'
+
+
+// Notifications
+const notification = useNotification()
 
 
 export const useGlobalStore = defineStore('global', {
@@ -120,6 +125,9 @@ export const useGlobalStore = defineStore('global', {
 
         // Connect Keplr
         async connectKeplr() {
+            // Keplr connecting status
+            this.isKeplrConnecting = true
+
             try {
                 // Check Keplr
                 if (!window.keplr) {
@@ -131,6 +139,15 @@ export const useGlobalStore = defineStore('global', {
 
                 // Keplr connected status
                 this.isKeplrConnected = true
+
+                // Show notification
+                notification.notify({
+                    group: 'default',
+                    speed: 200,
+                    duration: 1000,
+                    title: 'Keplr connected',
+                    type: 'success'
+                })
 
                 try {
                     // Get user info
@@ -144,8 +161,20 @@ export const useGlobalStore = defineStore('global', {
                     throw error
                 }
             } catch (error) {
+                // Show notification
+                notification.notify({
+                    group: 'default',
+                    speed: 200,
+                    duration: 1000,
+                    title: 'Kepler connection error',
+                    type: 'error'
+                })
+
                 throw error
             }
+
+            // Keplr connecting status
+            this.isKeplrConnecting = false
         },
 
 
