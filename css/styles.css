@@ -458,6 +458,19 @@ button
 }
 
 
+@keyframes notification
+{
+    from
+    {
+        transform: translateX(100%);
+    }
+    to
+    {
+        transform: translateX(0%);
+    }
+}
+
+
 @keyframes blink
 {
     0%,
@@ -483,4 +496,146 @@ button
     {
         transform: scale(.65);
     }
+}
+
+
+
+/*------------------
+    Notification
+------------------*/
+.vue-notification-group
+{
+    overflow: visible;
+
+    width: 100%;
+
+    pointer-events: none;
+}
+
+
+.vue-notification-wrapper
+{
+    padding: 105px 23px 24px 24px !important;
+}
+
+
+.notification_wrap
+{
+    padding: 1px;
+
+    animation: notification 0.3s linear;
+
+    border-radius: 10px;
+}
+
+
+.notification
+{
+    position: relative;
+
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 78px;
+    padding: 7px 9px 7px 19px;
+
+    pointer-events: auto;
+
+    color: #fff;
+    border-radius: 9px;
+    background: radial-gradient(148.24% 183.25% at 50% 0%, #000 0%, #221b34 58.77%, #221832 100%);
+}
+
+
+.success .notification
+{
+    background: radial-gradient(148.24% 183.25% at 50% 0%, #050b05 0%, #10500e 58.77%, #0c4d12 100%);
+}
+
+.error .notification
+{
+    background: radial-gradient(148.24% 183.25% at 50% 0%, #000 0%, #341d1b 58.77%, #321d18 100%);
+}
+
+.copied .notification
+{
+    background: radial-gradient(148.24% 183.25% at 50% 0%, #0b0905 0%, #50440e 58.77%, #4d490c 100%);
+}
+
+
+.notification .icon
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 44px;
+    height: 48px;
+}
+
+
+.notification .icon svg
+{
+    display: block;
+
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.notification .icon + *
+{
+    width: calc(100% - 64px);
+}
+
+
+.notification .icon .loader_wrap
+{
+    position: relative;
+
+    padding: 0;
+
+    background: none;
+}
+
+
+.notification .title
+{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 110%;
+}
+
+
+.notification .desc
+{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 110%;
+
+    text-decoration: underline;
+
+    text-decoration-thickness: 1px;
+}
+
+
+.notification .explorer
+{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 110%;
+}
+
+
+.notification .explorer a
+{
+    color: currentColor;
+
+    text-decoration-thickness: 1px;
 }
