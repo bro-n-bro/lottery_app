@@ -10,6 +10,9 @@
     <TheRules />
     </KeepAlive>
 
+    <!-- Referrals -->
+    <TheReferrals v-if="store.isKeplrConnected" />
+
     <!-- Prize pool -->
     <KeepAlive>
     <ThePrizePool />
@@ -41,6 +44,7 @@
     import TheFirstSecton from '@/components/FirstSecton.vue'
     import TheAccountInfo from '@/components/AccountInfo.vue'
     import TheRules from '@/components/Rules.vue'
+    import TheReferrals from '@/components/Referrals.vue'
     import ThePrizePool from '@/components/PrizePool.vue'
     import TheLeaderboard from '@/components/Leaderboard.vue'
     import TheOurBros from '@/components/OurBros.vue'

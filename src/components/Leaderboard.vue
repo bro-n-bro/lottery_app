@@ -390,7 +390,7 @@
     }
 
 
-    .leaderboard .item .wins svg
+    .leaderboard .item .tickets svg
     {
         display: block;
 

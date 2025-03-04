@@ -9,6 +9,8 @@
             <div class="menu">
                 <div><button class="btn scroll_btn" data-anchor="first_section">Lottery</button></div>
 
+                <div v-if="store.isKeplrConnected"><button class="btn scroll_btn" data-anchor="referrals">Referrals</button></div>
+
                 <div><button class="btn scroll_btn" data-anchor="prize_pool">Prize pool</button></div>
 
                 <div><button class="btn scroll_btn" data-anchor="leaderboard">Leaderboard</button></div>
@@ -156,7 +158,7 @@
         justify-content: flex-start;
 
         margin-right: auto;
-        margin-left: 159px;
+        margin-left: 124px;
 
         text-transform: capitalize;
 

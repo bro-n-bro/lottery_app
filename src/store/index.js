@@ -388,6 +388,26 @@ export const useGlobalStore = defineStore('global', {
         },
 
 
+        // Get user referrals
+        async getUserReferrals() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/address/${this.user.address}/invited`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user referrals. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                this.user.referrals =  data
+            } catch (error) {
+                throw error
+            }
+        },
+
+
         // Claim prize
         async claimPrize() {
             try {

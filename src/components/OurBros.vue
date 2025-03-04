@@ -61,7 +61,7 @@
 <style scoped>
     .our_bros
     {
-        padding: 20px 0 84px;
+        padding: 20px 0 120px;
     }
 
 
