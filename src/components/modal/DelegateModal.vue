@@ -36,7 +36,7 @@
                     <div class="bg">
                         <div class="validator" v-if="activeTab === 1">
                             <div class="logo"><div>
-                                <img src="@/assets/bro_n_bro_logo.svg" alt="" loading="lazy">
+                                <img src="@/assets/bro_n_bro_logo.svg" alt="">
                             </div></div>
 
                             <div>
@@ -113,7 +113,7 @@
 
                         <div class="validator" v-if="activeTab === 2">
                             <div class="logo"><div>
-                                <img src="@/assets/bro_n_bro_logo.svg" alt="" loading="lazy">
+                                <img src="@/assets/bro_n_bro_logo.svg" alt="">
                             </div></div>
 
                             <div>

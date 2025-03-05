@@ -1,6 +1,6 @@
 <template>
     <div class="claim">
-        <img src="@/assets/claim_arrow.png" alt="" class="arrow" loading="lazy">
+        <img src="@/assets/claim_arrow.png" alt="" class="arrow">
 
         <button class="btn">Claim</button>
     </div>

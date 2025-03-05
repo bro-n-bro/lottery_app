@@ -8,7 +8,7 @@
                     <div class="row">
                         <a href="https://www.stargaze.zone/m/cosmonibblecollection" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-                                <img src="@/assets/our_bros/CosmosNibble.png" alt="" loading="lazy">
+                                <img src="@/assets/our_bros/CosmosNibble.png" alt="">
                             </div>
 
                             <div class="name">CosmosNibble</div>
@@ -16,7 +16,7 @@
 
                         <a href="https://www.stargaze.zone/m/stars12c9nrpkqrfmdvrx4ex8d6qfs8rwrnclsk5jtk4r6u4gy9mjl97js626dtp/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-                                <img src="@/assets/our_bros/CryptoGopniks.png" alt="" loading="lazy">
+                                <img src="@/assets/our_bros/CryptoGopniks.png" alt="">
                             </div>
 
                             <div class="name">CryptoGopniks</div>
@@ -24,7 +24,7 @@
 
                         <a href="https://www.stargaze.zone/m/stars1peea6sz2qh34w5c9x8dmde89ykkaxwgt7e9kg7dnh2hvd2mtptcqswa9xq/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-                                <img src="@/assets/our_bros/Red Planet DAO.png" alt="" loading="lazy">
+                                <img src="@/assets/our_bros/Red Planet DAO.png" alt="">
                             </div>
 
                             <div class="name">Red Planet DAO</div>
@@ -32,7 +32,7 @@
 
                         <a href="https://www.stargaze.zone/m/stars19fv7az3mdpl3kpz22dqwfrp8n8tm82de0efyzmnrrvpf8qysuscsv26mal/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-                                <img src="@/assets/our_bros/Sin Garden.png" alt="" loading="lazy">
+                                <img src="@/assets/our_bros/Sin Garden.png" alt="">
                             </div>
 
                             <div class="name">Sin Garden</div>
@@ -40,7 +40,7 @@
 
                         <a href="https://www.stargaze.zone/m/stamps/tokens" target="_blank" rel="noopener nofollow" class="item">
                             <div class="thumb">
-                                <img src="@/assets/our_bros/Stamps by Expedition NFT.png" alt="" loading="lazy">
+                                <img src="@/assets/our_bros/Stamps by Expedition NFT.png" alt="">
                             </div>
 
                             <div class="name">Stamps by Expedition NFT</div>

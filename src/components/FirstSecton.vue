@@ -20,12 +20,12 @@
 
         <!-- First section - Image left -->
         <div class="image_left">
-            <img src="@/assets/first_section_img_left.png" alt="" loading="lazy">
+            <img src="@/assets/first_section_img_left.png" alt="">
         </div>
 
         <!-- First section - Image right -->
         <div class="image_right">
-            <img src="@/assets/first_section_img_right.png" alt="" loading="lazy">
+            <img src="@/assets/first_section_img_right.png" alt="">
         </div>
     </section>
 </template>

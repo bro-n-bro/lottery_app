@@ -27,20 +27,20 @@
                         <div class="item" :class="{ best: item.best_offer }">
                             <div class="sticker" v-if="item.best_offer">Best offer</div>
 
-                            <div class="thumb">
-                                <img :src="item.image" :alt="item.name" loading="lazy">
-                            </div>
+                            <img :src="item.image" :alt="item.name" class="thumb">
 
-                            <div class="collection">
-                                <a v-if="item.collection_link" :href="item.collection_link" target="_blank" rel="noopener nofollow">
-                                    {{ item.collection_name }}
-                                </a>
+                            <div class="info">
+                                <div class="collection">
+                                    <a v-if="item.collection_link" :href="item.collection_link" target="_blank" rel="noopener nofollow">
+                                        {{ item.collection_name }}
+                                    </a>
 
-                                <span v-else>{{ item.collection_name }}</span>
-                            </div>
+                                    <span v-else>{{ item.collection_name }}</span>
+                                </div>
 
-                            <div class="name">
-                                {{ item.name }}
+                                <div class="name">
+                                    {{ item.name }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
     {
         position: relative;
 
-        height: 819px;
+        height: 818.5px;
         padding: 196px 140px 77px;
     }
 
@@ -106,14 +106,14 @@
 
         display: block;
 
-        width: 1987px;
+        width: 1692px;
         height: 100%;
 
         content: '';
         transform: translateX(-50%);
         pointer-events: none;
 
-        background: url('@/assets/bg_prize_pool_data.svg') 50% 100%/100% 100% no-repeat;
+        background: url('@/assets/bg_prize_pool_data.png') 50% 100%/100% 100% no-repeat;
     }
 
 
@@ -356,14 +356,9 @@
 
     .prize_pool .item_wrap
     {
-        display: flex;
-        flex-direction: column;
-
-        padding: 1px;
-
-        border-radius: 24px;
-        background: linear-gradient(to bottom,  #646464 0%,#060606 100%);
-        box-shadow: 0 11px 11px 0 rgba(0, 5, 38, .45);
+        border-radius: 14px;
+        background: radial-gradient(103.73% 103.73% at 50% 3.25%, rgba(242, 242, 242, .12) 0%, rgba(242, 242, 242, .00) 100%), #000;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, .25) inset, 0 11px 11px 0 rgba(0, 5, 38, .45);
     }
 
 
@@ -371,12 +366,9 @@
     {
         position: relative;
 
-        flex: 1 0 auto;
+        height: 230px;
 
-        padding: 19px 19px 13px;
-
-        border-radius: 23px;
-        background: #060606;
+        border-radius: 14px;
     }
 
 
@@ -384,13 +376,13 @@
     {
         position: absolute;
         z-index: 3;
-        top: -1px;
-        left: -1px;
+        top: 0;
+        left: 0;
 
         display: block;
 
-        width: calc(100% + 2px);
-        height: calc(100% + 2px);
+        width: 100%;
+        height: 100%;
 
         content: '';
         pointer-events: none;
@@ -425,29 +417,70 @@
     .prize_pool .item .thumb
     {
         position: relative;
+        z-index: 1;
 
-        margin-bottom: 12px;
-        padding-bottom: 100%;
+        display: block;
 
-        border-radius: 12px;
+        width: 100%;
+        height: 190px;
+        max-height: 100%;
+
+        border-radius: 14px 14px 0 0;
+
+        object-fit: cover;
     }
 
 
-    .prize_pool .item .thumb img
+    .prize_pool .item .info
     {
         position: absolute;
-        z-index: 1;
+        z-index: 2;
+        bottom: 0;
+        left: 0;
+
+        overflow: hidden;
+
+        width: 100%;
+        padding: 20px 12px 10px;
+
+        border-radius: 0 0 14px 14px;
+    }
+
+
+    .prize_pool .item .info:before
+    {
+        position: absolute;
+        z-index: -1;
         top: 0;
         left: 0;
 
         display: block;
 
         width: 100%;
-        height: 100%;
+        height: 71px;
+        max-height: 100%;
 
-        border-radius: inherit;
+        content: '';
 
-        object-fit: cover;
+        background: linear-gradient(180deg, rgba(0, 0, 0, .00) 0%, #000 41.81%);
+    }
+
+
+    .prize_pool .item .info:after
+    {
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        left: 0;
+
+        display: block;
+
+        width: 100%;
+        height: calc(100% - 71px);
+
+        content: '';
+
+        background: #000;
     }
 
 

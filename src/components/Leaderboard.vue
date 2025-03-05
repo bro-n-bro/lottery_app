@@ -81,9 +81,9 @@
             </div>
         </div>
 
-        <img src="@/assets/bg_leaderboard_bottom1.svg" alt="" class="bg_bottom" loading="lazy">
+        <img src="@/assets/bg_leaderboard_bottom1.svg" alt="" class="bg_bottom">
 
-        <img src="@/assets/bg_leaderboard_bottom2.svg" alt="" class="bg_bottom2" loading="lazy">
+        <img src="@/assets/bg_leaderboard_bottom2.svg" alt="" class="bg_bottom2">
     </section>
 </template>
 
