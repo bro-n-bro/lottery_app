@@ -508,6 +508,7 @@ button
     overflow: visible;
 
     width: 100%;
+    padding: 105px 0 24px !important;
 
     pointer-events: none;
 }
@@ -515,7 +516,12 @@ button
 
 .vue-notification-wrapper
 {
-    padding: 105px 23px 24px 24px !important;
+    padding: 0 24px !important;
+}
+
+.vue-notification-wrapper + .vue-notification-wrapper
+{
+    margin-top: 12px;
 }
 
 
@@ -523,9 +529,26 @@ button
 {
     padding: 1px;
 
-    animation: notification 0.3s linear;
+    animation: notification .3s linear;
 
     border-radius: 10px;
+    background: linear-gradient(to bottom,  #7458f3 0%,#1b0045 100%);
+}
+
+
+.notification_wrap.success
+{
+    background: linear-gradient(to bottom,  #6dfd5d 0%,#07470f 100%);
+}
+
+.notification_wrap.error
+{
+    background: linear-gradient(to bottom,  #f3585a 0%,#460d00 100%);
+}
+
+.notification_wrap.copied
+{
+    background: linear-gradient(to bottom,  #fdd35d 0%,#4f4a04 100%);
 }
 
 
