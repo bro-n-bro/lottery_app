@@ -140,13 +140,18 @@ export const useGlobalStore = defineStore('global', {
                 // Keplr connected status
                 this.isKeplrConnected = true
 
+                // Clean notifications
+                notification.notify({
+                    group: 'keplr',
+                    clean: true
+                })
+
                 // Show notification
                 notification.notify({
                     group: 'default',
-                    speed: 200,
-                    duration: 1000,
-                    title: 'Keplr connected',
-                    type: 'success'
+                    speed: 100,
+                    duration: 750,
+                    title: 'Keplr connected'
                 })
 
                 try {
@@ -164,7 +169,7 @@ export const useGlobalStore = defineStore('global', {
                 // Show notification
                 notification.notify({
                     group: 'default',
-                    speed: 200,
+                    speed: 100,
                     duration: 1000,
                     title: 'Kepler connection error',
                     type: 'error'

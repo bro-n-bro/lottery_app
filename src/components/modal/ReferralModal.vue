@@ -65,10 +65,12 @@
     import { ref, inject } from 'vue'
     import { useGlobalStore } from '@/store'
     import { useClipboard } from '@vueuse/core'
+    import { useNotification } from '@kyvg/vue3-notification'
 
 
     const store = useGlobalStore(),
         emitter = inject('emitter'),
+        notification = useNotification(),
         isClosing = ref(false),
         refURL = ref(`https://lottery.brondro.io?ref=${store.user.referral_token}`),
         { copy } = useClipboard()
@@ -88,23 +90,23 @@
 
     // Copy handler
     function copyHandler() {
+        // Clean notifications
+        notification.notify({
+            group: 'default',
+            clean: true
+        })
+
+        // Show notification
+        notification.notify({
+            group: 'default',
+            speed: 100,
+            duration: 750,
+            title: 'Copied to clipboard',
+            type: 'copied'
+        })
+
         // Copy
         copy(refURL.value)
-
-        // // Clean notifications
-        // notification.notify({
-        //     group: 'default',
-        //     clean: true
-        // })
-
-        // // Show notification
-        // notification.notify({
-        //     group: 'default',
-        //     speed: 200,
-        //     duration: 1000,
-        //     title: i18n.global.t('message.notification_copied_title'),
-        //     type: 'copied'
-        // })
     }
 </script>
 
@@ -220,6 +222,8 @@
         width: 24px;
         height: 100%;
         margin: auto 0;
+
+        transition: opacity .2s linear;
     }
 
 
@@ -229,6 +233,12 @@
 
         width: 24px;
         height: 24px;
+    }
+
+
+    .field .copy_btn:hover
+    {
+        opacity: .5;
     }
 
 
