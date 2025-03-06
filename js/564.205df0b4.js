@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkbro_lottery"]=self["webpackChunkbro_lottery"]||[]).push([[564],{62183:function(r,e,t){t.r(e),t.d(e,{default:function(){return a}});var n=t(56768),s=t(81387);const l={class:"wallet_error"};var o={__name:"KeplrErrorPage",setup(r){(0,s.rd)();return(r,e)=>((0,n.uX)(),(0,n.CE)("section",l,e[0]||(e[0]=[(0,n.Lk)("div",{class:"cont"},null,-1)])))}};const u=o;var a=u}}]);
-//# sourceMappingURL=564.205df0b4.js.map
