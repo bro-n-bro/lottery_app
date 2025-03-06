@@ -318,4 +318,149 @@
 
         opacity: .5;
     }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .cont
+        {
+            height: 84px;
+        }
+
+
+        .menu
+        {
+            margin-left: 60px;
+
+            gap: 32px;
+        }
+
+
+        .balance
+        {
+            gap: 4px;
+        }
+
+
+        .balance .staked
+        {
+            font-size: 18px;
+
+            gap: 4px;
+        }
+
+
+        .balance .tickets
+        {
+            gap: 12px;
+        }
+
+
+        .balance .tickets > *
+        {
+            gap: 8px;
+        }
+
+
+        .balance .tickets svg
+        {
+            width: 28px;
+            height: 28px;
+        }
+
+
+        .connect_btn,
+        .address
+        {
+            padding: 12px 20px;
+
+            gap: 12px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .menu
+        {
+            display: none;
+        }
+
+
+        .balance
+        {
+            margin-left: auto;
+        }
+    }
+
+
+
+    @media print, (max-width: 767px)
+    {
+        .cont
+        {
+            height: 80px;
+        }
+
+
+        .address
+        {
+            display: none;
+        }
+    }
+
+
+
+    @media print, (max-width: 479px)
+    {
+        .cont
+        {
+            height: 72px;
+        }
+
+
+        .logo
+        {
+            width: 148px;
+        }
+
+
+        .balance .staked
+        {
+            font-size: 16px;
+        }
+
+
+        .balance .tickets > *
+        {
+            gap: 4px;
+        }
+
+
+        .balance .tickets svg
+        {
+            width: 24px;
+            height: 24px;
+        }
+
+
+        .connect_btn,
+        .address
+        {
+            font-size: 15px;
+
+            padding: 10px 16px;
+
+            gap: 8px;
+        }
+
+
+        .connect_btn svg
+        {
+            width: 24px;
+            height: 23px;
+        }
+    }
 </style>

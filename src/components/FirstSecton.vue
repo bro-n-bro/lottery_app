@@ -208,4 +208,176 @@
 
         width: 353px;
     }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .desc
+        {
+            font-size: 26px;
+
+            margin-top: 16px;
+        }
+
+
+        .exp
+        {
+            font-size: 20px;
+
+            margin-top: 16px;
+        }
+
+
+        .image_left
+        {
+            margin-left: -836px;
+        }
+
+
+        .image_right
+        {
+            margin-right: -780px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .first_section
+        {
+            padding: 80px 0;
+        }
+
+
+        .desc
+        {
+            font-size: 22px;
+        }
+
+
+        .exp
+        {
+            font-size: 18px;
+        }
+
+
+        .image_left
+        {
+            margin-left: -680px;
+        }
+
+
+        .image_left:before
+        {
+            width: 720px;
+            height: 720px;
+        }
+
+
+        .image_left img
+        {
+            width: 360px;
+        }
+
+
+        .image_right
+        {
+            margin-right: -640px;
+        }
+
+
+        .image_right:before
+        {
+            width: 720px;
+            height: 720px;
+        }
+
+
+        .image_right img
+        {
+            width: 300px;
+        }
+    }
+
+
+    @media print, (max-width: 1023px)
+    {
+        .first_section:before
+        {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+
+            display: block;
+
+            width: 813px;
+            height: 811px;
+            margin-top: 80px;
+
+            content: '';
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+
+            opacity: .4;
+            background: url('@/assets/first_section_light.svg') 0 0 /100% 100% no-repeat;
+        }
+
+
+        .desc
+        {
+            font-size: 20px;
+        }
+
+
+        .image_left,
+        .image_right
+        {
+            display: none;
+        }
+    }
+
+
+    @media (max-width: 767px)
+    {
+        .first_section
+        {
+            padding: 60px 0 68px;
+        }
+
+
+        .desc
+        {
+            font-size: 18px;
+
+            padding: 0 48px;
+        }
+
+
+        .btn
+        {
+            font-size: var(--font_size);
+
+            margin-top: 40px;
+            padding: 13px 32px 14px;
+        }
+
+
+        .exp
+        {
+            font-size: var(--font_size);
+        }
+    }
+
+
+
+    @media (max-width: 479px)
+    {
+        .desc
+        {
+            padding: 0 24px;
+        }
+    }
 </style>
