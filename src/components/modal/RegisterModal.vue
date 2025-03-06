@@ -74,9 +74,9 @@
 
     const store = useGlobalStore(),
         emitter = inject('emitter'),
+        notification = useNotification(),
         isClosing = ref(false),
-        loading = ref(false),
-        notification = useNotification()
+        loading = ref(false)
 
 
     onBeforeMount(() => {

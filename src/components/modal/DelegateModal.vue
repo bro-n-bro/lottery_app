@@ -194,6 +194,7 @@
 <script setup>
     import { ref, inject, onBeforeMount, watch, computed } from 'vue'
     import { useGlobalStore } from '@/store'
+    import { useNotification } from '@kyvg/vue3-notification'
     import { formatTokenAmount, formatTokenCost, calcTokenCost, signTx, sendTx } from '@/utils'
     import { MsgDelegate, MsgBeginRedelegate } from 'cosmjs-types/cosmos/staking/v1beta1/tx'
 
@@ -203,6 +204,7 @@
 
     const store = useGlobalStore(),
         emitter = inject('emitter'),
+        notification = useNotification(),
         isClosing = ref(false),
         isProcess = ref(false),
         activeTab = ref(1),
@@ -392,6 +394,20 @@
         // Set process status
         isProcess.value = true
 
+        // Clean notifications
+        notification.notify({
+            group: 'default',
+            clean: true
+        })
+
+        // Show notification
+        notification.notify({
+            group: 'default',
+            speed: 100,
+            duration: -100,
+            title: 'Transaction is pending...'
+        })
+
         try {
             // Sign Tx
             const txBytes = await signTx(msgAny.value)
@@ -399,14 +415,30 @@
             // Send Tx
             const result = await sendTx(txBytes)
 
-            console.log(result)
-
             if (result.code === 0) {
                 // Set Tx hash
                 store.currentTxHash = result.transactionHash
 
                 // Set process status
                 isProcess.value = false
+
+                // Clean notifications
+                notification.notify({
+                    group: 'default',
+                    clean: true
+                })
+
+                // Show notification
+                notification.notify({
+                    group: 'default',
+                    speed: 100,
+                    duration: 3000,
+                    title: 'Transaction successful',
+                    type: 'success',
+                    data: {
+                        explorer_link: (store.currentNetwork.explorer_link).replace('{tx_hash}', store.currentTxHash)
+                    }
+                })
 
                 // Close modal
                 closeHandler()
@@ -419,6 +451,21 @@
 
             // Set process status
             isProcess.value = false
+
+            // Clean notifications
+            notification.notify({
+                group: 'default',
+                clean: true
+            })
+
+            // Show notification
+            notification.notify({
+                group: 'default',
+                speed: 100,
+                duration: 1500,
+                title: 'Transaction failed',
+                type: 'error'
+            })
         }
     }
 </script>

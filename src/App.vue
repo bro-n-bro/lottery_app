@@ -7,7 +7,7 @@
 		<template #body="props">
 			<!-- Notification -->
 			<transition name="slideRight">
-			<div class="notification_wrap":class="{
+			<div class="notification_wrap" :class="{
 				success: props.item.type == 'success',
 				error: props.item.type == 'error',
 				copied: props.item.type == 'copied'

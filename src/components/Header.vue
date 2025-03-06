@@ -9,7 +9,7 @@
             <div class="menu">
                 <div><button class="btn scroll_btn" data-anchor="first_section">Lottery</button></div>
 
-                <div v-if="store.isKeplrConnected"><button class="btn scroll_btn" data-anchor="referrals">Referrals</button></div>
+                <div v-show="store.isKeplrConnected"><button class="btn scroll_btn" data-anchor="referrals">Referrals</button></div>
 
                 <div><button class="btn scroll_btn" data-anchor="prize_pool">Prize pool</button></div>
 
