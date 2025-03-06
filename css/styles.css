@@ -662,3 +662,24 @@ button
 
     text-decoration-thickness: 1px;
 }
+
+
+
+@media print, (max-width: 1023px)
+{
+    :root
+    {
+        --font_size: 16px;
+        --font_size_title: 40px;
+    }
+}
+
+
+
+@media (max-width: 479px)
+{
+    :root
+    {
+        --font_size_title: 35px;
+    }
+}
