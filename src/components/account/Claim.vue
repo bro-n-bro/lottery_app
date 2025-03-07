@@ -24,7 +24,7 @@
         height: 627px;
         margin-right: -716px;
 
-        background: url('@/assets/bg_claim.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_claim.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -43,7 +43,7 @@
         content: '';
         pointer-events: none;
 
-        background: url('@/assets/claim_sep.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/claim_sep.svg) 0 0/100% 100% no-repeat;
     }
 
     .claim:after
@@ -86,6 +86,6 @@
 
         text-transform: uppercase;
 
-        background: url('@/assets/bg_claim_btn.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_claim_btn.svg) 0 0/100% 100% no-repeat;
     }
 </style>

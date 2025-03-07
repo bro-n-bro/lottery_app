@@ -113,7 +113,7 @@
         transform: translateX(-50%);
         pointer-events: none;
 
-        background: url('@/assets/bg_referrals.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_referrals.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -127,7 +127,7 @@
     {
         height: 224px;
 
-        background: url('@/assets/bg_referrals_small.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_referrals_small.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -145,7 +145,7 @@
 
         pointer-events: none;
 
-        background: url('@/assets/referrals_title.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/referrals_title.svg) 0 0/100% 100% no-repeat;
     }
 
 

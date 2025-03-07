@@ -113,7 +113,7 @@
         transform: translateX(-50%);
         pointer-events: none;
 
-        background: url('@/assets/bg_prize_pool_data.png') 50% 100%/100% 100% no-repeat;
+        background: url(@/assets/bg_prize_pool_data.png) 50% 100%/100% 100% no-repeat;
     }
 
 
@@ -143,7 +143,7 @@
         white-space: nowrap;
         text-transform: uppercase;
 
-        background: url('@/assets/bg_prize_pool_title.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_prize_pool_title.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -205,7 +205,7 @@
         width: 27px;
         height: 30px;
 
-        background: url('@/assets/prize_pool_title_bulb.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/prize_pool_title_bulb.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -545,7 +545,7 @@
         width: 37px;
         height: 23px;
 
-        background: url('@/assets/prize_pool_bottom_bulb.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/prize_pool_bottom_bulb.svg) 0 0/100% 100% no-repeat;
     }
 
 

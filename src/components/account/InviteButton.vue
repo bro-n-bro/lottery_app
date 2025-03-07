@@ -124,7 +124,7 @@
         text-align: center;
         text-transform: capitalize;
 
-        background: url('@/assets/bg_invite_btn.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_invite_btn.svg) 0 0/100% 100% no-repeat;
 
         gap: 15px;
     }
@@ -143,7 +143,7 @@
         content: '';
         pointer-events: none;
 
-        background: url('@/assets/invite_btn_before.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/invite_btn_before.svg) 0 0/100% 100% no-repeat;
     }
 
 

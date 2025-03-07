@@ -149,7 +149,7 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
 
-        background: url('@/assets/first_section_light.svg') 0 0 /100% 100% no-repeat;
+        background: url(@/assets/first_section_light.svg) 0 0 /100% 100% no-repeat;
     }
 
 
@@ -195,7 +195,7 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
 
-        background: url('@/assets/first_section_light.svg') 0 0 /100% 100% no-repeat;
+        background: url(@/assets/first_section_light.svg) 0 0 /100% 100% no-repeat;
     }
 
 
@@ -322,7 +322,7 @@
             pointer-events: none;
 
             opacity: .4;
-            background: url('@/assets/first_section_light.svg') 0 0 /100% 100% no-repeat;
+            background: url(@/assets/first_section_light.svg) 0 0 /100% 100% no-repeat;
         }
 
 

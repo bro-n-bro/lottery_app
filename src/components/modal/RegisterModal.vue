@@ -180,7 +180,7 @@
         content: '';
         pointer-events: none;
 
-        background: url('@/assets/bg_register_modal.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_register_modal.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -200,7 +200,7 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
 
-        background: url('@/assets/bg_register_modal_points.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_register_modal_points.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -328,7 +328,7 @@
 
         text-transform: capitalize;
 
-        background: url('@/assets/bg_register_btn.svg') 0 0 /100% 100% no-repeat;
+        background: url(@/assets/bg_register_btn.svg) 0 0 /100% 100% no-repeat;
     }
 
 

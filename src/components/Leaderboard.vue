@@ -30,7 +30,7 @@
 
                             <div class="address">{{ winner.address.slice(0, 5) + '...' + winner.address.slice(-6) }}</div>
 
-                            <div class="staked">Staked: <span>{{ winner.staked_amount }} {{ store.currentNetwork.symbol }}</span></div>
+                            <div class="staked">Staked: <span>{{ winner.stake_diff }} {{ store.currentNetwork.symbol }}</span></div>
 
                             <div class="tickets">
                                 <span>{{ winner.tickets }}</span>
@@ -61,7 +61,7 @@
 
                             <div class="address">{{ staker.address.slice(0, 5) + '...' + staker.address.slice(-6) }}</div>
 
-                            <div class="staked">Staked: <span>{{ staker.staked_amount }} {{ store.currentNetwork.symbol }}</span></div>
+                            <div class="staked">Staked: <span>{{ staker.stake_diff }} {{ store.currentNetwork.symbol }}</span></div>
 
                             <div class="tickets">
                                 <span>{{ staker.tickets }}</span>
@@ -167,7 +167,7 @@
         transform: translateX(-50%);
         pointer-events: none;
 
-        background: url('@/assets/bg_leaderboard_title.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_leaderboard_title.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -190,7 +190,7 @@
         padding: 46px 57px 66px;
 
         border-radius: 42px;
-        background: url('@/assets/bg_leaderboard_data.svg') 50%/100% 100% no-repeat, linear-gradient(183deg, #d31200 -33.31%, #420600 131.84%);
+        background: url(@/assets/bg_leaderboard_data.svg) 50%/100% 100% no-repeat, linear-gradient(183deg, #d31200 -33.31%, #420600 131.84%);
     }
 
 
@@ -320,21 +320,21 @@
 
     .leaderboard .top_stakers .item:nth-child(1):before
     {
-        background: url('@/assets/bg_top_stakers_place1.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_top_stakers_place1.svg) 0 0/100% 100% no-repeat;
     }
 
     .leaderboard .top_stakers .item:nth-child(2):before
     {
         width: 1027px;
 
-        background: url('@/assets/bg_top_stakers_place2.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_top_stakers_place2.svg) 0 0/100% 100% no-repeat;
     }
 
     .leaderboard .top_stakers .item:nth-child(3):before
     {
         height: 47px;
 
-        background: url('@/assets/bg_top_stakers_place3.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_top_stakers_place3.svg) 0 0/100% 100% no-repeat;
     }
 
 
@@ -364,6 +364,8 @@
     {
         font-weight: 300;
 
+        width: 200px;
+        max-width: 100%;
         margin: 0 auto;
     }
 
@@ -384,7 +386,11 @@
         align-content: center;
         align-items: center;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: flex-end;
+
+        min-width: 100px;
+
+        text-align: right;
 
         gap: 6px;
     }
@@ -423,7 +429,7 @@
         text-align: center;
         text-transform: uppercase;
 
-        background: url('@/assets/bg_coming_soon.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_coming_soon.svg) 0 0/100% 100% no-repeat;
 
         filter: drop-shadow(0px 8px 22.7px rgba(60, 0, 0, .50));
     }
@@ -447,7 +453,7 @@
         transform: rotate(3.512deg);
         pointer-events: none;
 
-        background: url('@/assets/bg_coming_soon_before.svg') 0 0/100% 100% no-repeat;
+        background: url(@/assets/bg_coming_soon_before.svg) 0 0/100% 100% no-repeat;
     }
 
 
