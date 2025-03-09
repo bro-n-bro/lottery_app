@@ -107,6 +107,7 @@
         display: block;
 
         width: 1160px;
+        max-width: calc(100% + 60px);
         height: 424px;
 
         content: '';
@@ -292,5 +293,317 @@
         text-transform: uppercase;
 
         background: url(@/assets/bg_referrals_invite_btn.svg) 0 0/100% 100% no-repeat;
+    }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .referrals .empty .sub_title
+        {
+            font-size: 30px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .referrals
+        {
+            margin-bottom: 92px;
+        }
+
+
+        .referrals .data,
+        .referrals .data.small
+        {
+            width: 924px;
+            padding: 56px 48px 48px;
+        }
+
+
+        .referrals .data.small
+        {
+            height: 184px;
+        }
+
+
+        .referrals .data.small:before
+        {
+            height: 210px;
+        }
+
+
+        .referrals .empty .sub_title
+        {
+            font-size: 28px;
+        }
+
+
+        .referrals .empty .btn
+        {
+            font-size: 26px;
+
+            width: 252px;
+            height: 64px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1023px)
+    {
+        .referrals
+        {
+            margin-bottom: 80px;
+        }
+
+
+        .referrals .data,
+        .referrals .data.small
+        {
+            width: calc(100% - 48px);
+            height: 328px;
+            padding: 56px 32px 32px;
+        }
+
+
+        .referrals .data:before
+        {
+            max-width: calc(100% + 36px);
+            height: 352px;
+        }
+
+
+        .referrals .data.small
+        {
+            height: 230px;
+        }
+
+
+        .referrals .data.small:before
+        {
+            max-width: calc(100% + 36px);
+            height: 262px;
+        }
+
+
+        .referrals .item
+        {
+            font-size: 18px;
+
+            padding: 8px 20px;
+        }
+
+
+        .referrals .list
+        {
+            height: 240px;
+        }
+
+
+        .referrals .empty
+        {
+            padding: 16px;
+        }
+
+
+        .referrals .empty .sub_title
+        {
+            font-size: 24px;
+
+            width: 100%;
+
+            text-align: center;
+        }
+
+
+        .referrals .empty .btn
+        {
+            font-size: 24px;
+
+            width: 240px;
+            height: 60px;
+            margin: 12px auto 0;
+        }
+    }
+
+
+
+    @media print, (max-width: 767px)
+    {
+        .referrals
+        {
+            margin-bottom: 68px;
+            padding-top: 48px;
+        }
+
+
+        .referrals .title
+        {
+            top: -40px;
+
+            width: 181px;
+            height: 68px;
+        }
+
+
+        .referrals .empty
+        {
+            padding: 0;
+
+            border-radius: 0;
+            background: none;
+        }
+
+
+        .referrals .empty .sub_title
+        {
+            font-size: 22px;
+        }
+
+
+        .referrals .empty .btn
+        {
+            font-size: 20px;
+
+            width: 179px;
+            height: 46px;
+        }
+
+
+        .referrals .data,
+        .referrals .data.small
+        {
+            width: 400px;
+            height: 188px;
+            padding: 42px 24px 24px;
+
+            border-radius: 12px;
+        }
+
+
+        .referrals .data:before,
+        .referrals .data.small:before
+        {
+            top: -8px;
+
+            width: calc(100% + 24px);
+            max-width: calc(100% + 24px);
+            height: 208px;
+
+            background: url(@/assets/bg_mob_referrals.svg) 0 0/100% 100% no-repeat;
+        }
+
+
+        .referrals .list
+        {
+            height: 122px;
+            padding: 16px;
+
+            gap: 8px;
+        }
+
+
+        .referrals .item
+        {
+            font-size: 16px;
+
+            padding: 8px 16px;
+        }
+
+
+        .referrals .item .tickets svg
+        {
+            width: 24px;
+            height: 21px;
+        }
+    }
+
+
+
+    @media print, (max-width: 479px)
+    {
+        .referrals
+        {
+            margin-bottom: 60px;
+            padding-top: 40px;
+        }
+
+
+        .referrals .title
+        {
+            top: -32px;
+
+            width: 149px;
+            height: 56px;
+        }
+
+
+        .referrals .data,
+        .referrals .data.small
+        {
+            width: 306px;
+            height: 146px;
+            padding: 32px 16px 16px;
+        }
+
+
+        .referrals .data:before,
+        .referrals .data.small:before
+        {
+            top: -5px;
+
+            width: calc(100% + 24px);
+            max-width: calc(100% + 24px);
+            height: 167px;
+        }
+
+
+        .referrals .list
+        {
+            height: 98px;
+            padding: 10px;
+
+            gap: 4px;
+        }
+
+
+        .referrals .item
+        {
+            font-size: 14px;
+
+            padding: 4px 12px;
+        }
+
+
+        .referrals .item .number
+        {
+            width: 16px;
+        }
+
+
+        .referrals .item .tickets svg
+        {
+            width: 20px;
+            height: 18px;
+        }
+
+
+        .referrals .empty .sub_title
+        {
+            font-size: 18px;
+        }
+
+
+        .referrals .empty .btn
+        {
+            font-size: 18px;
+
+            width: 179px;
+            height: 46px;
+            margin-top: 8px;
+        }
     }
 </style>

@@ -490,4 +490,527 @@
         transform: translateX(-50%);
         pointer-events: none;
     }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .leaderboard .tabs .btn
+        {
+            font-size: 30px;
+
+            width: 360px;
+            height: 52px;
+        }
+
+
+        .leaderboard .coming_soon
+        {
+            font-size: 40px;
+
+            top: 90px;
+
+            width: 388px;
+            height: 100px;
+        }
+
+
+        .leaderboard .coming_soon:before
+        {
+            width: 330px;
+            height: 132px;
+            margin-bottom: -22px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .leaderboard .title
+        {
+            font-size: 32px;
+
+            height: 160px;
+            margin-bottom: -34px;
+        }
+
+
+        .leaderboard .title:before
+        {
+            width: 761px;
+            height: 160px;
+        }
+
+
+        .leaderboard .data
+        {
+            width: 980px;
+            height: 504px;
+            padding: 44px 48px 48px;
+
+            border-radius: 40px;
+        }
+
+
+        .leaderboard .tabs .btn
+        {
+            font-size: 28px;
+
+            width: 332px;
+        }
+
+
+        .leaderboard .coming_soon
+        {
+            font-size: 36px;
+
+            top: 82px;
+
+            width: 341px;
+            height: 88px;
+        }
+
+
+        .leaderboard .coming_soon:before
+        {
+            width: 300px;
+            height: 120px;
+            margin-bottom: -20px;
+        }
+
+
+        .leaderboard .item
+        {
+            font-size: 18px;
+        }
+
+
+        .leaderboard .item .staked
+        {
+            width: 180px;
+        }
+
+
+        .leaderboard .top_stakers .item:nth-child(1):before,
+        .leaderboard .top_stakers .item:nth-child(2):before,
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            width: calc(100% + 20px);
+            height: 43px;
+        }
+
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            height: 47px;
+        }
+
+
+        .leaderboard .bg_bottom
+        {
+            bottom: 9px;
+
+            width: 503px;
+            height: 60px;
+        }
+
+        .leaderboard .bg_bottom2
+        {
+            bottom: 9px;
+
+            width: 500px;
+            height: 80px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1023px)
+    {
+        .leaderboard
+        {
+            padding: 0 0 40px;
+        }
+
+
+        .leaderboard .title
+        {
+            font-size: 28px;
+
+            height: 124px;
+            margin-bottom: -28px;
+        }
+
+
+        .leaderboard .title:before
+        {
+            width: 594px;
+            height: 124px;
+        }
+
+
+        .leaderboard .data
+        {
+            width: 728px;
+            height: 440px;
+            padding: 44px 40px 44px;
+
+            border-radius: 32px;
+        }
+
+
+        .leaderboard .tabs .btn
+        {
+            font-size: 24px;
+
+            width: 280px;
+            height: 48px;
+        }
+
+
+        .leaderboard .coming_soon
+        {
+            font-size: 30px;
+
+            top: 70px;
+
+            width: 310px;
+            height: 80px;
+        }
+
+
+        .leaderboard .coming_soon:before
+        {
+            width: 250px;
+            height: 100px;
+            margin-bottom: -16px;
+        }
+
+
+        .leaderboard .tab_content
+        {
+            min-height: 296px;
+            padding: 24px;
+
+            border-radius: 24px;
+        }
+
+
+        .leaderboard .list
+        {
+            height: 252px;
+            padding: 8px 12px;
+
+            gap: 8px;
+        }
+
+
+        .leaderboard .item
+        {
+            font-size: 18px;
+        }
+
+
+        .leaderboard .item .staked
+        {
+            width: 168px;
+        }
+
+
+        .leaderboard .top_stakers .item:nth-child(1):before,
+        .leaderboard .top_stakers .item:nth-child(2):before,
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            width: calc(100% + 20px);
+            height: 43px;
+        }
+
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            height: 47px;
+        }
+
+
+        .leaderboard .bg_bottom
+        {
+            bottom: 12px;
+
+            width: 471px;
+            height: 56px;
+        }
+
+        .leaderboard .bg_bottom2
+        {
+            bottom: -2px;
+
+            width: 450px;
+            height: 72px;
+        }
+    }
+
+
+
+    @media print, (max-width: 767px)
+    {
+        .leaderboard .title
+        {
+            font-size: 24px;
+
+            height: 100px;
+            margin-bottom: -22px;
+        }
+
+
+        .leaderboard .title:before
+        {
+            width: 479px;
+            height: 100px;
+        }
+
+
+        .leaderboard .data
+        {
+            width: 440px;
+            height: 300px;
+            padding: 32px 28px 36px;
+
+            border-radius: 24px;
+        }
+
+
+        .leaderboard .tabs .btn
+        {
+            font-size: 18px;
+
+            width: 50%;
+            height: 44px;
+        }
+
+
+        .leaderboard .coming_soon
+        {
+            font-size: 24px;
+
+            top: 55px;
+
+            width: 248px;
+            height: 64px;
+        }
+
+
+        .leaderboard .coming_soon:before
+        {
+            width: 200px;
+            height: 80px;
+            margin-bottom: -13px;
+        }
+
+
+        .leaderboard .tab_content
+        {
+            min-height: 196px;
+            padding: 20px;
+
+            border-radius: 0 0 20px 20px;
+        }
+
+
+        .leaderboard .list
+        {
+            height: 172px;
+        }
+
+
+        .leaderboard .item
+        {
+            font-size: 16px;
+
+            padding: 8px 16px;
+        }
+
+
+        .leaderboard .top_stakers .item:nth-child(1):before,
+        .leaderboard .top_stakers .item:nth-child(2):before,
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            width: calc(100% + 8px);
+            height: 37px;
+        }
+
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            height: 40px;
+        }
+
+
+        .leaderboard .item .staked
+        {
+            display: none;
+        }
+
+
+        .leaderboard .item .tickets
+        {
+            margin-left: auto;
+        }
+
+
+        .leaderboard .item .tickets svg
+        {
+            width: 24px;
+            height: 21px;
+        }
+
+
+        .leaderboard .bg_bottom
+        {
+            bottom: 10px;
+
+            width: 336px;
+            height: 40px;
+        }
+
+        .leaderboard .bg_bottom2
+        {
+            bottom: 2px;
+
+            width: 375px;
+            height: 60px;
+        }
+    }
+
+
+
+    @media print, (max-width: 479px)
+    {
+        .leaderboard
+        {
+            padding: 0 0 24px;
+        }
+
+
+        .leaderboard .title
+        {
+            font-size: 20px;
+
+            height: 80px;
+            margin-bottom: -22px;
+        }
+
+
+        .leaderboard .title:before
+        {
+            width: 383px;
+            height: 80px;
+        }
+
+
+        .leaderboard .data
+        {
+            width: 335px;
+            height: 240px;
+            padding: 32px 20px 32px;
+
+            border-radius: 20px;
+        }
+
+
+        .leaderboard .tabs .btn
+        {
+            font-size: 14px;
+
+            height: 44px;
+        }
+
+
+        .leaderboard .coming_soon
+        {
+            font-size: 20px;
+
+            top: 40px;
+
+            width: 217px;
+            height: 56px;
+        }
+
+
+        .leaderboard .coming_soon:before
+        {
+            width: 160px;
+            height: 64px;
+            margin-bottom: -10px;
+        }
+
+
+        .leaderboard .tab_content
+        {
+            min-height: 140px;
+            padding: 16px;
+
+            border-radius: 0 0 12px 12px;
+        }
+
+
+        .leaderboard .list
+        {
+            height: 124px;
+            padding: 4px 8px;
+
+            gap: 4px;
+        }
+
+
+        .leaderboard .item
+        {
+            font-size: 14px;
+
+            padding: 4px 12px;
+
+            border-radius: 4px;
+        }
+
+
+        .leaderboard .top_stakers .item:nth-child(1):before,
+        .leaderboard .top_stakers .item:nth-child(2):before,
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            width: calc(100% + 6px);
+            height: 26px;
+        }
+
+        .leaderboard .top_stakers .item:nth-child(3):before
+        {
+            height: 28px;
+        }
+
+
+        .leaderboard .item .number
+        {
+            width: 16px;
+        }
+
+
+        .leaderboard .item .tickets svg
+        {
+            width: 20px;
+            height: 18px;
+        }
+
+
+        .leaderboard .bg_bottom
+        {
+            bottom: 0;
+
+            width: 288px;
+            height: 32px;
+        }
+
+        .leaderboard .bg_bottom2
+        {
+            bottom: -6px;
+
+            width: 300px;
+            height: 48px;
+        }
+    }
 </style>

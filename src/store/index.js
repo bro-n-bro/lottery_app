@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useNotification } from '@kyvg/vue3-notification'
+import { useLocalStorage } from '@vueuse/core'
 import { createKeplrOfflineSinger } from '@/utils'
 
 
@@ -13,6 +14,7 @@ export const useGlobalStore = defineStore('global', {
         isKeplrConnecting: false,
         isAvailableBalancesGot: false,
         isUserInfoGot: false,
+        isFirstConnection: useLocalStorage('isFirstConnection', true),
 
         showRegisterModal: false,
 
@@ -81,6 +83,11 @@ export const useGlobalStore = defineStore('global', {
 
                 // Load prize poll
                 await this.loadPrizePool()
+
+                // Connect Keplr
+                if (!this.isFirstConnection) {
+                    await this.connectKeplr()
+                }
             } catch (error) {
                 console.error(error)
             }
@@ -136,6 +143,9 @@ export const useGlobalStore = defineStore('global', {
 
                 // Create Keplr offline singer
                 await createKeplrOfflineSinger(this.currentNetwork.chain_id)
+
+                // First connection status
+                this.isFirstConnection = false
 
                 // Keplr connected status
                 this.isKeplrConnected = true

@@ -71,7 +71,9 @@
 			})
 
 			// Init
-			await store.init()
+			if (window.keplr) {
+				await store.init()
+			}
 		} catch (error) {
             console.error('Error initializating app:', error)
         }
