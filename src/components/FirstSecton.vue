@@ -14,7 +14,7 @@
             </button>
 
             <!-- First section - Explanation -->
-            <div class="exp">Stake with Bro and increase your chances!</div>
+            <div class="exp">Stake with Bro and get extra rewards!</div>
         </div>
 
 
