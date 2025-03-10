@@ -785,19 +785,19 @@
 
         .our_bros .title
         {
-            font-size: 26px;
+            font-size: 24px;
 
-            top: -30px;
+            top: -26px;
 
-            width: 257px;
-            height: 60px;
+            width: 223px;
+            height: 52px;
         }
 
 
         .our_bros .data
         {
-            padding-top: 68px;
-            padding-bottom: 48px;
+            padding-top: 64px;
+            padding-bottom: 44px;
         }
 
 

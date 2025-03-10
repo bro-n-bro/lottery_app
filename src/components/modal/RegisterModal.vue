@@ -473,4 +473,97 @@
     {
         animation: blink2 1s infinite steps(1, end) reverse;
     }
+
+
+
+    @media (max-width: 767px)
+    {
+        .data
+        {
+            width: 400px;
+            height: 366px;
+            padding: 48px 32px 24px;
+        }
+
+
+        .data:after
+        {
+            width: 445px;
+            height: 404px;
+        }
+
+
+        .text
+        {
+            font-size: 16px;
+
+            width: 100%;
+        }
+
+
+        .btn
+        {
+            font-size: 24px;
+
+            width: 339px;
+            height: 60px;
+        }
+
+
+        .bulbs
+        {
+            width: 481px;
+            height: 432px;
+            margin-top: 4px;
+        }
+    }
+
+
+
+    @media (max-width: 479px)
+    {
+        .data
+        {
+            width: 327px;
+            height: 300px;
+            padding: 48px 24px 24px;
+        }
+
+
+        .data:after
+        {
+            width: 356px;
+            height: 330px;
+        }
+
+
+        .text
+        {
+            font-size: 14px;
+        }
+
+
+        .btn
+        {
+            font-size: 22px;
+
+            width: 280px;
+            height: 50px;
+            padding-bottom: 4px;
+        }
+
+
+        .bulbs
+        {
+            width: 382px;
+            height: 347px;
+        }
+
+
+        .bulbs .bulb
+        {
+            width: 32px;
+            height: 32px;
+        }
+    }
 </style>

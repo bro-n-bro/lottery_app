@@ -429,6 +429,68 @@ button
 
 
 
+@media (max-width: 767px)
+{
+    .modal_content
+    {
+        padding: 104px 24px 24px;
+    }
+
+
+    .modal .close_btn
+    {
+        width: 44px;
+        height: 45px;
+    }
+
+
+    .modal .close_btn svg
+    {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    .modal_title
+    {
+        font-size: 24px;
+
+        top: -36px;
+
+        width: 258px;
+        height: 68px;
+        padding-bottom: 6px;
+    }
+
+
+    .modal_title span:last-child
+    {
+        margin-top: -3px;
+
+        text-shadow: 0 6px 4px #5f2b00;
+
+        -webkit-text-stroke: 6px #5f2b00;
+    }
+}
+
+
+
+@media (max-width: 479px)
+{
+    .modal_title
+    {
+        font-size: 22px;
+
+        top: -32px;
+
+        width: 228px;
+        height: 60px;
+        padding-bottom: 5px;
+    }
+}
+
+
+
 /*----------------
     Animations
 ----------------*/

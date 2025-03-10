@@ -423,7 +423,7 @@
 
         width: 100%;
         height: 190px;
-        max-height: 100%;
+        max-height: calc(100% - 20px);
 
         border-radius: 14px 14px 0 0;
 
@@ -579,5 +579,313 @@
     .prize_pool .bulbs .bulb:nth-child(even):before
     {
         animation: blink 1s infinite steps(1, end) reverse;
+    }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .prize_pool .data
+        {
+            padding: 196px 64px 120px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .prize_pool
+        {
+            margin-bottom: 32px;
+        }
+
+
+        .prize_pool .data
+        {
+            height: 728px;
+            padding: 180px 0 106px;
+        }
+
+
+        .prize_pool .title
+        {
+            font-size: 28px;
+
+            width: 489px;
+            height: 100px;
+            padding-bottom: 0;
+        }
+
+
+        .prize_pool .title span:last-child
+        {
+            margin-top: 0;
+
+            text-shadow: 0 6px 4px #5f2b00;
+
+            -webkit-text-stroke: 6px #5f2b00;
+        }
+
+
+        .prize_pool .title_bulbs
+        {
+            top: 38px;
+
+            width: 510px;
+            height: 140px;
+        }
+
+
+        .prize_pool .row
+        {
+            margin-bottom: -32px;
+            margin-left: -40px;
+        }
+
+
+        .prize_pool .row > *
+        {
+            max-width: calc(20% - 40px);
+            margin-bottom: 32px;
+            margin-left: 40px;
+        }
+
+
+        .prize_pool .item
+        {
+            height: 204px;
+
+            border-radius: 12px;
+        }
+
+
+        .prize_pool .item .thumb
+        {
+            border-radius: 12px 12px 0 0;
+        }
+
+
+        .prize_pool .item .info
+        {
+            border-radius: 0 0 12px 12px;
+        }
+
+
+        .prize_pool .bulbs
+        {
+            bottom: 74px;
+
+            width: calc(100% - 24px);
+        }
+    }
+
+
+
+    @media print, (max-width: 1023px)
+    {
+        .prize_pool .data
+        {
+            height: 728px;
+            padding: 180px 0 106px;
+        }
+
+
+        .prize_pool .title
+        {
+            font-size: 24px;
+
+            width: 391px;
+            height: 80px;
+        }
+
+
+        .prize_pool .title_bulbs
+        {
+            top: 28px;
+
+            transform: scale(.8);
+        }
+
+
+        .prize_pool .data
+        {
+            height: 664px;
+            padding: 160px 0 96px;
+        }
+
+
+        .prize_pool .row
+        {
+            margin-bottom: -24px;
+            margin-left: -40px;
+        }
+
+
+        .prize_pool .row > *
+        {
+            max-width: calc(33.333% - 40px);
+            margin-bottom: 24px;
+            margin-left: 40px;
+        }
+
+
+        .prize_pool .item
+        {
+            height: 190px;
+        }
+
+
+        .prize_pool .bulbs
+        {
+            bottom: 68px;
+
+            width: calc(100% - 24px);
+        }
+
+
+        .prize_pool .bulbs :nth-last-child(1),
+        .prize_pool .bulbs :nth-last-child(2)
+        {
+            display: none;
+        }
+
+
+        .prize_pool .bulbs .bulb
+        {
+            width: 32px;
+            height: 20px;
+        }
+
+
+        .prize_pool .bulbs .bulb:before
+        {
+            width: 76px;
+            height: 76px;
+        }
+    }
+
+
+
+    @media (max-width: 767px)
+    {
+        .prize_pool
+        {
+            margin-bottom: 68px;
+        }
+
+
+        .prize_pool .data
+        {
+            width: 355px;
+            max-width: 100%;
+            height: 760px;
+            margin: 0 auto;
+            padding: 132px 40px 32px;
+        }
+
+
+        .prize_pool .title
+        {
+            font-size: 20px;
+
+            top: 32px;
+
+            width: 337px;
+            height: 68px;
+        }
+
+
+        .prize_pool .title_bulbs
+        {
+            top: -4px;
+            right: auto;
+            left: 50%;
+
+            transform: translateX(-50%) scale(.68);
+        }
+
+
+        .prize_pool .data:before
+        {
+            top: auto;
+            bottom: 0;
+
+            width: 355px;
+            height: 669px;
+
+            background: url(@/assets/bg_mob_prize_pool_data.png) 50% 100% / 100% 100% no-repeat;
+        }
+
+
+        .prize_pool .row
+        {
+            margin-bottom: -12px;
+            margin-left: -12px;
+        }
+
+        .prize_pool .row > *
+        {
+            width: calc(50% - 12px);
+            max-width: calc(50% - 12px);
+            margin-bottom: 12px;
+            margin-left: 12px;
+        }
+
+
+        .prize_pool .item
+        {
+            height: 140px;
+        }
+
+
+        .prize_pool .item .info
+        {
+            padding: 20px 8px 8px;
+        }
+
+
+        .prize_pool .item .collection
+        {
+            font-size: 10px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .prize_pool .item .name
+        {
+            font-size: 12px;
+        }
+
+
+        .prize_pool .bulbs
+        {
+            bottom: 12px;
+
+            width: calc(100% - 64px);
+        }
+
+
+        .prize_pool .bulbs :nth-last-child(3),
+        .prize_pool .bulbs :nth-last-child(4),
+        .prize_pool .bulbs :nth-last-child(5)
+        {
+            display: none;
+        }
+
+
+        .prize_pool .bulbs .bulb
+        {
+            width: 24px;
+            height: 15px;
+        }
+
+
+        .prize_pool .bulbs .bulb:before
+        {
+            width: 60px;
+            height: 60px;
+        }
     }
 </style>

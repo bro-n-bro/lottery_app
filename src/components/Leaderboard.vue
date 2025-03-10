@@ -752,6 +752,12 @@
 
     @media print, (max-width: 767px)
     {
+        .leaderboard
+        {
+            margin-bottom: 60px;
+        }
+
+
         .leaderboard .title
         {
             font-size: 24px;

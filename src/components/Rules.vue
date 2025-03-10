@@ -294,6 +294,12 @@
 
     @media (max-width: 479px)
     {
+        .rules
+        {
+            margin-bottom: 48px;
+        }
+
+
         .rules .data
         {
             padding: 16px 16px 20px;

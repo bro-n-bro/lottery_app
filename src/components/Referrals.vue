@@ -356,7 +356,7 @@
     {
         .referrals
         {
-            margin-bottom: 80px;
+            margin-bottom: 68px;
         }
 
 
@@ -435,7 +435,7 @@
     {
         .referrals
         {
-            margin-bottom: 68px;
+            margin-bottom: 60px;
             padding-top: 48px;
         }
 
@@ -527,7 +527,7 @@
     {
         .referrals
         {
-            margin-bottom: 60px;
+            margin-bottom: 52px;
             padding-top: 40px;
         }
 
