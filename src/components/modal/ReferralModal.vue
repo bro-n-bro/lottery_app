@@ -72,7 +72,7 @@
         emitter = inject('emitter'),
         notification = useNotification(),
         isClosing = ref(false),
-        refURL = ref(`https://lottery.brondro.io?ref=${store.user.referral_token}`),
+        refURL = ref(`https://lottery.bronbro.io?ref=${store.user.referral_token}`),
         { copy } = useClipboard()
 
 
