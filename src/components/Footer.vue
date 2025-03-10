@@ -2,7 +2,7 @@
     <footer>
         <div class="data">
             <div class="cont row">
-                <div class="title">Have questions? Feel free to contact with us.</div>
+                <div class="title">Have questions? Feel free to contact us.</div>
 
                 <div class="socials">
                     <a href="https://github.com/bro-n-bro" target="_blank" rel="noopener nofollow">
