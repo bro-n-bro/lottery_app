@@ -357,6 +357,8 @@
     .leaderboard .item .address
     {
         font-weight: 500;
+        width: 140px;
+        max-width: 100%;
     }
 
 
