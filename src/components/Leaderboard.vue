@@ -357,6 +357,7 @@
     .leaderboard .item .address
     {
         font-weight: 500;
+
         width: 140px;
         max-width: 100%;
     }
@@ -848,6 +849,12 @@
         .leaderboard .top_stakers .item:nth-child(3):before
         {
             height: 40px;
+        }
+
+
+        .leaderboard .item .address
+        {
+            width: auto;
         }
 
 
