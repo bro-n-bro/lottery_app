@@ -55,4 +55,4 @@
 
 ---
 
-**Stay tuned for updates and announcements on our official channels!**
+**Stay tuned for updates and announcements on our [official channels](https://t.me/bro_n_bro_community/5009)!**
