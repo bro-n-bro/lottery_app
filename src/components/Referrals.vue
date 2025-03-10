@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="empty" v-else>
-                    <div class="sub_title">Envite your friend and get extra tickets</div>
+                    <div class="sub_title">Invite your friend and get extra tickets</div>
 
                     <button class="btn" @click.prevent="openModal()">INVITE</button>
                 </div>
