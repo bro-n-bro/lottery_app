@@ -437,6 +437,14 @@ button
     }
 
 
+    .modal .data
+    {
+        padding: 48px 32px 32px;
+
+        border-radius: 32px;
+    }
+
+
     .modal .close_btn
     {
         width: 44px;
@@ -453,7 +461,7 @@ button
 
     .modal_title
     {
-        font-size: 24px;
+        font-size: 22px;
 
         top: -36px;
 
@@ -477,9 +485,15 @@ button
 
 @media (max-width: 479px)
 {
+    .modal .data
+    {
+        border-radius: 28px;
+    }
+
+
     .modal_title
     {
-        font-size: 22px;
+        font-size: 20px;
 
         top: -32px;
 
@@ -724,6 +738,95 @@ button
 
     text-decoration-thickness: 1px;
 }
+
+
+
+@media print, (max-width: 1279px)
+{
+    .notification
+    {
+        min-height: 72px;
+        padding: 7px 11px 7px 15px;
+    }
+
+
+    .notification .icon
+    {
+        width: 40px;
+        height: 44px;
+    }
+
+
+    .notification .icon + *
+    {
+        width: calc(100% - 56px);
+    }
+
+
+    .notification .title
+    {
+        font-size: 18px;
+    }
+
+
+    .notification .desc
+    {
+        font-size: 13px;
+    }
+}
+
+
+
+@media (max-width: 767px)
+{
+    .vue-notification-group
+    {
+        padding: 96px 0 24px !important;
+    }
+}
+
+
+
+@media (max-width: 479px)
+{
+    .vue-notification-group
+    {
+        padding: 88px 0 24px !important;
+    }
+
+
+    .vue-notification-wrapper
+    {
+        padding: 0 20px !important;
+    }
+
+
+    .notification .icon
+    {
+        width: 37px;
+        height: 40px;
+    }
+
+
+    .notification .icon + *
+    {
+        width: calc(100% - 53px);
+    }
+
+
+    .notification .title
+    {
+        font-size: 16px;
+    }
+
+
+    .notification .desc
+    {
+        font-size: 12px;
+    }
+}
+
+
 
 
 

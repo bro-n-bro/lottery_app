@@ -619,4 +619,389 @@
     {
         animation: blink 1s infinite steps(1, end) reverse;
     }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .main_data
+        {
+            transform: scale(.9);
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .main_data
+        {
+            transform: scale(.75);
+        }
+    }
+
+
+
+    @media print, (max-width: 1023px)
+    {
+        .main_data
+        {
+            height: 471px;
+            padding: 68px 44px 64px;
+
+            transform: none;
+        }
+
+
+        .title
+        {
+            font-size: 40px;
+
+            top: -36px;
+
+            width: 304px;
+            height: 72px;
+        }
+
+
+        .wheel
+        {
+            width: 300px;
+        }
+
+
+        .wheel:before
+        {
+            width: 400px;
+            height: 400px;
+        }
+
+
+        .wheel .timer
+        {
+            font-size: 26px;
+
+            width: 234px;
+            height: 42px;
+        }
+
+
+        .data_wrap
+        {
+            width: 320px;
+            padding: 2px;
+        }
+
+
+        .data
+        {
+            min-height: 380px;
+            padding: 18px;
+
+            border-radius: 18px;
+        }
+
+
+        .data .info
+        {
+            font-size: 20px;
+        }
+
+
+        .data .exp
+        {
+            font-size: 24px;
+        }
+
+
+        .data .exp svg
+        {
+            width: 44px;
+            height: 44px;
+        }
+
+
+        .data .btn
+        {
+            font-size: 26px;
+
+            width: 280px;
+            height: 64px;
+        }
+    }
+
+
+
+    @media print, (max-width: 767px)
+    {
+        .main_data
+        {
+            width: 326px;
+            height: 562px;
+            padding: 40px 32px 32px;
+
+            background: url(@/assets/bg_mob_main_data.svg) 50% / 100% 100% no-repeat;
+        }
+
+
+        .title
+        {
+            font-size: 28px;
+
+            width: 236px;
+            height: 56px;
+            padding-bottom: 2px;
+        }
+
+        .title span:last-child
+        {
+            margin-top: -1px;
+
+            text-shadow: 0 6px 4px #5f2b00;
+
+            -webkit-text-stroke: 6px #5f2b00;
+        }
+
+
+        .wheel
+        {
+            width: 197px;
+            margin: 0 auto 10px;
+        }
+
+
+        .wheel:before
+        {
+            width: 300px;
+            height: 300px;
+        }
+
+
+        .wheel .timer
+        {
+            font-size: 22px;
+
+            width: 178px;
+            height: 32px;
+        }
+
+
+        .data_wrap
+        {
+            padding: 1px;
+
+            border-radius: 12px;
+        }
+
+
+        .data
+        {
+            min-height: 228px;
+            padding: 12px;
+
+            border-radius: 11px;
+        }
+
+
+        .data .info
+        {
+            font-size: 16px;
+
+            gap: 2px;
+        }
+
+
+        .data .exp
+        {
+            font-size: 20px;
+        }
+
+
+        .data .exp svg
+        {
+            width: 36px;
+            height: 36px;
+        }
+
+
+        .data .btn
+        {
+            font-size: 22px;
+
+            width: 228px;
+            height: 52px;
+        }
+
+
+        .bulb1
+        {
+            top: -25px;
+            left: 7.668%;
+        }
+
+        .bulb2
+        {
+            top: -25px;
+            right: 7.668%;
+            left: auto;
+        }
+
+        .bulb3
+        {
+            top: 4.804%;
+            right: -25px;
+            left: auto;
+
+            transform: rotate(90deg);
+        }
+
+        .bulb4
+        {
+            top: 17.259%;
+            right: -25px;
+
+            transform: rotate(90deg);
+        }
+
+        .bulb5
+        {
+            top: 29.715%;
+            right: -25px;
+
+            transform: rotate(90deg);
+        }
+
+        .bulb6
+        {
+            top: 42.170%;
+            right: -25px;
+
+            transform: rotate(90deg);
+        }
+
+        .bulb7
+        {
+            top: 54.626%;
+            right: -25px;
+        }
+
+        .bulb8
+        {
+            top: 67.082%;
+            right: -25px;
+        }
+
+        .bulb9
+        {
+            top: 79.537%;
+            right: -25px;
+        }
+
+        .bulb10
+        {
+            top: 91.993%;
+            right: -25px;
+        }
+
+        .bulb11
+        {
+            top: auto;
+            right: 7.668%;
+            bottom: -25px;
+
+            transform: rotate(180deg);
+        }
+
+        .bulb12
+        {
+            right: 34.356%;
+            bottom: -25px;
+        }
+
+        .bulb13
+        {
+            right: 59.202%;
+            bottom: -25px;
+        }
+
+        .bulb14
+        {
+            right: auto;
+            bottom: -25px;
+            left: 7.668%;
+        }
+
+        .bulb15
+        {
+            top: 91.993%;
+            right: auto;
+            left: -25px;
+
+            transform: rotate(-90deg);
+        }
+
+        .bulb16
+        {
+            top: 79.537%;
+            right: auto;
+            left: -25px;
+
+            transform: rotate(-90deg);
+        }
+
+        .bulb17
+        {
+            top: 67.082%;
+            right: auto;
+            left: -25px;
+
+            transform: rotate(-90deg);
+        }
+
+        .bulb18
+        {
+            top: 54.626%;
+            bottom: auto;
+            left: -25px;
+
+            transform: rotate(-90deg);
+        }
+
+        .bulb19
+        {
+            top: 42.170%;
+            bottom: auto;
+            left: -25px;
+
+            transform: rotate(-90deg);
+        }
+
+        .bulb20
+        {
+            top: 29.715%;
+            bottom: auto;
+            left: -25px;
+
+            transform: rotate(-90deg);
+        }
+
+        .bulb21
+        {
+            top: 17.259%;
+            left: -25px;
+        }
+
+        .bulb22
+        {
+            top: 4.804%;
+            left: -25px;
+        }
+
+        .bulb23,
+        .bulb24,
+        .bulb25
+        {
+            display: none;
+        }
+    }
 </style>

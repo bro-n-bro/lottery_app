@@ -1241,4 +1241,197 @@
     {
         animation: blink2 1s infinite steps(1, end) reverse;
     }
+
+
+
+    @media (max-width: 767px)
+    {
+        .data
+        {
+            width: 392px;
+            height: 448px;
+            padding: 0 24px 24px;
+        }
+
+
+        .data:after
+        {
+            width: 440px;
+            height: 496px;
+        }
+
+
+        .tabs
+        {
+            width: calc(100% + 48px);
+            margin-right: -24px;
+            margin-bottom: 20px;
+            margin-left: -24px;
+        }
+
+
+        .tabs .btn
+        {
+            font-size: 24px;
+
+            width: 197px;
+            height: 80px;
+            padding: 30px 20px 16px;
+        }
+
+
+        .form .bg
+        {
+            padding: 20px;
+        }
+
+
+        .form .validator .label
+        {
+            font-size: 13px;
+        }
+
+
+        .form .validator .name
+        {
+            font-size: 20px;
+
+            margin-top: 0;
+        }
+
+
+        .form .validator
+        {
+            margin-bottom: 16px;
+            padding: 4px 0;
+        }
+
+
+        .form .balances
+        {
+            margin-bottom: 16px;
+        }
+
+
+        .form .balances > *
+        {
+            width: calc(50% - 4px);
+        }
+
+
+        .form .amount
+        {
+            width: 220px;
+        }
+
+
+        .form .amount .label
+        {
+            font-size: 13px;
+        }
+
+
+        .form .tickets svg
+        {
+            width: 24px;
+            height: 19px;
+        }
+
+
+        .form .submit_btn
+        {
+            font-size: 24px;
+
+            width: 233px;
+            height: 60px;
+            padding-bottom: 2px;
+        }
+
+
+        .bulbs
+        {
+            width: 474px;
+            height: 514px;
+        }
+    }
+
+
+
+    @media (max-width: 479px)
+    {
+        .data
+        {
+            width: 327px;
+            height: 408px;
+            padding: 0 20px 20px;
+        }
+
+
+        .data:after
+        {
+            width: 356px;
+            height: 440px;
+        }
+
+
+        .tabs
+        {
+            width: calc(100% + 40px);
+            margin-right: -20px;
+            margin-left: -20px;
+        }
+
+
+        .tabs .btn
+        {
+            font-size: 20px;
+
+            width: 162px;
+            height: 64px;
+            padding-top: 28px;
+        }
+
+
+        .form .bg
+        {
+            padding: 12px;
+        }
+
+
+        .form .amount
+        {
+            width: 184px;
+        }
+
+
+        .form .input,
+        .form .max_btn
+        {
+            font-size: 14px;
+        }
+
+
+        .form .submit_btn
+        {
+            font-size: 22px;
+
+            width: 218px;
+            height: 56px;
+            padding-bottom: 4px;
+        }
+
+
+        .bulbs
+        {
+            width: 381px;
+            height: 448px;
+        }
+
+
+        .bulbs .bulb
+        {
+            width: 32px;
+            height: 32px;
+        }
+    }
 </style>

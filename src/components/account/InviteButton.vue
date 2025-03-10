@@ -154,4 +154,76 @@
         width: 80px;
         height: 46px;
     }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .invite_btn
+        {
+            font-size: 28px;
+
+            left: 16px;
+
+            width: 148px;
+            height: 194px;
+            margin-left: 0;
+        }
+
+
+        .invite_btn:before
+        {
+            width: 148px;
+            height: 292px;
+        }
+
+
+        .invite_btn svg
+        {
+            width: 72px;
+            height: 41px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .invite_btn
+        {
+            font-size: 24px;
+
+            top: 148px;
+            left: 8px;
+
+            width: 124px;
+            height: 161px;
+
+            gap: 10px;
+        }
+
+
+        .invite_btn:before
+        {
+            width: 120px;
+            height: 236px;
+        }
+
+
+        .invite_btn svg
+        {
+            width: 60px;
+            height: 35px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1023px)
+    {
+        .invite_btn
+        {
+            display: none;
+        }
+    }
 </style>

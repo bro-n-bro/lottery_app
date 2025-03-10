@@ -77,4 +77,34 @@
 
         padding: 69px 0 97px;
     }
+
+
+
+    @media print, (max-width: 1439px)
+    {
+        .account_info
+        {
+            padding: 60px 0 80px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .account_info
+        {
+            padding: 0 0 20px;
+        }
+    }
+
+
+
+    @media print, (max-width: 1023px)
+    {
+        .account_info
+        {
+            padding: 80px 0;
+        }
+    }
 </style>

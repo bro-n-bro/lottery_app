@@ -17,7 +17,7 @@
                 </div>
 
                 <!-- Modal data -->
-                <div class="text">Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets. Text about copy link, friends and extra tickets.</div>
+                <div class="text">Share your unique referral link with friends and earn rewards!<br> Simply copy the link below and send it to your friends.<br> When they sign up and stake tokens using your link, you both get rewarded!</div>
 
                 <div class="field_wrap">
                     <div class="field">
@@ -393,5 +393,232 @@
     .bulbs .bulb:nth-child(even)
     {
         animation: blink2 1s infinite steps(1, end) reverse;
+    }
+
+
+
+    @media print, (max-width: 1023px)
+    {
+        .data
+        {
+            height: 216px;
+        }
+
+
+        .data:after
+        {
+            width: 720px;
+            height: 260px;
+        }
+
+
+        .bulbs
+        {
+            width: 756px;
+            height: 296px;
+        }
+    }
+
+
+
+    @media (max-width: 767px)
+    {
+        .data
+        {
+            width: 392px;
+            height: 448px;
+        }
+
+
+        .data:before
+        {
+            background: url(@/assets/bg_delegate_modal.svg) 0 0/100% 100% no-repeat;
+        }
+
+
+        .data:after
+        {
+            width: 440px;
+            height: 496px;
+
+            background: url(@/assets/bg_delegate_modal_points.svg) 0 0/100% 100% no-repeat;
+        }
+
+
+        .text
+        {
+            margin-bottom: 24px;
+        }
+
+
+        .field
+        {
+            font-size: 14px;
+        }
+
+
+        .bulbs
+        {
+            width: 474px;
+            height: 514px;
+        }
+
+
+        .bulbs .bulb:nth-child(1)
+        {
+            top: 2px;
+            right: auto;
+            left: 1.852%;
+        }
+
+        .bulbs .bulb:nth-child(2)
+        {
+            top: 2px;
+            right: 1.852%;
+            left: auto;
+        }
+
+        .bulbs .bulb:nth-child(3)
+        {
+            top: 13.338%;
+            right: 0;
+        }
+
+        .bulbs .bulb:nth-child(4)
+        {
+            top: 29.104%;
+            right: 0;
+        }
+
+        .bulbs .bulb:nth-child(5)
+        {
+            top: 45%;
+            right: 0;
+        }
+
+        .bulbs .bulb:nth-child(6)
+        {
+            top: 60.5%;
+            right: 0;
+        }
+
+        .bulbs .bulb:nth-child(7)
+        {
+            top: 76%;
+            right: 0;
+        }
+
+        .bulbs .bulb:nth-child(8)
+        {
+            right: 2.818%;
+            bottom: 1.096%;
+        }
+
+        .bulbs .bulb:nth-child(9)
+        {
+            right: 19.777%;
+            bottom: -8px;
+        }
+
+        .bulbs .bulb:nth-child(10)
+        {
+            right: 36.5%;
+            bottom: -8px;
+        }
+
+        .bulbs .bulb:nth-child(11)
+        {
+            right: 53.318%;
+            bottom: -8px;
+        }
+
+        .bulbs .bulb:nth-child(12)
+        {
+            right: 70%;
+            bottom: -8px;
+        }
+
+        .bulbs .bulb:nth-child(13)
+        {
+            bottom: 1.096%;
+            left: 4%;
+        }
+
+        .bulbs .bulb:nth-child(14)
+        {
+            top: 76%;
+            left: 0;
+        }
+
+        .bulbs .bulb:nth-child(15)
+        {
+            top: 60.5%;
+            left: 0;
+        }
+
+        .bulbs .bulb:nth-child(16)
+        {
+            top: 45%;
+            left: 0;
+        }
+
+        .bulbs .bulb:nth-child(17)
+        {
+            top: 29.104%;
+            left: 0;
+        }
+
+        .bulbs .bulb:nth-child(18)
+        {
+            top: 13.646%;
+            left: 0;
+        }
+    }
+
+
+
+    @media (max-width: 479px)
+    {
+        .data
+        {
+            width: 327px;
+            height: 408px;
+            padding: 0 20px 20px;
+        }
+
+
+        .data:after
+        {
+            width: 356px;
+            height: 440px;
+        }
+
+
+        .text
+        {
+            font-size: 15px;
+        }
+
+
+        .field
+        {
+            font-size: 13px;
+
+            padding-left: 11px;
+        }
+
+
+        .bulbs
+        {
+            width: 381px;
+            height: 448px;
+        }
+
+
+        .bulbs .bulb
+        {
+            width: 32px;
+            height: 32px;
+        }
     }
 </style>
