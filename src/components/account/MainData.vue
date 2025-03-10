@@ -826,7 +826,7 @@
 
         .data .btn
         {
-            font-size: 22px;
+            font-size: 20px;
 
             width: 228px;
             height: 52px;

@@ -915,7 +915,7 @@
         {
             width: 335px;
             height: 240px;
-            padding: 32px 20px 32px;
+            padding: 28px 20px;
 
             border-radius: 20px;
         }
@@ -925,7 +925,7 @@
         {
             font-size: 14px;
 
-            height: 44px;
+            height: 36px;
         }
 
 
@@ -950,7 +950,7 @@
 
         .leaderboard .tab_content
         {
-            min-height: 140px;
+            min-height: 148px;
             padding: 16px;
 
             border-radius: 0 0 12px 12px;
@@ -959,7 +959,7 @@
 
         .leaderboard .list
         {
-            height: 124px;
+            height: 132px;
             padding: 4px 8px;
 
             gap: 4px;
