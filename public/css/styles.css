@@ -679,7 +679,8 @@ button
 }
 
 
-.notification .icon svg
+.notification .icon svg,
+.notification .icon img
 {
     display: block;
 
@@ -798,6 +799,12 @@ button
     .vue-notification-wrapper
     {
         padding: 0 20px !important;
+    }
+
+
+    .notification
+    {
+        min-height: 64px;
     }
 
 

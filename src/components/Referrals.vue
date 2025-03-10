@@ -9,7 +9,8 @@
                 <TheLoader v-if="loading" />
 
                 <!-- Referrals -->
-                <div class="list" v-else-if="store.user.referrals?.length">
+                <template v-else-if="store.user.referrals?.length">
+                <div class="list">
                     <!-- Referral -->
                     <div class="item" v-for="(referral, index) in store.user.referrals" :key="index">
                         <div class="number"></div>
@@ -26,6 +27,17 @@
                     </div>
                 </div>
 
+                <div class="ref_url">
+                    <span>{{ refURL }}</span>
+
+                    <button class="copy_btn" @click.prevent="copyHandler()">
+                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.2857 15.5137H11.1429C10.7696 15.5137 10.4643 15.2043 10.4643 14.8262V3.82617C10.4643 3.44805 10.7696 3.13867 11.1429 3.13867H17.0846L19.9643 6.05625V14.8262C19.9643 15.2043 19.6589 15.5137 19.2857 15.5137ZM11.1429 17.5762H19.2857C20.7828 17.5762 22 16.343 22 14.8262V6.05625C22 5.51055 21.7837 4.98633 21.402 4.59961L18.5266 1.68203C18.1449 1.29531 17.6275 1.07617 17.0888 1.07617H11.1429C9.64576 1.07617 8.42857 2.30938 8.42857 3.82617V14.8262C8.42857 16.343 9.64576 17.5762 11.1429 17.5762ZM5.71429 6.57617C4.21719 6.57617 3 7.80937 3 9.32617V20.3262C3 21.843 4.21719 23.0762 5.71429 23.0762H13.8571C15.3542 23.0762 16.5714 21.843 16.5714 20.3262V18.9512H14.5357V20.3262C14.5357 20.7043 14.2304 21.0137 13.8571 21.0137H5.71429C5.34107 21.0137 5.03571 20.7043 5.03571 20.3262V9.32617C5.03571 8.94805 5.34107 8.63867 5.71429 8.63867H7.07143V6.57617H5.71429Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+                </template>
+
                 <div class="empty" v-else>
                     <div class="sub_title">Invite your friend and get extra tickets</div>
 
@@ -40,6 +52,8 @@
 <script setup>
     import { ref, inject, onBeforeMount } from 'vue'
     import { useGlobalStore } from '@/store'
+    import { useClipboard } from '@vueuse/core'
+    import { useNotification } from '@kyvg/vue3-notification'
 
     // Components
     import TheLoader from '@/components/Loader.vue'
@@ -47,7 +61,10 @@
 
     const store = useGlobalStore(),
         emitter = inject('emitter'),
-        loading = ref(false)
+        notification = useNotification(),
+        loading = ref(false),
+        refURL = ref(`https://lottery.bronbro.io?ref=${store.user.referral_token}`),
+        { copy } = useClipboard()
 
 
     onBeforeMount(async () => {
@@ -67,6 +84,28 @@
     function openModal() {
         // Event "show_referral_modal"
         emitter.emit('show_referral_modal')
+    }
+
+
+    // Copy handler
+    function copyHandler() {
+        // Clean notifications
+        notification.notify({
+            group: 'default',
+            clean: true
+        })
+
+        // Show notification
+        notification.notify({
+            group: 'default',
+            speed: 100,
+            duration: 750,
+            title: 'Copied to clipboard',
+            type: 'copied'
+        })
+
+        // Copy
+        copy(refURL.value)
     }
 </script>
 
@@ -90,7 +129,7 @@
         max-width: 100%;
         height: 396px;
         margin: 0 auto;
-        padding: 51px;
+        padding: 51px 51px 41px;
 
         border-radius: 42px;
         background: radial-gradient(106.93% 106.93% at 50% 0%, rgba(52, 255, 38, .40) 0%, rgba(53, 255, 38, .00) 100%), #002e05;
@@ -156,7 +195,7 @@
         overflow: auto;
         flex-direction: column;
 
-        height: 295px;
+        height: 244px;
         padding: 20px;
 
         counter-reset: number;
@@ -255,6 +294,67 @@
     .referrals .item .tickets.inactive
     {
         opacity: .4;
+    }
+
+
+
+    .referrals .ref_url
+    {
+        font-size: 20px;
+        font-weight: 500;
+
+        position: relative;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        margin-top: 20px;
+        padding: 8px 15px;
+
+        border-radius: 6px;
+        background: rgba(0, 0, 0, .70);
+        box-shadow: 0 2px 4.5px 0 rgba(255, 255, 255, .15), 0 -2px 4.5px 0 rgba(38, 0, 0, .45);
+    }
+
+
+
+    .referrals .ref_url .copy_btn
+    {
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        right: 16px;
+        bottom: 0;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        width: 24px;
+        height: 100%;
+        margin: auto 0;
+
+        transition: opacity .2s linear;
+    }
+
+
+    .referrals .ref_url .copy_btn svg
+    {
+        display: block;
+
+        width: 24px;
+        height: 24px;
+    }
+
+
+    .referrals .ref_url .copy_btn:hover
+    {
+        opacity: .5;
     }
 
 
@@ -399,7 +499,13 @@
 
         .referrals .list
         {
-            height: 240px;
+            height: 181px;
+        }
+
+
+        .referrals .ref_url
+        {
+            font-size: 18px;
         }
 
 
@@ -476,22 +582,22 @@
         .referrals .data,
         .referrals .data.small
         {
-            width: 400px;
-            height: 188px;
-            padding: 42px 24px 24px;
+            width: 420px;
+            height: 241px;
+            padding: 40px 24px 24px;
 
-            border-radius: 12px;
+            border-radius: 20px;
         }
 
 
         .referrals .data:before,
         .referrals .data.small:before
         {
-            top: -8px;
+            top: -6px;
 
-            width: calc(100% + 24px);
-            max-width: calc(100% + 24px);
-            height: 208px;
+            width: calc(100% + 40px);
+            max-width: calc(100% + 40px);
+            height: 250px;
 
             background: url(@/assets/bg_mob_referrals.svg) 0 0/100% 100% no-repeat;
         }
@@ -499,7 +605,7 @@
 
         .referrals .list
         {
-            height: 122px;
+            height: 121px;
             padding: 16px;
 
             gap: 8px;
@@ -518,6 +624,14 @@
         {
             width: 24px;
             height: 21px;
+        }
+
+
+        .referrals .ref_url
+        {
+            font-size: 16px;
+
+            margin-top: 16px;
         }
     }
 
@@ -544,26 +658,28 @@
         .referrals .data,
         .referrals .data.small
         {
-            width: 306px;
-            height: 146px;
+            width: 335px;
+            height: 194px;
             padding: 32px 16px 16px;
+
+            border-radius: 16px;
         }
 
 
         .referrals .data:before,
         .referrals .data.small:before
         {
-            top: -5px;
+            top: -3px;
 
-            width: calc(100% + 24px);
-            max-width: calc(100% + 24px);
-            height: 167px;
+            width: calc(100% + 18px);
+            max-width: calc(100% + 18px);
+            height: 200px;
         }
 
 
         .referrals .list
         {
-            height: 98px;
+            height: 97px;
             padding: 10px;
 
             gap: 4px;
@@ -588,6 +704,23 @@
         {
             width: 20px;
             height: 18px;
+        }
+
+
+        .referrals .ref_url
+        {
+            font-size: 13px;
+            line-height: 17px;
+
+            padding-left: 10px;
+        }
+
+
+        .referrals .ref_url .copy_btn
+        {
+            right: 12px;
+
+            width: 20px;
         }
 
 
