@@ -143,6 +143,7 @@
         display: block;
 
         max-width: 100%;
+        height: 44px;
     }
 
 
@@ -397,8 +398,24 @@
 
 
 
-    @media print, (max-width: 767px)
+    @media print, (max-width: 1023px)
     {
+        .logo img
+        {
+            height: 40px;
+        }
+    }
+
+
+
+    @media (max-width: 767px)
+    {
+        .logo img
+        {
+            height: 36px;
+        }
+
+
         .cont
         {
             height: 80px;
@@ -421,9 +438,10 @@
         }
 
 
-        .logo
+        .logo img
         {
             width: 148px;
+            height: auto;
         }
 
 
@@ -463,4 +481,5 @@
             height: 23px;
         }
     }
+
 </style>
