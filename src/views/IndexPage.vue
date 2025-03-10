@@ -11,7 +11,7 @@
     </KeepAlive>
 
     <!-- Referrals -->
-    <TheReferrals v-if="store.isKeplrConnected" />
+    <TheReferrals v-if="store.isUserInfoGot" />
 
     <!-- Prize pool -->
     <KeepAlive>
