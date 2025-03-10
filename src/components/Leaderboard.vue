@@ -4,7 +4,7 @@
         <div class="cont">
             <!-- Title -->
             <div class="title">
-                <span>Lederboard</span>
+                <span>Leaderboard</span>
             </div>
 
             <div class="data">
