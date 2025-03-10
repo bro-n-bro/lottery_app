@@ -11,7 +11,7 @@
                 <!-- Tabs -->
                 <div class="tabs">
                     <!-- Tabs button -->
-                    <button class="btn" @click.prevent="activeTab = 1" :class="{ active: activeTab === 1 }">Last Round Winers</button>
+                    <button class="btn" @click.prevent="activeTab = 1" :class="{ active: activeTab === 1 }">Last Round Winners</button>
 
                     <!-- Tabs button -->
                     <button class="btn" @click.prevent="activeTab = 2" :class="{ active: activeTab === 2 }">Top Stakers</button>
