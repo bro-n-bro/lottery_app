@@ -57,7 +57,7 @@
                                     <span class="symbol">{{ store.currentNetwork.symbol }}</span>
                                 </div>
 
-                                <div class="cost">${{ calcTokenCost(formatTokenCost(formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent))) }}</div>
+                                <div class="cost">${{ formatTokenCost(calcTokenCost(formatTokenAmount(store.availableBalance[0].amount, store.currentNetwork.exponent))) }}</div>
                             </div>
 
                             <div>

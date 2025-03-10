@@ -8,15 +8,21 @@
 			<!-- Notification -->
 			<transition name="slideRight">
 			<div class="notification_wrap" :class="{
-				success: props.item.type == 'success',
-				error: props.item.type == 'error',
-				copied: props.item.type == 'copied'
+				success: props.item.type === 'success',
+				error: props.item.type === 'error',
+				copied: props.item.type === 'copied'
 			}">
 				<div class="notification">
 					<!-- Notification icon -->
 					<div class="icon">
+						<!-- Success icon -->
+						<img src="/images/ic_notification_success.svg" alt="" v-if="props.item.type === 'success' || props.item.type === 'copied'">
+
+						<!-- Error icon -->
+						<img src="/images/ic_notification_error.svg" alt="" v-else-if="props.item.type === 'error'">
+
 						<!-- Loader -->
-						<TheLoader />
+						<TheLoader v-else />
 					</div>
 
 					<div>
