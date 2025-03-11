@@ -2,7 +2,7 @@
     <section class="rules" id="rules">
         <div class="cont">
             <div class="data">
-                <div class="title">Rules</div>
+                <div class="title">Steps to Win</div>
 
                 <div class="row">
                     <div class="item">

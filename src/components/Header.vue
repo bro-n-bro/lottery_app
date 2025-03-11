@@ -17,7 +17,7 @@
 
                 <div><button class="btn scroll_btn" data-anchor="our_bros">Bros</button></div>
 
-                <div><button class="btn scroll_btn" data-anchor="rules">Rules</button></div>
+                <div><button class="btn scroll_btn" data-anchor="rules">Steps to Win</button></div>
             </div>
 
             <!-- Connect wallet button -->
@@ -159,7 +159,7 @@
         justify-content: flex-start;
 
         margin-right: auto;
-        margin-left: 124px;
+        margin-left: 80px;
 
         text-transform: capitalize;
 
@@ -332,9 +332,11 @@
 
         .menu
         {
+            font-size: 16px;
+
             margin-left: 60px;
 
-            gap: 32px;
+            gap: 28px;
         }
 
 
@@ -481,5 +483,4 @@
             height: 23px;
         }
     }
-
 </style>
