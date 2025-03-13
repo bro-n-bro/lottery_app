@@ -780,10 +780,30 @@
         .leaderboard .data
         {
             width: 440px;
-            height: 300px;
+            height: 379px;
             padding: 32px 28px 36px;
 
             border-radius: 24px;
+            background: linear-gradient(183deg, #d31200 -33.31%, #420600 131.84%);
+        }
+
+
+        .leaderboard .data:before
+        {
+            position: absolute;
+            z-index: 1;
+            top: -4px;
+            left: -4px;
+
+            display: block;
+
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+
+            content: '';
+            pointer-events: none;
+
+            background: url(@/assets/bg_mob_leaderboard_data.svg) 50% / 100% 100% no-repeat;
         }
 
 
@@ -817,7 +837,7 @@
 
         .leaderboard .tab_content
         {
-            min-height: 196px;
+            min-height: 276px;
             padding: 20px;
 
             border-radius: 0 0 20px 20px;
@@ -826,7 +846,7 @@
 
         .leaderboard .list
         {
-            height: 172px;
+            height: 252px;
         }
 
 
@@ -879,7 +899,7 @@
 
         .leaderboard .bg_bottom
         {
-            bottom: 10px;
+            bottom: 9px;
 
             width: 336px;
             height: 40px;
@@ -887,7 +907,7 @@
 
         .leaderboard .bg_bottom2
         {
-            bottom: 2px;
+            bottom: -2px;
 
             width: 375px;
             height: 60px;
@@ -922,8 +942,8 @@
 
         .leaderboard .data
         {
-            width: 335px;
-            height: 240px;
+            width: 346px;
+            height: 298px;
             padding: 28px 20px;
 
             border-radius: 20px;
@@ -959,7 +979,7 @@
 
         .leaderboard .tab_content
         {
-            min-height: 148px;
+            min-height: 216px;
             padding: 16px;
 
             border-radius: 0 0 12px 12px;
@@ -968,7 +988,7 @@
 
         .leaderboard .list
         {
-            height: 132px;
+            height: 200px;
             padding: 4px 8px;
 
             gap: 4px;
@@ -1014,7 +1034,7 @@
 
         .leaderboard .bg_bottom
         {
-            bottom: 0;
+            bottom: -1px;
 
             width: 288px;
             height: 32px;
@@ -1022,7 +1042,7 @@
 
         .leaderboard .bg_bottom2
         {
-            bottom: -6px;
+            bottom: -11px;
 
             width: 300px;
             height: 48px;
