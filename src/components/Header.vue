@@ -17,7 +17,7 @@
 
                 <div><button class="btn scroll_btn" data-anchor="our_bros">Bros</button></div>
 
-                <div><button class="btn scroll_btn" data-anchor="rules">Steps to Win</button></div>
+                <div><button class="btn scroll_btn" data-anchor="steps">Steps to Win</button></div>
             </div>
 
             <!-- Connect wallet button -->

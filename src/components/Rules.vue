@@ -1,8 +1,14 @@
 <template>
-    <section class="rules" id="rules">
+    <section class="steps" id="steps">
         <div class="cont">
             <div class="data">
-                <div class="title">Steps to Win</div>
+                <div class="title">
+                    <span>Steps to Win</span>
+
+                    <button class="btn" @click.prevent="openRulesModal()">
+                        <img src="@/assets/ic_rules_btn.svg" alt="" loading="lazy">
+                    </button>
+                </div>
 
                 <div class="row">
                     <div class="item">
@@ -59,11 +65,41 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Rukes modal -->
+    <TheRulesModal v-if="showRulesModal" />
 </template>
 
 
+<script setup>
+    import { ref, inject } from 'vue'
+
+    // Components
+    import TheRulesModal from '@/components/modal/RulesModal.vue'
+
+
+    const emitter = inject('emitter'),
+        showRulesModal = ref(false)
+
+
+    // Open rules modal
+    function openRulesModal() {
+        // Show rules modal
+        showRulesModal.value = true
+    }
+
+
+    // Event "hide_rules_modal"
+    emitter.on('hide_rules_modal', () => {
+        // Hide rules modal
+        showRulesModal.value = false
+    })
+</script>
+
+
 <style scoped>
-    .rules
+    .steps
     {
         position: relative;
         z-index: 3;
@@ -72,7 +108,7 @@
     }
 
 
-    .rules .data
+    .steps .data
     {
         padding: 14px 30px;
 
@@ -83,24 +119,47 @@
     }
 
 
-    .rules .title
+    .steps .title
     {
         font-size: 32px;
         font-weight: 500;
 
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+
         margin-bottom: 12px;
 
         text-align: center;
+
+        gap: 17px;
     }
 
 
-    .rules .row
+    .steps .title .btn
+    {
+        margin-bottom: -10px;
+    }
+
+
+    .steps .title img
+    {
+        display: block;
+
+        width: 42px;
+        height: 42px;
+    }
+
+
+    .steps .row
     {
         justify-content: space-between;
     }
 
 
-    .rules .item
+    .steps .item
     {
         font-size: 22px;
         font-weight: 500;
@@ -110,7 +169,7 @@
 
 
 
-    .rules .item .icon
+    .steps .item .icon
     {
         display: flex;
         align-content: center;
@@ -123,7 +182,7 @@
     }
 
 
-    .rules .item .icon svg
+    .steps .item .icon svg
     {
         display: block;
 
@@ -132,14 +191,14 @@
     }
 
 
-    .rules .sep
+    .steps .sep
     {
         display: block;
 
         margin-top: 12px;
     }
 
-    .rules .sep.reverse
+    .steps .sep.reverse
     {
         align-self: flex-end;
 
@@ -153,25 +212,25 @@
 
     @media print, (max-width: 1439px)
     {
-        .rules
+        .steps
         {
             margin-bottom: 68px;
         }
 
 
-        .rules .data
+        .steps .data
         {
             padding: 16px 32px 20px;
         }
 
 
-        .rules .item
+        .steps .item
         {
             font-size: 20px;
         }
 
 
-        .rules .item .icon
+        .steps .item .icon
         {
             height: 60px;
         }
@@ -181,43 +240,43 @@
 
     @media print, (max-width: 1279px)
     {
-        .rules
+        .steps
         {
             margin-bottom: 60px;
         }
 
 
-        .rules .data
+        .steps .data
         {
             padding: 16px 28px 20px;
         }
 
 
-        .rules .title
+        .steps .title
         {
             font-size: 30px;
         }
 
 
-        .rules .item
+        .steps .item
         {
             font-size: 18px;
         }
 
 
-        .rules .item .icon
+        .steps .item .icon
         {
             height: 52px;
         }
 
 
-        .rules .sep
+        .steps .sep
         {
             width: 56px;
             margin-top: 10px;
         }
 
-        .rules .sep.reverse
+        .steps .sep.reverse
         {
             margin-bottom: 20px;
         }
@@ -227,7 +286,7 @@
 
     @media print, (max-width: 1023px)
     {
-        .rules .data
+        .steps .data
         {
             padding: 16px 24px 20px;
 
@@ -236,7 +295,7 @@
         }
 
 
-        .rules .title
+        .steps .title
         {
             font-size: 28px;
 
@@ -244,25 +303,25 @@
         }
 
 
-        .rules .row
+        .steps .row
         {
             gap: 40px 24px;
         }
 
 
-        .rules .item
+        .steps .item
         {
             width: calc(50% - 12px);
         }
 
 
-        .rules .item .icon
+        .steps .item .icon
         {
             height: 48px;
         }
 
 
-        .rules .sep
+        .steps .sep
         {
             display: none;
         }
@@ -272,19 +331,34 @@
 
     @media (max-width: 767px)
     {
-        .rules .title
+        .steps .title
         {
             font-size: 26px;
+
+            gap: 12px;
         }
 
 
-        .rules .item
+        .steps .title .btn
+        {
+            margin-bottom: -8px;
+        }
+
+
+        .steps .title img
+        {
+            width: 32px;
+            height: 32px;
+        }
+
+
+        .steps .item
         {
             font-size: var(--font_size);
         }
 
 
-        .rules .item .icon
+        .steps .item .icon
         {
             height: 40px;
         }
@@ -294,31 +368,31 @@
 
     @media (max-width: 479px)
     {
-        .rules
+        .steps
         {
             margin-bottom: 48px;
         }
 
 
-        .rules .data
+        .steps .data
         {
             padding: 16px 16px 20px;
         }
 
 
-        .rules .row
+        .steps .row
         {
             gap: 32px 24px;
         }
 
 
-        .rules .title
+        .steps .title
         {
             font-size: 24px;
         }
 
 
-        .rules .item .icon
+        .steps .item .icon
         {
             height: 32px;
         }
