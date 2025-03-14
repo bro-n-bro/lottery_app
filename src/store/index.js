@@ -161,6 +161,9 @@ export const useGlobalStore = defineStore('global', {
                 } catch (error) {
                     throw error
                 }
+
+                // Keplr connecting status
+                this.isKeplrConnecting = false
             } catch (error) {
                 // Keplr connecting status
                 this.isKeplrConnecting = false
