@@ -274,7 +274,7 @@ export const useGlobalStore = defineStore('global', {
                     Object.assign(this.user, data.address_info)
 
                     // Get user prizes
-                    await this.getUserPrizes()
+                    // await this.getUserPrizes()
 
                     // User info status
                     this.isUserInfoGot = true

@@ -11,9 +11,9 @@
         </KeepAlive>
 
         <!-- Claim -->
-        <KeepAlive>
+        <!-- <KeepAlive>
         <TheClaim v-if="store.user.prizes.length" />
-        </KeepAlive>
+        </KeepAlive> -->
     </section>
 
     <!-- Referral modal -->
@@ -31,7 +31,7 @@
     // Components
     import TheInviteButton from '@/components/account/InviteButton.vue'
     import TheMainData from '@/components/account/MainData.vue'
-    import TheClaim from '@/components/account/Claim.vue'
+    // import TheClaim from '@/components/account/Claim.vue'
 
     import TheReferralModal from '@/components/modal/ReferralModal.vue'
     import TheDelegateModal from '@/components/modal/DelegateModal.vue'
