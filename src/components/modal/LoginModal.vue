@@ -1,0 +1,505 @@
+<template>
+    <!-- Login modal -->
+    <section class="modal" :class="{ closing: isClosing }">
+        <div class="modal_content">
+            <div class="data">
+                <!-- Modal title -->
+                <div class="modal_title">
+                    <span>Admin</span>
+                    <span>Admin</span>
+                </div>
+
+                <!-- Title -->
+                <div class="title">Log In</div>
+
+                <!-- Modal data -->
+                 <div class="bg">
+                    <div class="line">
+                        <div class="field">
+                            <input type="text" class="input" v-model="username" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="line">
+                        <div class="field">
+                            <input type="password" class="input" v-model="password" placeholder="Password">
+                        </div>
+                    </div>
+                 </div>
+
+                 <button class="btn" @click.prevent="login()">
+                    <span>Log in</span>
+                </button>
+
+
+                <div class="bulbs">
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                    <div class="bulb"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal overlay -->
+    <div class="modal_overlay" :class="{ closing: isClosing }"></div>
+</template>
+
+
+<script setup>
+    import { ref, inject } from 'vue'
+
+
+    const emitter = inject('emitter'),
+        isClosing = ref(false),
+        username = ref(''),
+        password = ref('')
+
+
+    // Close modal
+    function closeHandler() {
+        // Closing animation
+        isClosing.value = true
+
+        setTimeout(() => {
+            // Event "hide_login_modal"
+            emitter.emit('hide_login_modal')
+        }, 200)
+    }
+
+
+    // Login
+    function login() {
+
+    }
+</script>
+
+
+<style scoped>
+    .data
+    {
+        display: flex;
+        flex-direction: column;
+
+        width: 450px;
+        height: 412px;
+        padding: 63px 33px 24px;
+    }
+
+
+    .data:before
+    {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        content: '';
+        pointer-events: none;
+
+        background: url(@/assets/bg_register_modal.svg) 0 0/100% 100% no-repeat;
+    }
+
+
+    .data:after
+    {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+
+        width: 508px;
+        height: 461px;
+
+        content: '';
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        background: url(@/assets/bg_register_modal_points.svg) 0 0/100% 100% no-repeat;
+    }
+
+
+    .loader_wrap
+    {
+        z-index: 10;
+
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        margin: auto;
+
+        border-radius: 33px;
+
+        inset: 0;
+    }
+
+
+    .text
+    {
+        font-size: 18px;
+        font-weight: 500;
+
+        width: 340px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .ref_code
+    {
+        width: 340px;
+        max-width: 100%;
+        margin: 17px auto 0;
+    }
+
+
+    .ref_code .label
+    {
+        font-size: 14px;
+
+        padding: 0 10px;
+    }
+
+
+    .ref_code .field ::-webkit-input-placeholder
+    {
+        color: rgba(255,255,255,.6);
+    }
+
+    .ref_code .field :-moz-placeholder
+    {
+        color: rgba(255,255,255,.6);
+    }
+
+    .ref_code .field ::-moz-placeholder
+    {
+        opacity: 1;
+        color: rgba(255,255,255,.6);
+    }
+
+    .ref_code .field :-ms-input-placeholder
+    {
+        color: rgba(255,255,255,.6);
+    }
+
+
+    .ref_code .field
+    {
+        position: relative;
+
+        padding: 1px;
+
+        border-radius: 10px;
+        background: linear-gradient(to bottom,  #5d33ce 0%,#200750 100%);
+    }
+
+
+    .ref_code .input,
+    .ref_code .input:focus
+    {
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 500;
+
+        display: block;
+
+        width: 100%;
+        height: 46px;
+        padding: 0 15px;
+
+        color: currentColor;
+        border: 1px solid transparent;
+        border-radius: 9px;
+        background: #06000e;
+    }
+
+
+    .ref_code .input:-webkit-autofill
+    {
+        -webkit-box-shadow: inset 0 0 0 50px #170232 !important;
+    }
+
+
+    .ref_code .input.error
+    {
+        border-color: #f00;
+    }
+
+    .ref_code .input.success
+    {
+        border-color: #00aa63;
+    }
+
+
+    .btn
+    {
+        font-size: 28px;
+        font-weight: 900;
+
+        display: block;
+
+        width: 384px;
+        height: 68px;
+        margin: auto auto 0;
+
+        text-transform: capitalize;
+
+        background: url(@/assets/bg_register_btn.svg) 0 0 /100% 100% no-repeat;
+    }
+
+
+
+    .bulbs
+    {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        width: 540px;
+        height: 477px;
+        margin-top: 10px;
+
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+
+
+    .bulbs .bulb
+    {
+        position: absolute;
+
+        width: 43px;
+        height: 43px;
+
+        border-radius: 50%;
+        background: radial-gradient(49.99% 49.99% at 50.01% 50%, #fff 0%, #fff 20.75%, rgba(255, 255, 216, .93) 26%, rgba(255, 255, 166, .84) 33.57%, rgba(255, 255, 121, .74) 41.53%, rgba(255, 255, 84, .63) 49.72%, rgba(255, 255, 53, .53) 58.21%, rgba(255, 255, 30, .42) 67.08%, rgba(255, 255, 13, .30) 76.51%, rgba(255, 255, 3, .17) 86.88%, rgba(255, 255, 0, .00) 100%);
+    }
+
+
+    .bulbs .bulb:nth-child(1)
+    {
+        top: 0;
+        left: 1.852%;
+    }
+
+    .bulbs .bulb:nth-child(2)
+    {
+        top: 0;
+        right: 1.852%;
+    }
+
+    .bulbs .bulb:nth-child(3)
+    {
+        top: 14.046%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(4)
+    {
+        top: 33.004%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(5)
+    {
+        top: 51.872%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(6)
+    {
+        top: 70.740%;
+        right: 0;
+    }
+
+    .bulbs .bulb:nth-child(7)
+    {
+        right: 2.818%;
+        bottom: 2.096%;
+    }
+
+    .bulbs .bulb:nth-child(8)
+    {
+        right: 19.777%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(9)
+    {
+        right: 36.5%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(10)
+    {
+        right: 53.318%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(11)
+    {
+        right: 70%;
+        bottom: 0;
+    }
+
+    .bulbs .bulb:nth-child(12)
+    {
+        bottom: 2.096%;
+        left: 3.918%;
+    }
+
+    .bulbs .bulb:nth-child(13)
+    {
+        top: 70.740%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(14)
+    {
+        top: 51.872%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(15)
+    {
+        top: 33.004%;
+        left: 0;
+    }
+
+    .bulbs .bulb:nth-child(16)
+    {
+        top: 14.046%;
+        left: 0;
+    }
+
+
+    .bulbs .bulb:nth-child(odd)
+    {
+        animation: blink2 1s infinite steps(1, end);
+    }
+
+    .bulbs .bulb:nth-child(even)
+    {
+        animation: blink2 1s infinite steps(1, end) reverse;
+    }
+
+
+
+    @media (max-width: 767px)
+    {
+        .data
+        {
+            width: 400px;
+            height: 366px;
+            padding: 48px 32px 24px;
+        }
+
+
+        .data:after
+        {
+            width: 445px;
+            height: 404px;
+        }
+
+
+        .text
+        {
+            font-size: 16px;
+
+            width: 100%;
+        }
+
+
+        .btn
+        {
+            font-size: 24px;
+
+            width: 339px;
+            height: 60px;
+        }
+
+
+        .bulbs
+        {
+            width: 481px;
+            height: 432px;
+            margin-top: 4px;
+        }
+    }
+
+
+
+    @media (max-width: 479px)
+    {
+        .data
+        {
+            width: 327px;
+            height: 300px;
+            padding: 48px 24px 24px;
+        }
+
+
+        .data:after
+        {
+            width: 356px;
+            height: 330px;
+        }
+
+
+        .text
+        {
+            font-size: 14px;
+        }
+
+
+        .btn
+        {
+            font-size: 22px;
+
+            width: 280px;
+            height: 50px;
+            padding-bottom: 4px;
+        }
+
+
+        .bulbs
+        {
+            width: 382px;
+            height: 347px;
+        }
+
+
+        .bulbs .bulb
+        {
+            width: 32px;
+            height: 32px;
+        }
+    }
+</style>

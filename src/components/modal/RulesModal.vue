@@ -50,12 +50,14 @@
                         <p>
                             4.1. Each participant receives a <b>unique referral code</b> that can be shared with friends.<br>
                             4.2. If a new user <b>delegates at least 10 ATOM</b> using a referral code:<br>
+                        </p>
 
-                            <ul>
-                                <li>The <b>referrer receives 1 extra ticket</b> for every <b>10 ATOM delegated by their invited friends.</b></li>
-                                <li>The <b>invited friend receives 1 bonus ticket</b> (in addition to their delegation-based tickets).</li>
-                            </ul>
+                        <ul>
+                            <li>The <b>referrer receives 1 extra ticket</b> for every <b>10 ATOM delegated by their invited friends.</b></li>
+                            <li>The <b>invited friend receives 1 bonus ticket</b> (in addition to their delegation-based tickets).</li>
+                        </ul>
 
+                        <p>
                             4.3. If the invited friend <b>undelegates</b>, the referrer <b>loses tickets earned from them proportionaly.</b><br>
                             4.4. If the invited friend <b>redelegates back,</b> the referrer’s tickets <b>will be restored.</b><br>
                             4.5. <b>There is no limit to the number of referrals</b> a participant can invite.<br>

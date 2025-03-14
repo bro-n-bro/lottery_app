@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import defaultLayout from '@/layouts/Default.vue'
+import adminLayout from '@/layouts/Admin.vue'
 
 
 const routes = [
@@ -10,6 +11,14 @@ const routes = [
 		component: () => import('@/views/IndexPage.vue'),
 		meta: {
 			layout: defaultLayout
+		}
+	},
+	{
+		path: '/admin',
+		name: 'AdminPage',
+		component: () => import('@/views/AdminPage.vue'),
+		meta: {
+			layout: adminLayout
 		}
 	}
 ]
