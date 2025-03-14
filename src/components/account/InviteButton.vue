@@ -134,7 +134,7 @@
     {
         position: absolute;
         z-index: 2;
-        right: 8px;
+        right: 12px;
         bottom: calc(100% - 4px);
 
         width: 164px;

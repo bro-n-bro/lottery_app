@@ -55,6 +55,9 @@ export const useGlobalStore = defineStore('global', {
         validatorAddress: 'cosmosvaloper106yp7zw35wftheyyv9f9pe69t8rteumjrx52jg',
         addressConfirmationString: "i am in brottery",
 
+        markdownENRules: '',
+        markdownRURules: '',
+
         formatableTokens: [
             {
                 token_name: 'USD',
@@ -415,7 +418,7 @@ export const useGlobalStore = defineStore('global', {
         // Claim prize
         async claimPrize() {
             try {
-                // Request
+                // Send request
                 const response = await fetch(`${this.apiURL}/${this.user.address}/claim-prizes`, {
                     method: 'POST',
                     headers: {
@@ -439,6 +442,29 @@ export const useGlobalStore = defineStore('global', {
             } catch (error) {
                 throw error
             }
-        }
+        },
+
+
+        // Get rules content
+        async getRulesContent() {
+            try {
+                // Send request
+                const [responseEN, responseRU] = await Promise.all([
+                    fetch('https://raw.githubusercontent.com/bro-n-bro/lottery_app/main/README.md'),
+                    fetch('https://raw.githubusercontent.com/bro-n-bro/lottery_app/main/README_ru.md')
+                ])
+
+                if (!responseEN.ok || !responseRU.ok) {
+                    throw new Error(`Failed to fetch rules. Status: EN: ${responseEN.status}, RU: ${responseRU.status}`)
+                }
+
+                const [dataEN, dataRU] = await Promise.all([responseEN.text(), responseRU.text()])
+
+                this.markdownENRules = dataEN
+                this.markdownRURules = dataRU
+            } catch (error) {
+                throw error
+            }
+        },
     }
 })

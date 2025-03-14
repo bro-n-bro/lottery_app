@@ -16,85 +16,31 @@
                     <span>Rules</span>
                 </div>
 
-                <!-- Modal data -->
-                <div class="scroll">
-                    <div class="text">
-                        <div class="title">Lottery Rules for Bro_n_Bro Delegators</div>
+                <!-- Toggle -->
+                <div class="langs">
+                    <button class="btn" :class="{ active: lang === 'en' }" @click.prevent="lang = 'en'">EN</button>
 
-                        <h2>1. General Provisions</h2>
+                    <div class="toggle">
+                        <div class="en_area area" :class="{ active: lang === 'en' }" @click.prevent="lang = 'en'"></div>
+                        <div class="ru_area area" :class="{ active: lang === 'ru' }" @click.prevent="lang = 'ru'"></div>
 
-                        <p>
-                            1.1. These rules define the procedure for conducting a lottery among new delegators of the <b>Bro_n_Bro</b> validator in the <b>Cosmos Hub</b> network.<br>
-                            1.2. Participation in the lottery is <b>free</b>, but requires <b>registration confirmation</b> (see section 3.3).
-                        </p>
+                        <div class="circle"></div>
+                    </div>
 
-                        <h2>2. Duration</h2>
+                    <button class="btn" :class="{ active: lang === 'ru' }" @click.prevent="lang = 'ru'">RU</button>
+                </div>
 
-                        <p>
-                            2.1. The lottery starts on <b>March 10, 2025</b>.<br>
-                            2.2. <b>The first draw will occur on March 19, 2025,</b> and subsequent draws will be held <b>weekly on Wednesdays.</b><br>
-                            2.3. <b>A baseline snapshot will be taken on March 10, 2025.</b>
-                        </p>
+                <!-- EN rules -->
+                <div class="scroll" v-if="lang === 'en'">
+                    <div class="rules_text">
+                        <div v-html="marked(store.markdownENRules)"></div>
+                    </div>
+                </div>
 
-                        <h2>3. Participation Conditions</h2>
-
-                        <p>
-                            3.1. Only <b>delegations</b> to the <b>Bro_n_Bro</b> validator and <b>redelegations from other validators to the Bro_n_Bro</b> validator made after the date from section 2.3 qualify for the lottery.<br>
-                            3.2. Every <b>10 ATOM</b> delegated equals <b>1 ticket</b> (one entry into the lottery pool). The larger the delegation, the higher the chances of winning.<br>
-                            3.3. <b>To participate in the lottery, users must register by signing a message</b> with their Cosmos address to confirm their participation.<br>
-                            3.4. <b>The final number of tickets for each participant is determined before the draw.</b>
-                        </p>
-
-                        <h2>4. Referral Program</h2>
-
-                        <p>
-                            4.1. Each participant receives a <b>unique referral code</b> that can be shared with friends.<br>
-                            4.2. If a new user <b>delegates at least 10 ATOM</b> using a referral code:<br>
-                        </p>
-
-                        <ul>
-                            <li>The <b>referrer receives 1 extra ticket</b> for every <b>10 ATOM delegated by their invited friends.</b></li>
-                            <li>The <b>invited friend receives 1 bonus ticket</b> (in addition to their delegation-based tickets).</li>
-                        </ul>
-
-                        <p>
-                            4.3. If the invited friend <b>undelegates</b>, the referrer <b>loses tickets earned from them proportionaly.</b><br>
-                            4.4. If the invited friend <b>redelegates back,</b> the referrer’s tickets <b>will be restored.</b><br>
-                            4.5. <b>There is no limit to the number of referrals</b> a participant can invite.<br>
-                            4.6. <b>A user can be invited only once.</b>
-                        </p>
-
-                        <h2>5. Draw Mechanism</h2>
-
-                        <p>
-                            5.1. <b>Ticket quantity for each participant is calculated based</b> on <b>their current delegation or the difference between their current delegation and their delegation at the March 10 snapshot.</b> Data is updated <b>approximately every hour</b> on the webapp.<br>
-                            5.2. <b>The first draw will occur on March 19, 2025,</b> with subsequent draws occurring weekly on Wednesdays.<br>
-                            5.3. <b>Winners will be selected randomly,</b> using a special <a href="https://github.com/bro-n-bro/lottery_back" target="_blank" rel="noopener nofollow">algorithm</a>.<br>
-                            5.4. <b>The draw will be streamed live</b> for transparency.<br>
-                            5.5. The random selection algorithm is <b>open and published on <a href="https://github.com/bro-n-bro/lottery_back" target="_blank" rel="noopener nofollow">GitHub</a></b>.<br>
-                            5.6. Each participant <b>can win only one prize in each draw.</b>
-                        </p>
-
-                        <h2>6. Prizes</h2>
-
-                        <p>
-                            6.1. Every winner receives a <b>prize</b>, which will be announced before each draw.<br>
-                            6.2. <b>The winner must provide an address to receive the prize in the specified network.</b><br>
-                            6.3. <b>The winner’s address will be verified via a signature from their Cosmos address.</b>
-                        </p>
-
-                        <h2>7. Additional Information</h2>
-
-                        <p>
-                            7.1. A <b>lightweight web application</b> will be available for users to track their lottery entries and referral rewards.<br>
-                            7.2. The <b>Bro_n_Bro team reserves the right to modify the rules,</b> if necessary, to improve the lottery system, with prior participant notification.<br>
-                            7.3. Any detected <b>fraud or rule violations</b> may result in disqualification.<br>
-                            7.4. All lottery results are <b>final and non-disputable.</b>
-                        </p>
-
-                        <hr>
-
-                        <p><b>Stay tuned for updates and announcements on our <a href="https://t.me/bro_n_bro_community/5009" target="_blank" rel="noopener nofollow">official channels</a>!</b></p>
+                <!-- RU rules -->
+                <div class="scroll" v-if="lang === 'ru'">
+                    <div class="rules_text">
+                        <div v-html="marked(store.markdownRURules)"></div>
                     </div>
                 </div>
             </div>
@@ -108,11 +54,25 @@
 
 
 <script setup>
-    import { ref, inject } from 'vue'
+    import { ref, inject, onBeforeMount } from 'vue'
+    import { useGlobalStore } from '@/store'
+    import { marked } from 'marked'
 
 
-    const emitter = inject('emitter'),
-        isClosing = ref(false)
+    const store = useGlobalStore(),
+        emitter = inject('emitter'),
+        isClosing = ref(false),
+        lang = ref('en')
+
+
+    onBeforeMount(async () => {
+        try {
+            // Get rules content
+            await store.getRulesContent()
+        } catch (error) {
+            console.error('RulesModal.vue:', error)
+        }
+    })
 
 
     // Close modal
@@ -154,11 +114,104 @@
     }
 
 
+
+    .langs
+    {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        margin-bottom: 28px;
+        padding-top: 16px;
+
+        text-transform: uppercase;
+    }
+
+
+    .langs .btn
+    {
+        transition: opacity .2s linear;
+
+        opacity: .4;
+    }
+
+    .langs .btn.active
+    {
+        opacity: 1;
+    }
+
+
+    .langs .toggle
+    {
+        position: relative;
+
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        width: 64px;
+        margin: 0 12px;
+
+        transition: background .2s linear;
+
+        border: 1px solid #5e24fd;
+        border-radius: 20px;
+        background: #12006d;
+    }
+
+    .langs .toggle.active
+    {
+        background: #950fff;
+    }
+
+
+    .langs .toggle .area
+    {
+        width: 50%;
+        height: 28px;
+
+        cursor: pointer;
+    }
+
+
+    .langs .toggle .circle
+    {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 20px;
+        height: 20px;
+        margin: auto 0;
+
+        transition: transform .2s linear;
+
+        border-radius: 50%;
+        background: #fff;
+    }
+
+    .langs .toggle .en_area.active ~ .circle
+    {
+        transform: translateX(4px);
+    }
+
+    .langs .toggle .ru_area.active ~ .circle
+    {
+        transform: translateX(40px);
+    }
+
+
+
     .scroll
     {
         overflow: auto;
 
-        height: 400px;
+        height: 340px;
         padding-right: 12px;
 
         overscroll-behavior-y: contain;
@@ -179,114 +232,6 @@
     {
         border-radius: 3px;
         background-color: rgba(255,255,255,.4);
-    }
-
-
-    .text
-    {
-        font-size: 18px;
-    }
-
-
-    .text .title
-    {
-        font-size: 36px;
-        font-weight: 700;
-
-        margin-bottom: 24px;
-    }
-
-
-    .text h2
-    {
-        font-size: 24px;
-        font-weight: 600;
-    }
-
-
-    .text > * + h2
-    {
-        margin-top: 24px;
-    }
-
-
-    .text ul
-    {
-        padding-left: 16px;
-    }
-
-
-    .text ul li
-    {
-        position: relative;
-
-        display: block;
-        overflow: hidden;
-
-        padding-left: 16px;
-
-        list-style-type: none;
-    }
-
-
-    .text ul li:before
-    {
-        position: absolute;
-        top: 9px;
-        left: 0;
-
-        display: block;
-
-        width: 4px;
-        height: 4px;
-
-        content: '';
-
-        border-radius: 50%;
-        background: rgba(255,255,255,.75);
-    }
-
-
-    .text a
-    {
-        color: currentColor;
-
-        text-decoration-thickness: 1px;
-    }
-
-
-    .text hr
-    {
-        display: block;
-
-        width: 100%;
-        height: 1px;
-        margin: 20px 0;
-
-        border: none;
-        background: #fff;
-    }
-
-
-
-    @media print, (max-width: 1279px)
-    {
-        .text
-        {
-            font-size: 16px;
-        }
-
-
-        .text .title
-        {
-            font-size: 32px;
-        }
-
-
-        .text h2
-        {
-            font-size: 22px;
-        }
     }
 
 
@@ -317,27 +262,44 @@
         }
 
 
+        .langs
+        {
+            font-size: 14px;
+
+            margin-bottom: 24px;
+            padding-top: 8px;
+        }
+
+
+        .langs .toggle
+        {
+            width: 56px;
+            margin: 0 8px;
+        }
+
+
+        .langs .toggle .area
+        {
+            height: 24px;
+        }
+
+
+        .langs .toggle .circle
+        {
+            width: 18px;
+            height: 18px;
+        }
+
+
+        .langs .toggle .ru_area.active ~ .circle
+        {
+            transform: translateX(32px);
+        }
+
+
         .scroll
         {
-            height: 376px;
-        }
-
-
-        .text
-        {
-            font-size: 15px;
-        }
-
-
-        .text .title
-        {
-            font-size: 26px;
-        }
-
-
-        .text h2
-        {
-            font-size: 20px;
+            height: 318px;
         }
     }
 
@@ -348,11 +310,149 @@
         .data
         {
             height: 448px;
-            padding: 44px 24px 24px;
+            padding: 40px 20px 20px;
         }
 
 
-        .text .title
+        .scroll
+        {
+            height: 330px;
+        }
+    }
+</style>
+
+
+<style>
+    .rules_text
+    {
+        font-size: 18px;
+    }
+
+
+    .rules_text h1
+    {
+        font-size: 36px;
+        font-weight: 700;
+
+        margin-bottom: 24px;
+    }
+
+
+    .rules_text h2
+    {
+        font-size: 24px;
+        font-weight: 600;
+
+        margin-top: 24px;
+    }
+
+
+    .rules_text ul
+    {
+        padding-left: 16px;
+    }
+
+
+    .rules_text ul li
+    {
+        position: relative;
+
+        display: block;
+        overflow: hidden;
+
+        padding-left: 16px;
+
+        list-style-type: none;
+    }
+
+
+    .rules_text ul li:before
+    {
+        position: absolute;
+        top: 9px;
+        left: 0;
+
+        display: block;
+
+        width: 4px;
+        height: 4px;
+
+        content: '';
+
+        border-radius: 50%;
+        background: rgba(255,255,255,.75);
+    }
+
+
+    .rules_text a
+    {
+        color: currentColor;
+
+        text-decoration-thickness: 1px;
+    }
+
+
+    .rules_text hr
+    {
+        display: block;
+
+        width: 100%;
+        height: 1px;
+        margin: 20px 0;
+
+        border: none;
+        background: #fff;
+    }
+
+
+
+    @media print, (max-width: 1279px)
+    {
+        .rules_text
+        {
+            font-size: 16px;
+        }
+
+
+        .rules_text h1
+        {
+            font-size: 32px;
+        }
+
+
+        .rules_text h2
+        {
+            font-size: 22px;
+        }
+    }
+
+
+
+    @media (max-width: 767px)
+    {
+        .rules_text
+        {
+            font-size: 15px;
+        }
+
+
+        .rules_text h1
+        {
+            font-size: 26px;
+        }
+
+
+        .rules_text h2
+        {
+            font-size: 20px;
+        }
+    }
+
+
+
+    @media (max-width: 479px)
+    {
+        .rules_text h1
         {
             font-size: 24px;
         }
