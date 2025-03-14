@@ -466,5 +466,32 @@ export const useGlobalStore = defineStore('global', {
                 throw error
             }
         },
+
+
+        // Draw lottery
+        async drawLottery(token) {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/draw_lottery`, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "x-token": token
+                    })
+                })
+
+                // Check the response status
+                if (!response.ok) {
+                    // Get the response body
+                    const errorData = await response.json()
+
+                    throw new Error(`Error ${response.status}: ${errorData.detail || 'Unknown error'}`)
+                }
+            } catch (error) {
+                throw error
+            }
+        },
     }
 })

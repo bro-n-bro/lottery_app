@@ -1,15 +1,19 @@
 <template>
-
+    <!-- Admin header -->
+    <TheAdminHeader />
 
     <!-- Login modal -->
     <TheLoginModal v-if="showLoginModal" />
+
+    <!-- Admin data -->
 </template>
 
 
 <script setup>
-    import { inject } from 'vue'
+    import { ref, inject } from 'vue'
 
     // Components
+    import TheAdminHeader from '@/components/AdminHeader.vue'
     import TheLoginModal from '@/components/modal/LoginModal.vue'
 
 
@@ -23,8 +27,3 @@
         showLoginModal.value = false
     })
 </script>
-
-
-<style scoped>
-
-</style>

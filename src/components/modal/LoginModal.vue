@@ -14,16 +14,8 @@
 
                 <!-- Modal data -->
                  <div class="bg">
-                    <div class="line">
-                        <div class="field">
-                            <input type="text" class="input" v-model="username" placeholder="Name">
-                        </div>
-                    </div>
-
-                    <div class="line">
-                        <div class="field">
-                            <input type="password" class="input" v-model="password" placeholder="Password">
-                        </div>
+                    <div class="field">
+                        <input type="password" class="input" v-model="password" placeholder="Password">
                     </div>
                  </div>
 
@@ -62,11 +54,14 @@
 
 <script setup>
     import { ref, inject } from 'vue'
+    import { useGlobalStore } from '@/store'
+    import { useNotification } from '@kyvg/vue3-notification'
 
 
-    const emitter = inject('emitter'),
+    const store = useGlobalStore(),
+        emitter = inject('emitter'),
+        notification = useNotification(),
         isClosing = ref(false),
-        username = ref(''),
         password = ref('')
 
 
@@ -83,9 +78,26 @@
 
 
     // Login
-    function login() {
+    async function login() {
+        try {
+            // Draw lottery
+            // await store.drawLottery(password)
 
-    }
+            // Close modal
+            closeHandler()
+        } catch (error) {
+            console.error('LoginModal.vue:', error)
+
+            // Show notification
+            notification.notify({
+                group: 'default',
+                speed: 200,
+                duration: 1000,
+                title: 'Invalid token',
+                type: 'error'
+            })
+        }
+}
 </script>
 
 
@@ -154,68 +166,36 @@
     }
 
 
-    .text
+    .title
     {
-        font-size: 18px;
-        font-weight: 500;
+        font-size: 32px;
+        font-weight: 700;
 
-        width: 340px;
-        max-width: 100%;
-        margin: 0 auto;
+        margin-bottom: 26px;
+
+        text-align: center;
     }
 
 
-    .ref_code
+    .bg
     {
-        width: 340px;
-        max-width: 100%;
-        margin: 17px auto 0;
+        padding: 26px 20px;
+
+        border-radius: 20px;
+        background: linear-gradient(180deg, #1b003b 0%, #2d0061 100%);
     }
 
 
-    .ref_code .label
+    .field
     {
-        font-size: 14px;
-
-        padding: 0 10px;
-    }
-
-
-    .ref_code .field ::-webkit-input-placeholder
-    {
-        color: rgba(255,255,255,.6);
-    }
-
-    .ref_code .field :-moz-placeholder
-    {
-        color: rgba(255,255,255,.6);
-    }
-
-    .ref_code .field ::-moz-placeholder
-    {
-        opacity: 1;
-        color: rgba(255,255,255,.6);
-    }
-
-    .ref_code .field :-ms-input-placeholder
-    {
-        color: rgba(255,255,255,.6);
-    }
-
-
-    .ref_code .field
-    {
-        position: relative;
-
         padding: 1px;
 
         border-radius: 10px;
-        background: linear-gradient(to bottom,  #5d33ce 0%,#200750 100%);
+        background: linear-gradient(to bottom,  #734fd2 0%,#1f064d 100%);
     }
 
 
-    .ref_code .input,
-    .ref_code .input:focus
+    .field .input
     {
         font-family: inherit;
         font-size: 16px;
@@ -225,29 +205,12 @@
 
         width: 100%;
         height: 46px;
-        padding: 0 15px;
+        padding: 3px 15px;
 
-        color: currentColor;
-        border: 1px solid transparent;
+        color: #fff;
+        border: none;
         border-radius: 9px;
         background: #06000e;
-    }
-
-
-    .ref_code .input:-webkit-autofill
-    {
-        -webkit-box-shadow: inset 0 0 0 50px #170232 !important;
-    }
-
-
-    .ref_code .input.error
-    {
-        border-color: #f00;
-    }
-
-    .ref_code .input.success
-    {
-        border-color: #00aa63;
     }
 
 
@@ -408,98 +371,5 @@
     .bulbs .bulb:nth-child(even)
     {
         animation: blink2 1s infinite steps(1, end) reverse;
-    }
-
-
-
-    @media (max-width: 767px)
-    {
-        .data
-        {
-            width: 400px;
-            height: 366px;
-            padding: 48px 32px 24px;
-        }
-
-
-        .data:after
-        {
-            width: 445px;
-            height: 404px;
-        }
-
-
-        .text
-        {
-            font-size: 16px;
-
-            width: 100%;
-        }
-
-
-        .btn
-        {
-            font-size: 24px;
-
-            width: 339px;
-            height: 60px;
-        }
-
-
-        .bulbs
-        {
-            width: 481px;
-            height: 432px;
-            margin-top: 4px;
-        }
-    }
-
-
-
-    @media (max-width: 479px)
-    {
-        .data
-        {
-            width: 327px;
-            height: 300px;
-            padding: 48px 24px 24px;
-        }
-
-
-        .data:after
-        {
-            width: 356px;
-            height: 330px;
-        }
-
-
-        .text
-        {
-            font-size: 14px;
-        }
-
-
-        .btn
-        {
-            font-size: 22px;
-
-            width: 280px;
-            height: 50px;
-            padding-bottom: 4px;
-        }
-
-
-        .bulbs
-        {
-            width: 382px;
-            height: 347px;
-        }
-
-
-        .bulbs .bulb
-        {
-            width: 32px;
-            height: 32px;
-        }
     }
 </style>
