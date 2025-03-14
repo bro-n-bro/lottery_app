@@ -30,7 +30,7 @@ export const useGlobalStore = defineStore('global', {
 
         user: {},
 
-        apiURL: 'https://api.lottery.bronbro.io',
+        apiURL: 'https://rpc.pacific-1.bronbro.io',
 
         currentNetwork: {
             name: 'Cosmos Hub',
