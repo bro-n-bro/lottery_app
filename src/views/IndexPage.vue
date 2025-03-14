@@ -15,7 +15,7 @@
 
     <!-- Prize pool -->
     <KeepAlive>
-    <ThePrizePool />
+    <ThePrizePool v-if="store.currentLottery" />
     </KeepAlive>
 
     <!-- Leaderboard -->
