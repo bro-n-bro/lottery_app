@@ -6,6 +6,7 @@
     <TheLoginModal v-if="showLoginModal" />
 
     <!-- Admin data -->
+    <TheAdminData v-else />
 </template>
 
 
@@ -13,8 +14,9 @@
     import { ref, inject } from 'vue'
 
     // Components
-    import TheAdminHeader from '@/components/AdminHeader.vue'
     import TheLoginModal from '@/components/modal/LoginModal.vue'
+    import TheAdminHeader from '@/components/admin/Header.vue'
+    import TheAdminData from '@/components/admin/Index.vue'
 
 
     const emitter = inject('emitter'),
