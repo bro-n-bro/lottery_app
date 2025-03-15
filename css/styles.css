@@ -108,6 +108,8 @@ input[type=number]
     --font_size: 18px;
     --font_size_title: 48px;
     --font_family: 'Outfit', 'Arial', sans-serif;
+    --font_family2: 'Silkscreen', 'Arial', sans-serif;
+    --font_family3: 'Bebas Neue', 'Arial', sans-serif;
 }
 
 
