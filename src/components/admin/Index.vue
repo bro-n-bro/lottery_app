@@ -156,8 +156,6 @@
             }
         }
 
-        console.log(nextWinnerDelay.value)
-
         setTimeout(() => {
             // Play status
             isPlaying.value = false

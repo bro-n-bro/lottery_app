@@ -368,7 +368,12 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                this.lastWinners =  data.winners
+                let date = new Date(data.start_at),
+                    now = new Date()
+
+                if (now - date >= 3600000) {
+                    this.lastWinners =  data.winners
+                }
             } catch (error) {
                 throw error
             }

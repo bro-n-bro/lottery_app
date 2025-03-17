@@ -53,7 +53,7 @@
 
 
 <script setup>
-    import { ref, inject } from 'vue'
+    import { ref, inject, onBeforeMount } from 'vue'
     import { useGlobalStore } from '@/store'
     import { useNotification } from '@kyvg/vue3-notification'
 
@@ -63,6 +63,12 @@
         notification = useNotification(),
         isClosing = ref(false),
         password = ref('')
+
+
+    onBeforeMount(() => {
+        // Get x-token to localstorage
+        password.value = localStorage.getItem('x-token')
+    })
 
 
     // Close modal
@@ -82,6 +88,9 @@
         try {
             // Draw lottery
             // await store.drawLottery(password)
+
+            // Set x-token to localstorage
+            localStorage.setItem('x-token', password.value)
 
             // Close modal
             closeHandler()
