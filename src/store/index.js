@@ -508,7 +508,7 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                return data.addresses
+                return [...new Set(data.addresses)]
             } catch (error) {
                 throw error
             }

@@ -4,8 +4,8 @@
             <!-- Drum -->
             <div class="drum">
                 <div class="slots">
-                    <div class="slot" ref="slot">
-                        <div v-for="(address, index) in participants" :key="index" class="option">
+                    <div class="slot" :class="{ animate: isPlaying }">
+                        <div v-for="(address, index) in participants" :key="index" class="option" :style="`-webkit-transform: rotateX(${index * 30}deg) translateZ(100px);`">
                             <span>{{ address }}</span>
                         </div>
                     </div>
@@ -70,6 +70,7 @@
                 <div class="list" v-else>
                     <!-- Winner -->
                     <div v-for="(winner, index) in winners.slice(0, currentIndex)" :key="index">
+                        <span class="number">{{ winners.length - index }}.</span>
                         <span v-if="!isPlaying || index < currentIndex - 1">{{ winner }}</span>
                     </div>
                 </div>
@@ -86,7 +87,7 @@
 
 
 <script setup>
-    import { ref, reactive, onMounted } from 'vue'
+    import { ref, onMounted } from 'vue'
 	import { useGlobalStore } from '@/store'
     import startConfetti from '@/utils/confetti.js'
 
@@ -96,6 +97,13 @@
         isPlaying = ref(false),
         isCongratulation = ref(false),
         currentIndex = ref(null),
+        nextWinnerDelay = ref(10000),
+        congratulationTimer = 3000,
+        timeOffsetRanges = [
+            { min: 1, max: 3, percentage: 0.3 },
+            { min: 4, max: 6, percentage: 0.2 },
+            { min: 7, max: Infinity, percentage: 0.1 }
+        ],
         confetti = ref(null),
         participants = ref([]),
         winners = ref([
@@ -104,16 +112,7 @@
             'shdbsdjcsjdkcnksjdncshdbsdjcsjdkcnksjdncfsvs',
             'shdbsdjcsjdkcnksjdncshdbsdjcsjdkcnksjdncfsvs',
             'shdbsdjcsjdkcnksjdncshdbsdjcsjdkcnksjdncfsvs'
-        ]),
-        slot = ref(null),
-        slotStartedAt = ref(null),
-        slotOptions = reactive({}),
-        slotNext = window.requestAnimationFrame ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame ||
-            window.msRequestAnimationFrame ||
-            window.oRequestAnimationFrame ||
-            function(cb) { window.setTimeout(cb, 1000/60) }
+        ])
 
 
     onMounted(async () => {
@@ -134,57 +133,6 @@
     }
 
 
-    function spin() {
-        // Slot options
-        slotOptions.value = {
-            finalPos: 47 * 77,
-            startOffset: 9000 + Math.random() * 500,
-            height: participants.value.length * 77,
-            duration: 9000,
-            isFinished: false
-        }
-
-        // Slot animate
-        slotNext(slotAanimate)
-    }
-
-
-    // Slot animate
-    function slotAanimate(timestamp) {
-        if (slotStartedAt.value == null) {
-            slotStartedAt.value = timestamp
-        }
-
-        const timeDiff = timestamp - slotStartedAt.value
-
-        if (slotOptions.value.isFinished) {
-        	return
-        }
-
-        const timeRemaining = Math.max(slotOptions.value.duration - timeDiff, 0),
-            power = 2,
-            offset = ( Math.pow(timeRemaining, power) / Math.pow(slotOptions.value.duration, power) ) * slotOptions.value.startOffset,
-            pos = -1 * Math.floor((offset + slotOptions.value.finalPos) % slotOptions.value.height)
-
-        // Translate Y
-        slot.value.style.transform = "translateY(" + pos + "px)"
-
-        // Finished status
-        if (timeDiff > slotOptions.value.duration) {
-        	slotOptions.value.isFinished = true
-        }
-
-        if (slotOptions.value.isFinished) {
-            // Reset
-            slotOptions.value = null
-            slotStartedAt.value = null
-        } else {
-            // Slot animate
-            slotNext(slotAanimate)
-        }
-    }
-
-
     // Get next winner
     function getNextWinner() {
         // Play status
@@ -195,9 +143,20 @@
             ? currentIndex.value = 1
             : currentIndex.value++
 
+        // Timer offset
+        if (currentIndex.value > 1) {
+            let number = winners.value.length
 
-            spin()
+            for (let range of timeOffsetRanges) {
+                if (number >= range.min && number <= range.max) {
+                    nextWinnerDelay.value += nextWinnerDelay.value * range.percentage
 
+                    break
+                }
+            }
+        }
+
+        console.log(nextWinnerDelay.value)
 
         setTimeout(() => {
             // Play status
@@ -208,11 +167,12 @@
 
             // Confetti
             confetti.value.addConfetti()
-            setTimeout(() => confetti.value.addConfetti(), 1500)
+
+            setTimeout(() => confetti.value.addConfetti(), (congratulationTimer / 2))
 
             // Congratulation status
-            setTimeout(() => isCongratulation.value = false, 3000)
-        }, 3000)
+            setTimeout(() => isCongratulation.value = false, congratulationTimer)
+        }, nextWinnerDelay.value)
     }
 </script>
 
@@ -254,7 +214,7 @@
 .drum
 {
     font-family: var(--font_family3);
-    font-size: 38px;
+    font-size: 36px;
 
     display: flex;
     overflow: hidden;
@@ -272,6 +232,7 @@
     color: #000;
     background: url(@/assets/bg_admin_drum.svg) 0 0/100% 100% no-repeat;
 
+    -webkit-perspective: 800;
     filter: drop-shadow(0px 15px 8px rgba(0, 0, 0, .25));
 }
 
@@ -280,38 +241,94 @@
 {
     position: relative;
 
+    display: flex;
     overflow: hidden;
-
-    width: 100%;
-    height: 117px;
-    padding: 20px;
-}
-
-
-.slot
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-}
-
-
-.slot > *
-{
-    display: flex;
     align-content: center;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
 
-    height: 77px;
+    width: calc(100% - 80px);
+    height: 117px;
 
-    text-align: center;
+    -webkit-transform-style: preserve-3d;
+}
+
+
+.slots:before,
+.slots:after
+{
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 50px;
+
+    content: '';
+    pointer-events: none;
+
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+}
+
+
+.slots:after
+{
+    top: auto;
+    bottom: 0;
+
+    transform: scale(1, -1);
+}
+
+
+.slot
+{
+    width: 100%;
+    height: 117px;
+    padding: 36px 0;
+
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -webkit-transform-style: preserve-3d;
+}
+
+
+.slot.animate
+{
+    animation-name: x-spin;
+    animation-duration: 1s;
+}
+
+
+.slot > *
+{
+    position: absolute;
+
+    width: 100%;
+    height: 56px;
+
+    background: #fff;
+}
+
+
+@keyframes x-spin
+{
+    0%
+    {
+        -webkit-transform: rotateX(360deg);
+    }
+    50%
+    {
+        -webkit-transform: rotateX(180deg);
+    }
+    100%
+    {
+        -webkit-transform: rotateX(0deg);
+    }
 }
 
 
@@ -423,7 +440,6 @@
     height: 326px;
     padding: 16px 12px;
 
-    counter-reset: number;
     white-space: nowrap;
     text-transform: uppercase;
 
@@ -443,14 +459,11 @@
 }
 
 
-.list > *:before
+.list > * .number
 {
     position: absolute;
     top: 0;
     left: 0;
-
-    content: counter(number) '.';
-    counter-increment: number;
 }
 
 
@@ -774,7 +787,7 @@
 .congratulation .bulb:nth-child(odd):before,
 .congratulation .bulb:nth-child(even):before
 {
-    animation: blink 1s infinite;
+    animation: blink 1s infinite steps(1, end);
 }
 
 
@@ -1090,6 +1103,38 @@
         margin-left: 80%;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
