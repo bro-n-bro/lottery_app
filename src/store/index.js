@@ -493,5 +493,25 @@ export const useGlobalStore = defineStore('global', {
                 throw error
             }
         },
+
+
+        // Get lottery participants
+        async getLotteryParticipants() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/lottery/participants`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch lottery participants. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                return data.addresses
+            } catch (error) {
+                throw error
+            }
+        },
     }
 })
