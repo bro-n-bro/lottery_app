@@ -67,18 +67,28 @@
                 </div>
 
                 <!-- List of winners -->
-                <div class="list" v-else>
-                    <!-- Winner -->
+                <div class="list" v-if="isStarting && !isCongratulation">
+                    <!-- Winners -->
                     <div v-for="(winner, index) in store.adminWinners" :key="index">
                         <span v-if="isPlaying && ((index + 1) > currentIndex) || !isPlaying && ((index + 1) >= currentIndex)">
                             {{ winner }}
                         </span>
                     </div>
                 </div>
+
+                <!-- Congratulations -->
+                <div class="congratulations" v-if="isCongratulation">
+                    <!-- Congratulations - Title -->
+                    <div class="title">Congratulations</div>
+
+                    <!-- Congratulations - Address -->
+                    <div class="address">{{ store.adminWinners[currentIndex - 1] }}</div>
+                </div>
             </div>
         </section>
 
 
+        <!-- Fireworks -->
         <section class="fireworks" v-show="isCongratulation">
             <div class="before"></div>
             <div class="after"></div>
@@ -415,31 +425,38 @@
     }
 
 
-    .screen .title
+
+    .start_message
+    {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        text-align: center;
+
+        gap: 15px;
+    }
+
+
+    .start_message .title
     {
         font-family: var(--font_family2);
         font-size: 70px;
         font-weight: 700;
         line-height: 40px;
 
-        width: 100%;
-
-        text-align: center;
         text-transform: uppercase;
 
         color: #ffdc2c;
     }
 
 
-    .screen .desc
+    .start_message .desc
     {
         font-family: var(--font_family2);
         font-size: 40px;
 
-        width: 100%;
-        margin-top: 15px;
-
-        text-align: center;
         letter-spacing: 14.6px;
         text-transform: uppercase;
     }
@@ -487,6 +504,38 @@
 
         content: counter(number) '.';
         counter-increment: number;
+    }
+
+
+
+    .congratulations
+    {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        text-align: center;
+
+        gap: 13px;
+    }
+
+
+    .congratulations .title
+    {
+        font-family: var(--font_family2);
+        font-size: 46px;
+        font-weight: 700;
+
+        text-transform: uppercase;
+
+        color: #ffdc2c;
+    }
+
+
+    .congratulations .address
+    {
+        color: #ffdc2c;
     }
 
 
