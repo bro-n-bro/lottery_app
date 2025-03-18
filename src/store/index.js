@@ -496,7 +496,7 @@ export const useGlobalStore = defineStore('global', {
                     const data = await response.json()
 
                     // Ser data
-                    this.adminWinners = data.winners
+                    data.winners.forEach(el => this.adminWinners.push(el.address))
                 }
             } catch (error) {
                 throw error

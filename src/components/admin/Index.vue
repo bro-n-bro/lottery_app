@@ -5,8 +5,8 @@
             <div class="drum">
                 <div class="slots">
                     <div class="slot" :class="{ animate: isPlaying }" ref="slot">
-                        <div v-for="(address, index) in participants" :key="index" class="option" :style="`-webkit-transform: rotateX(${index * calcSlotAngle()}deg) translateZ(${calcSlotRadius()}px);`">
-                            <span>{{ address }}</span>
+                        <div v-for="(winner, index) in participants" :key="index" class="option" :style="`-webkit-transform: rotateX(${index * calcSlotAngle()}deg) translateZ(${calcSlotRadius()}px);`">
+                            <span>{{ winner }}</span>
                         </div>
                     </div>
                 </div>
@@ -107,14 +107,7 @@
             { min: 7, max: Infinity, percentage: 0.1 }
         ],
         confetti = ref(null),
-        participants = ref([]),
-        winners = ref([
-            'cosmos1h3hd6n02ea30zv3udnwq609a447nt3mexz6q0n',
-            'cosmos1tqdvlku97p88z5ndf3jz55vnccmzgs8jhxzwz3',
-            'cosmos1eh6zuf745vp7yqk0dcet7fexexaty4xetn8ww8',
-            'cosmos1ke7kxdn29w2lrxt9dzusa6shvmwd8xm9t40euw',
-            'cosmos13nm5w7tuswqsvzs2wyrq24clacta9zg6zj3vg8'
-        ])
+        participants = ref([])
 
 
     onMounted(async () => {
