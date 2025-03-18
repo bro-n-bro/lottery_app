@@ -86,11 +86,14 @@
     // Login
     async function login() {
         try {
-            // Draw lottery
-            // await store.drawLottery(password)
-
             // Set x-token to localstorage
             localStorage.setItem('x-token', password.value)
+
+            // Draw lottery
+            // await store.drawLottery(password.value)
+
+            // Create lottery
+            await store.createLottery(password.value)
 
             // Close modal
             closeHandler()

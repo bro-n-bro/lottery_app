@@ -27,6 +27,7 @@ export const useGlobalStore = defineStore('global', {
         prizePool: [],
         lastWinners: [],
         topStakers: [],
+        adminWinners: [],
 
         user: {},
 
@@ -480,10 +481,51 @@ export const useGlobalStore = defineStore('global', {
                 const response = await fetch(`${this.apiURL}/draw_lottery`, {
                     method: 'POST',
                     headers: {
-                      'Content-Type': 'application/json',
+                        'Content-Type': 'application/json',
+                        'x-token': token
+                    }
+                })
+
+                // Check the response status
+                if (!response.ok) {
+                    // Get the response body
+                    const errorData = await response.json()
+
+                    throw new Error(`Error ${response.status}: ${errorData.detail || 'Unknown error'}`)
+                } else {
+                    const data = await response.json()
+
+                    // Ser data
+                    this.adminWinners = data.winners
+                }
+            } catch (error) {
+                throw error
+            }
+        },
+
+
+        // Create lottery
+        async createLottery(token) {
+            try {
+                // Now
+                const now = new Date()
+
+                // Set date
+                now.setDate(now.getDate() + 7)
+
+                // New date
+                const startAt = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T16:00:00.875000`
+
+                // Send request
+                const response = await fetch(`${this.apiURL}/create_lottery`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "x-token": token
                     },
                     body: JSON.stringify({
-                        "x-token": token
+                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${3}.json`,
+                        start_at: startAt
                     })
                 })
 
