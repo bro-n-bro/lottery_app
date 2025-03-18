@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Purt Kassel #1196",
+        "collection_name": "Purt the Adventurer",
+        "collection_link": "https://www.stargaze.zone/m/stars1peea6sz2qh34w5c9x8dmde89ykkaxwgt7e9kg7dnh2hvd2mtptcqswa9xq/tokens",
+        "image": "https://i.stargaze-apis.com/TBXgVgXlvjq7az8xiKZDC9cutd_egWygcQn6SWkU4qw/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeie7lrb3hlqbd2lqhlcndtpb3fodbbflc2desnhnue73jo27mjmk4e/1196.png",
+        "best_offer": false
+    },
+    {
+        "name": "Pigeon Bandit #82",
+        "collection_name": "Pigeons Bandits",
+        "collection_link": "https://www.stargaze.zone/m/stars12c9nrpkqrfmdvrx4ex8d6qfs8rwrnclsk5jtk4r6u4gy9mjl97js626dtp/tokens",
+        "image": "https://i.stargaze-apis.com/HCLNOa8NljQLqZbO0pY2SMSOqrCgxLGGQDagbS4Ppro/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeiao4q6pw7sog7clyfqass4irxh3eroymt54xd4ht2d3cpyk5leqna/82.png",
+        "best_offer": false
+    },
+    {
+        "name": "Stamp #7374",
+        "collection_name": "Stamps",
+        "collection_link": "https://www.stargaze.zone/m/stamps/tokens",
+        "image": "https://i.stargaze-apis.com/5JSlIlT9oxKj5YBlkob95_u9ld9cZtUuAt7oVtouRgw/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeifjyejf6s4lnnqyapkyziyadubsa4topvh3dyicn374b4vukzpiam/7374.jpg",
+        "best_offer": false
+    }  ,
+    {
+        "name": "Beaver#40",
+        "collection_name": "CosmoNibble Collection",
+        "collection_link": "https://www.stargaze.zone/m/cosmonibblecollection/tokens",
+        "image": "https://i.stargaze-apis.com/B1wYnX9wzteOZS7Wza9mHAnnwVm17MalVlJERa6khJw/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeiafmamw5xngqnz2bgyvnjqeew6bz3545wfhzmr55fmu4esyvpcd6e/905.jpeg",
+        "best_offer": false
+    },
+    {
+        "name": "Panda#38",
+        "collection_name": "CosmoNibble Collection",
+        "collection_link": "https://www.stargaze.zone/m/cosmonibblecollection/tokens",
+        "image": "https://i.stargaze-apis.com/AeYfyO-Mn3YK8RV6oZLL_QjvMse07dQPK-v-TvCWj3A/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeiafmamw5xngqnz2bgyvnjqeew6bz3545wfhzmr55fmu4esyvpcd6e/833.jpeg",
+        "best_offer": false
+    }
+]
