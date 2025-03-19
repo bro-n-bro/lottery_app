@@ -27,10 +27,11 @@ export const useGlobalStore = defineStore('global', {
         prizePool: [],
         lastWinners: [],
         topStakers: [],
+        adminWinners: [],
 
         user: {},
 
-        apiURL: 'https://api.lottery.bronbro.io',
+        apiURL: 'https://rpc.pacific-1.bronbro.io',
 
         currentNetwork: {
             name: 'Cosmos Hub',
@@ -368,7 +369,12 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                this.lastWinners =  data.winners
+                let date = new Date(data.start_at),
+                    now = new Date()
+
+                if (now - date >= 3600000) {
+                    this.lastWinners =  data.winners
+                }
             } catch (error) {
                 throw error
             }
@@ -475,10 +481,51 @@ export const useGlobalStore = defineStore('global', {
                 const response = await fetch(`${this.apiURL}/draw_lottery`, {
                     method: 'POST',
                     headers: {
-                      'Content-Type': 'application/json',
+                        'Content-Type': 'application/json',
+                        'x-token': token
+                    }
+                })
+
+                // Check the response status
+                if (!response.ok) {
+                    // Get the response body
+                    const errorData = await response.json()
+
+                    throw new Error(`Error ${response.status}: ${errorData.detail || 'Unknown error'}`)
+                } else {
+                    const data = await response.json()
+
+                    // Ser data
+                    data.winners.forEach(el => this.adminWinners.push(el.address))
+                }
+            } catch (error) {
+                throw error
+            }
+        },
+
+
+        // Create lottery
+        async createLottery(token) {
+            try {
+                // Now
+                const now = new Date()
+
+                // Set date
+                now.setDate(now.getDate() + 7)
+
+                // New date
+                const startAt = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T16:00:00.875000`
+
+                // Send request
+                const response = await fetch(`${this.apiURL}/create_lottery`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "x-token": token
                     },
                     body: JSON.stringify({
-                        "x-token": token
+                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev-staging/public/prize_pools/round_${this.currentLottery.id + 1}.json`,
+                        start_at: startAt
                     })
                 })
 
@@ -489,6 +536,26 @@ export const useGlobalStore = defineStore('global', {
 
                     throw new Error(`Error ${response.status}: ${errorData.detail || 'Unknown error'}`)
                 }
+            } catch (error) {
+                throw error
+            }
+        },
+
+
+        // Get lottery participants
+        async getLotteryParticipants() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/lottery/participants`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch lottery participants. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                return [...new Set(data.addresses)]
             } catch (error) {
                 throw error
             }
