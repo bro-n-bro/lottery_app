@@ -372,9 +372,12 @@ export const useGlobalStore = defineStore('global', {
                 let date = new Date(data.start_at),
                     now = new Date()
 
-                if (now - date >= 3600000) {
+                if (now.getTime() - date.getTime() >= 3600000) {
                     this.lastWinners =  data.winners
                 }
+
+                console.log(now)
+                console.log(date)
             } catch (error) {
                 throw error
             }
