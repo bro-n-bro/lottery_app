@@ -514,7 +514,7 @@ export const useGlobalStore = defineStore('global', {
                 now.setDate(now.getDate() + 7)
 
                 // New date
-                const startAt = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T16:00:00.875000`
+                const startAt = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T18:00:00.875000`
 
                 // Send request
                 const response = await fetch(`${this.apiURL}/create_lottery`, {
