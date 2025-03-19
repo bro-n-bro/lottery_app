@@ -342,7 +342,7 @@
     {
         font-weight: 500;
 
-        width: 24px;
+        width: 40px;
         margin-right: 4px;
     }
 
