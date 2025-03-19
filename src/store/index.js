@@ -517,16 +517,6 @@ export const useGlobalStore = defineStore('global', {
                 const startAt = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T16:00:00.875000`
 
                 // Send request
-                const responseCurrent = await fetch(`${this.apiURL}/lotteries/current`)
-
-                if (!responseCurrent.ok) {
-                    throw new Error('Failed to fetch current lottery. Status: ' + responseCurrent.status)
-                }
-
-                // Set data
-                this.currentLottery = await responseCurrent.json()
-
-                // Send request
                 const response = await fetch(`${this.apiURL}/create_lottery`, {
                     method: 'POST',
                     headers: {
@@ -534,7 +524,7 @@ export const useGlobalStore = defineStore('global', {
                         "x-token": token
                     },
                     body: JSON.stringify({
-                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${this.currentLottery.id + 1}.json`,
+                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${2}.json`,
                         start_at: startAt
                     })
                 })
