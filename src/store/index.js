@@ -369,7 +369,7 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                let date = new Date(data.start_at),
+                let date = new Date(data.start_at + 'Z'),
                     now = new Date()
 
                 if (now.getTime() - date.getTime() >= 3600000) {
