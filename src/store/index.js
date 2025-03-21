@@ -170,7 +170,7 @@ export const useGlobalStore = defineStore('global', {
                 this.isKeplrConnecting = false
             } catch (error) {
                 // Keplr connecting status
-                this.isKeplrConnecting = false
+                this.isKeplrConnecting = true
 
                 // Show notification
                 notification.notify({
