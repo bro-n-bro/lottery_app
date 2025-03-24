@@ -73,7 +73,7 @@
 
                 <!-- Data button -->
                 <button class="btn" v-else @click.prevent="emitter.emit('show_delegate_modal')">
-                    <span>GET MORE TIKETS</span>
+                    <span>GET MORE tickets</span>
                 </button>
             </div>
         </div>
@@ -376,10 +376,9 @@
 
         width: 384px;
         height: 88px;
-        margin: 0 auto;
-        margin-top: auto;
+        margin: auto auto 0;
 
-        text-transform: capitalize;
+        text-transform: uppercase;
 
         background: url(@/assets/bg_btn.svg) 50%/100% 100% no-repeat;
     }
