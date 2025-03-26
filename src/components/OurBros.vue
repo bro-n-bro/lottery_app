@@ -2,63 +2,155 @@
     <section class="our_bros" id="our_bros">
         <div class="data">
             <div class="cont">
-                <div class="title">Our Bros</div>
+                <div class="title">Our NFT Bros</div>
 
-                <div class="row">
-                    <a href="https://www.stargaze.zone/m/stamps/tokens" target="_blank" rel="noopener nofollow" class="item">
-                        <div>
-                            <div class="thumb">
-                                <img src="@/assets/our_bros/Stamps by Expedition NFT.png" alt="">
+                <!-- Swiper -->
+                <swiper-container :injectStyles="swiperInjectStyles"
+                    :speed="500"
+                    :touchMoveStopPropagation="true"
+                    :breakpoints="{
+                        0: {
+                            spaceBetween: 32,
+					        slidesPerView: 'auto'
+                        },
+                        768: {
+                            spaceBetween: 40,
+					        slidesPerView: 'auto'
+                        },
+                        1024: {
+                            spaceBetween: 48,
+					        slidesPerView: 'auto'
+                        },
+                        1280: {
+                            spaceBetween: 64,
+					        slidesPerView: 'auto'
+                        }
+                    }"
+                >
+                    <!-- Slide -->
+                    <swiper-slide style="width: auto !important;">
+                        <a href="https://www.stargaze.zone/m/stamps/tokens" target="_blank" rel="noopener nofollow" class="item item1">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/Stamps by Expedition NFT.png" alt="">
+                                </div>
+
+                                <div class="name">Expedition</div>
                             </div>
+                        </a>
+                    </swiper-slide>
 
-                            <div class="name">Expedition</div>
-                        </div>
-                    </a>
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/m/cosmonibblecollection" target="_blank" rel="noopener nofollow" class="item item2">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/CosmoNibble.png" alt="">
+                                </div>
 
-                    <a href="https://www.stargaze.zone/m/cosmonibblecollection" target="_blank" rel="noopener nofollow" class="item">
-                        <div>
-                            <div class="thumb">
-                                <img src="@/assets/our_bros/CosmosNibble.png" alt="">
+                                <div class="name">CosmoNibble</div>
                             </div>
+                        </a>
+                    </swiper-slide>
 
-                            <div class="name">CosmosNibble</div>
-                        </div>
-                    </a>
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/m/stars1peea6sz2qh34w5c9x8dmde89ykkaxwgt7e9kg7dnh2hvd2mtptcqswa9xq/tokens" target="_blank" rel="noopener nofollow" class="item item3">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/Red Planet DAO.png" alt="">
+                                </div>
 
-                    <a href="https://www.stargaze.zone/m/stars1peea6sz2qh34w5c9x8dmde89ykkaxwgt7e9kg7dnh2hvd2mtptcqswa9xq/tokens" target="_blank" rel="noopener nofollow" class="item">
-                        <div>
-                            <div class="thumb">
-                                <img src="@/assets/our_bros/Red Planet DAO.png" alt="">
+                                <div class="name">Red Planet</div>
                             </div>
+                        </a>
+                    </swiper-slide>
 
-                            <div class="name">Red Planet</div>
-                        </div>
-                    </a>
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/m/stars12c9nrpkqrfmdvrx4ex8d6qfs8rwrnclsk5jtk4r6u4gy9mjl97js626dtp/tokens" target="_blank" rel="noopener nofollow" class="item item4">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/CryptoGopniks.png" alt="">
+                                </div>
 
-                    <a href="https://www.stargaze.zone/m/stars12c9nrpkqrfmdvrx4ex8d6qfs8rwrnclsk5jtk4r6u4gy9mjl97js626dtp/tokens" target="_blank" rel="noopener nofollow" class="item">
-                        <div>
-                            <div class="thumb">
-                                <img src="@/assets/our_bros/CryptoGopniks.png" alt="">
+                                <div class="name">Crypto Gopniks</div>
                             </div>
+                        </a>
+                    </swiper-slide>
 
-                            <div class="name">Crypto Gopniks</div>
-                        </div>
-                    </a>
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/m/stars19fv7az3mdpl3kpz22dqwfrp8n8tm82de0efyzmnrrvpf8qysuscsv26mal/tokens" target="_blank" rel="noopener nofollow" class="item item5">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/Sin Garden.png" alt="">
+                                </div>
 
-                    <a href="https://www.stargaze.zone/m/stars19fv7az3mdpl3kpz22dqwfrp8n8tm82de0efyzmnrrvpf8qysuscsv26mal/tokens" target="_blank" rel="noopener nofollow" class="item">
-                        <div>
-                            <div class="thumb">
-                                <img src="@/assets/our_bros/Sin Garden.png" alt="">
+                                <div class="name">Sin<br> Garden</div>
                             </div>
+                        </a>
+                    </swiper-slide>
 
-                            <div class="name">Sin<br> Garden</div>
-                        </div>
-                    </a>
-                </div>
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/p/elysnetworknft/tokens" target="_blank" rel="noopener nofollow" class="item item2">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/Elys_Network.jpg" alt="">
+                                </div>
+
+                                <div class="name">Elys Network</div>
+                            </div>
+                        </a>
+                    </swiper-slide>
+
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/m/stars1v8avajk64z7pppeu45ce6vv8wuxmwacdff484lqvv0vnka0cwgdqdk64sf/tokens" target="_blank" rel="noopener nofollow" class="item item5">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/Mad_Scientist.png" alt="">
+                                </div>
+
+                                <div class="name">Mad Scientist</div>
+                            </div>
+                        </a>
+                    </swiper-slide>
+
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/m/whgenesis/tokens" target="_blank" rel="noopener nofollow" class="item item1">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/White_Hacker.jpg" alt="">
+                                </div>
+
+                                <div class="name small">White Hacker</div>
+                            </div>
+                        </a>
+                    </swiper-slide>
+                </swiper-container>
             </div>
         </div>
     </section>
 </template>
+
+
+<script setup>
+    const swiperInjectStyles = [`
+        .swiper
+        {
+            overflow: visible !important;
+        }
+
+
+        ::slotted(swiper-slide)
+        {
+            width: auto !important;
+        }
+    `]
+</script>
 
 
 <style scoped>
@@ -134,53 +226,13 @@
     }
 
 
-    .our_bros .row
-    {
-        display: block;
-        overflow: auto;
-
-        width: calc(100% + 48px);
-        margin: -29px -24px;
-        padding: 29px 24px;
-
-        text-align: center;
-        white-space: nowrap;
-
-        scroll-padding: 0 24px;
-        scroll-snap-type: x mandatory;
-        scrollbar-color: transparent transparent !important;
-        scrollbar-width: thin !important;
-    }
-
-
-    .our_bros .row::-webkit-scrollbar
-    {
-        display: none !important;
-
-        width: 0 !important;
-        height: 0 !important;
-
-        background-color: transparent !important;
-    }
-
-
-    .our_bros .row::-webkit-scrollbar-thumb
-    {
-        background-color: transparent !important;
-    }
-
-
-    .our_bros .row > * + *
-    {
-        margin-left: 64px;
-    }
-
-
     .our_bros .item
     {
         position: relative;
 
         display: inline-block;
+
+        margin: 0 auto;
 
         text-align: center;
         vertical-align: top;
@@ -188,8 +240,6 @@
         text-decoration: none;
 
         color: currentColor;
-
-        scroll-snap-align: start;
     }
 
 
@@ -236,14 +286,14 @@
 
     .our_bros .item .name
     {
-        font-size: 23.775px;
+        font-size: 23px;
         font-weight: 600;
 
         text-transform: uppercase;
     }
 
 
-    .our_bros .item:nth-child(1) > div
+    .our_bros .item1 > div
     {
         width: 213px;
         height: 243px;
@@ -254,7 +304,7 @@
         background-image: url(@/assets/bg_our_bros_item1.svg);
     }
 
-    .our_bros .item:nth-child(1):before
+    .our_bros .item1:before
     {
         width: 145px;
         height: 149px;
@@ -262,20 +312,25 @@
         background-image: url(@/assets/bg_our_bros_item1_before.svg);
     }
 
-    .our_bros .item:nth-child(1) .thumb
+    .our_bros .item1 .thumb
     {
         margin-top: 10px;
         margin-bottom: 10px;
     }
 
-    .our_bros .item:nth-child(1) .thumb img
+    .our_bros .item1 .thumb img
     {
         width: 131px;
         height: 131px;
     }
 
+    .our_bros .item1 .name.small
+    {
+        font-size: 19px;
+    }
 
-    .our_bros .item:nth-child(2) > div
+
+    .our_bros .item2 > div
     {
         width: 193px;
         height: 235px;
@@ -284,7 +339,7 @@
         background-image: url(@/assets/bg_our_bros_item2.svg);
     }
 
-    .our_bros .item:nth-child(2):before
+    .our_bros .item2:before
     {
         width: 108px;
         height: 110px;
@@ -292,25 +347,25 @@
         background-image: url(@/assets/bg_our_bros_item2_before.svg);
     }
 
-    .our_bros .item:nth-child(2) .thumb
+    .our_bros .item2 .thumb
     {
         margin-top: 14px;
         margin-bottom: 14px;
     }
 
-    .our_bros .item:nth-child(2) .thumb img
+    .our_bros .item2 .thumb img
     {
         width: 139px;
         height: 139px;
     }
 
-    .our_bros .item:nth-child(2) .name
+    .our_bros .item2 .name
     {
-        font-size: 19.812px;
+        font-size: 20px;
     }
 
 
-    .our_bros .item:nth-child(3) > div
+    .our_bros .item3 > div
     {
         width: 193px;
         height: 194px;
@@ -319,7 +374,7 @@
         background-image: url(@/assets/bg_our_bros_item3.svg);
     }
 
-    .our_bros .item:nth-child(3):before
+    .our_bros .item3:before
     {
         width: 108px;
         height: 110px;
@@ -327,20 +382,20 @@
         background-image: url(@/assets/bg_our_bros_item3_before.svg);
     }
 
-    .our_bros .item:nth-child(3) .thumb
+    .our_bros .item3 .thumb
     {
         margin-top: 7px;
         margin-bottom: 4px;
     }
 
-    .our_bros .item:nth-child(3) .thumb img
+    .our_bros .item3 .thumb img
     {
         width: 112px;
         height: 104px;
     }
 
 
-    .our_bros .item:nth-child(4) > div
+    .our_bros .item4 > div
     {
         width: 188px;
         height: 252px;
@@ -349,7 +404,7 @@
         background-image: url(@/assets/bg_our_bros_item4.svg);
     }
 
-    .our_bros .item:nth-child(4):before
+    .our_bros .item4:before
     {
         width: 108px;
         height: 110px;
@@ -357,20 +412,20 @@
         background-image: url(@/assets/bg_our_bros_item3_before.svg);
     }
 
-    .our_bros .item:nth-child(4) .thumb
+    .our_bros .item4 .thumb
     {
         margin-top: 7px;
         margin-bottom: -7px;
     }
 
-    .our_bros .item:nth-child(4) .thumb img
+    .our_bros .item4 .thumb img
     {
         width: 143px;
         height: 143px;
     }
 
 
-    .our_bros .item:nth-child(5) > div
+    .our_bros .item5 > div
     {
         width: 184px;
         height: 250px;
@@ -379,7 +434,7 @@
         background-image: url(@/assets/bg_our_bros_item5.svg);
     }
 
-    .our_bros .item:nth-child(5):before
+    .our_bros .item5:before
     {
         width: 108px;
         height: 110px;
@@ -387,13 +442,13 @@
         background-image: url(@/assets/bg_our_bros_item3_before.svg);
     }
 
-    .our_bros .item:nth-child(5) .thumb
+    .our_bros .item5 .thumb
     {
         margin-top: 16px;
         margin-bottom: 4px;
     }
 
-    .our_bros .item:nth-child(5) .thumb img
+    .our_bros .item5 .thumb img
     {
         width: 119px;
         height: 119px;
@@ -460,12 +515,6 @@
         }
 
 
-        .our_bros .row > * + *
-        {
-            margin-left: 48px;
-        }
-
-
         .our_bros .data
         {
             padding-top: 92px;
@@ -482,104 +531,109 @@
         }
 
 
-        .our_bros .item:nth-child(1) > div
+        .our_bros .item1 > div
         {
             width: 188px;
             height: 217px;
             padding: 24px;
         }
 
-        .our_bros .item:nth-child(1) .thumb
+        .our_bros .item1 .thumb
         {
             margin-top: 8px;
             margin-bottom: 8px;
         }
 
-        .our_bros .item:nth-child(1) .thumb img
+        .our_bros .item1 .thumb img
         {
             width: 116px;
             height: 116px;
         }
 
+        .our_bros .item1 .name.small
+        {
+            font-size: 16px;
+        }
 
-        .our_bros .item:nth-child(2) > div
+
+        .our_bros .item2 > div
         {
             width: 168px;
             height: 205px;
             padding: 12px;
         }
 
-        .our_bros .item:nth-child(2) .thumb
+        .our_bros .item2 .thumb
         {
             margin-top: 13px;
             margin-bottom: 13px;
         }
 
-        .our_bros .item:nth-child(2) .thumb img
+        .our_bros .item2 .thumb img
         {
             width: 120px;
             height: 120px;
         }
 
-        .our_bros .item:nth-child(2) .name
+        .our_bros .item2 .name
         {
             font-size: 17px;
         }
 
 
-        .our_bros .item:nth-child(3) > div
+        .our_bros .item3 > div
         {
             width: 168px;
             height: 169px;
             padding: 19px;
         }
 
-        .our_bros .item:nth-child(3) .thumb
+        .our_bros .item3 .thumb
         {
             margin-top: 5px;
         }
 
-        .our_bros .item:nth-child(3) .thumb img
+        .our_bros .item3 .thumb img
         {
             width: 98px;
             height: 91px;
         }
 
 
-        .our_bros .item:nth-child(4) > div
+        .our_bros .item4 > div
         {
             width: 168px;
             height: 226px;
             padding: 18px 17px 17px;
         }
 
-        .our_bros .item:nth-child(4) .thumb
+        .our_bros .item4 .thumb
         {
             margin-top: 5px;
             margin-bottom: -5px;
         }
 
-        .our_bros .item:nth-child(4) .thumb img
+        .our_bros .item4 .thumb img
         {
             width: 124px;
             height: 124px;
         }
 
 
-        .our_bros .item:nth-child(5) > div
+        .our_bros .item5 > div
         {
             width: 168px;
             height: 228px;
             padding: 20px 20px 19px 19px;
         }
 
-        .our_bros .item:nth-child(5) .thumb
+        .our_bros .item5 .thumb
         {
             margin-top: 14px;
             margin-bottom: 12px;
         }
 
-        .our_bros .item:nth-child(5) .thumb img
+        .our_bros .item5 .thumb img
         {
             width: 104px;
             height: 104px;
@@ -604,12 +658,6 @@
 
             width: 292px;
             height: 68px;
-        }
-
-
-        .our_bros .row > * + *
-        {
-            margin-left: 36px;
         }
 
 
@@ -638,135 +686,140 @@
         }
 
 
-        .our_bros .item:nth-child(1):before
+        .our_bros .item1:before
         {
             width: 73px;
             height: 75px;
         }
 
-        .our_bros .item:nth-child(1) > div
+        .our_bros .item1 > div
         {
             width: 108px;
             height: 124px;
             padding: 13px;
         }
 
-        .our_bros .item:nth-child(1) .thumb
+        .our_bros .item1 .thumb
         {
             margin-top: 5px;
             margin-bottom: 5px;
         }
 
-        .our_bros .item:nth-child(1) .thumb img
+        .our_bros .item1 .thumb img
         {
             width: 66px;
             height: 66px;
         }
 
+        .our_bros .item1 .name.small
+        {
+            font-size: 10px;
+        }
 
-        .our_bros .item:nth-child(2):before
+
+        .our_bros .item2:before
         {
             width: 55px;
             height: 56px;
         }
 
-        .our_bros .item:nth-child(2) > div
+        .our_bros .item2 > div
         {
             width: 97px;
             height: 115px;
             padding: 7px;
         }
 
-        .our_bros .item:nth-child(2) .thumb
+        .our_bros .item2 .thumb
         {
             margin-top: 7px;
             margin-bottom: 6px;
         }
 
-        .our_bros .item:nth-child(2) .thumb img
+        .our_bros .item2 .thumb img
         {
             width: 70px;
             height: 70px;
         }
 
-        .our_bros .item:nth-child(2) .name
+        .our_bros .item2 .name
         {
             font-size: 10px;
         }
 
 
-        .our_bros .item:nth-child(3):before
+        .our_bros .item3:before
         {
             width: 55px;
             height: 56px;
         }
 
-        .our_bros .item:nth-child(3) > div
+        .our_bros .item3 > div
         {
             width: 98px;
             height: 98px;
             padding: 11px;
         }
 
-        .our_bros .item:nth-child(3) .thumb
+        .our_bros .item3 .thumb
         {
             margin-top: 3px;
             margin-bottom: 3px;
         }
 
-        .our_bros .item:nth-child(3) .thumb img
+        .our_bros .item3 .thumb img
         {
             width: 57px;
             height: 52px;
         }
 
 
-        .our_bros .item:nth-child(4):before
+        .our_bros .item4:before
         {
             width: 55px;
             height: 56px;
         }
 
-        .our_bros .item:nth-child(4) > div
+        .our_bros .item4 > div
         {
             width: 95px;
             height: 127px;
             padding: 10px;
         }
 
-        .our_bros .item:nth-child(4) .thumb
+        .our_bros .item4 .thumb
         {
             margin-top: 0;
             margin-bottom: -4px;
         }
 
-        .our_bros .item:nth-child(4) .thumb img
+        .our_bros .item4 .thumb img
         {
             width: 72px;
             height: 72px;
         }
 
 
-        .our_bros .item:nth-child(5):before
+        .our_bros .item5:before
         {
             width: 55px;
             height: 56px;
         }
 
-        .our_bros .item:nth-child(5) > div
+        .our_bros .item5 > div
         {
             width: 93px;
             height: 127px;
             padding: 11px 11px 10px 11px;
         }
 
-        .our_bros .item:nth-child(5) .thumb
+        .our_bros .item5 .thumb
         {
             margin-top: 5px;
             margin-bottom: 5px;
         }
 
-        .our_bros .item:nth-child(5) .thumb img
+        .our_bros .item5 .thumb img
         {
             width: 60px;
             height: 60px;
@@ -815,12 +868,6 @@
         {
             top: auto;
             bottom: -5px;
-        }
-
-
-        .our_bros .row > * + *
-        {
-            margin-left: 28px;
         }
     }
 </style>
