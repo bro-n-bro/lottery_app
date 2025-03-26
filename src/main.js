@@ -7,6 +7,7 @@ import router from './router'
 import mitt from 'mitt'
 import Notifications from '@kyvg/vue3-notification'
 import VueCountdown from '@chenfengyuan/vue-countdown'
+import { register } from 'swiper/element/bundle'
 
 
 // Events
@@ -29,6 +30,10 @@ app.use(Notifications)
 
 // Vue provide
 app.provide('emitter', emitter)
+
+
+// Swiper - register
+register()
 
 
 // VueCountdown
