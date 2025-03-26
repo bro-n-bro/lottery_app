@@ -93,6 +93,12 @@
             <div class="before"></div>
             <div class="after"></div>
         </section>
+
+
+        <!-- Audio -->
+        <audio ref="audio" loop>
+            <source src="/baraban_sg.mp3" type="audio/mpeg">
+        </audio>
     </section>
 </template>
 
@@ -117,7 +123,8 @@
             { min: 7, max: Infinity, percentage: 0.1 }
         ],
         confetti = ref(null),
-        participants = ref([])
+        participants = ref([]),
+        audio = ref(null)
 
 
     onMounted(async () => {
@@ -146,6 +153,9 @@
 
     // Start play
     function start() {
+        // Play audio
+        audio.value.play()
+
         // Start status
         isStarting.value = true
 
@@ -193,6 +203,10 @@
 
             // Confetti
             confetti.value.addConfetti()
+
+            // Stop audio
+            audio.value.pause()
+            audio.value.currentTime = 0
 
             setTimeout(() => confetti.value.addConfetti(), (congratulationTimer / 2))
 
