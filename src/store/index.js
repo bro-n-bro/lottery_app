@@ -27,6 +27,7 @@ export const useGlobalStore = defineStore('global', {
         prizePool: [],
         lastWinners: [],
         topStakers: [],
+        topInviters: [],
         adminWinners: [],
 
         user: {},
@@ -401,6 +402,26 @@ export const useGlobalStore = defineStore('global', {
         },
 
 
+        // Get top inviters
+        async getTopInviters() {
+            try {
+                // Send request
+                const response = await fetch(`${this.apiURL}/inviters/ranking`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch top inviters. Status: ' + response.status)
+                }
+
+                const data = await response.json()
+
+                // Set data
+                this.topInviters =  data
+            } catch (error) {
+                throw error
+            }
+        },
+
+
         // Get user referrals
         async getUserReferrals() {
             try {
@@ -524,7 +545,7 @@ export const useGlobalStore = defineStore('global', {
                         "x-token": token
                     },
                     body: JSON.stringify({
-                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${2}.json`,
+                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${3}.json`,
                         start_at: startAt
                     })
                 })
