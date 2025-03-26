@@ -415,7 +415,7 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                this.topInviters =  data
+                this.topInviters = data.filter(el => el.tickets > 0)
             } catch (error) {
                 throw error
             }
