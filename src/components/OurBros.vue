@@ -130,6 +130,19 @@
                             </div>
                         </a>
                     </swiper-slide>
+
+                    <!-- Slide -->
+                    <swiper-slide>
+                        <a href="https://www.stargaze.zone/m/stars10w3px52pqcnnx9jt0gr04p6ztdhqc5wq9sdeqjzc43k6pxhut69qzpzf0y/tokens" target="_blank" rel="noopener nofollow" class="item item3">
+                            <div>
+                                <div class="thumb">
+                                    <img src="@/assets/our_bros/BINJAS.png" alt="">
+                                </div>
+
+                                <div class="name">BINJAS</div>
+                            </div>
+                        </a>
+                    </swiper-slide>
                 </swiper-container>
             </div>
         </div>

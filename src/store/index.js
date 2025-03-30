@@ -415,7 +415,7 @@ export const useGlobalStore = defineStore('global', {
                 const data = await response.json()
 
                 // Set data
-                this.topInviters =  data
+                this.topInviters = data.filter(el => el.tickets > 0)
             } catch (error) {
                 throw error
             }
@@ -545,7 +545,7 @@ export const useGlobalStore = defineStore('global', {
                         "x-token": token
                     },
                     body: JSON.stringify({
-                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev-staging/public/prize_pools/round_${this.currentLottery.id}.json`,
+                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${4}.json`,
                         start_at: startAt
                     })
                 })
