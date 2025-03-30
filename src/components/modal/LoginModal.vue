@@ -90,10 +90,10 @@
             localStorage.setItem('x-token', password.value)
 
             // Draw lottery
-            // await store.drawLottery(password.value)
+            await store.drawLottery(password.value)
 
             // Create lottery
-            // await store.createLottery(password.value)
+            await store.createLottery(password.value)
 
             // Close modal
             closeHandler()
