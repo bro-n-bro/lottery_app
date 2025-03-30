@@ -16,6 +16,9 @@ export { default as formatTokenCost } from './formatTokenCost'
 // Calc token cost in current cucrrency
 export { default as calcTokenCost } from './calcTokenCost'
 
+// Convert address
+export { default as convertAddress } from './convertAddress'
+
 // Get referral code from URL
 export { default as getReferralCodeFromURL } from './getReferralCodeFromURL'
 
