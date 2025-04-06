@@ -25,6 +25,7 @@ export const useGlobalStore = defineStore('global', {
         redelegations: [],
         availableBalance: [],
         prizePool: [],
+        lastRoundPrizePool: [],
         lastWinners: [],
         topStakers: [],
         topInviters: [],
@@ -129,6 +130,24 @@ export const useGlobalStore = defineStore('global', {
 
                 // Set data
                 this.prizePool = await response.json()
+            } catch (error) {
+                throw error
+            }
+        },
+
+
+        // Load last round prize poll
+        async loadLastRoundPrizePool(url) {
+            try {
+                // Send request
+                const response = await fetch(url)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch last round prize poll JSON. Status: ' + response.status)
+                }
+
+                // Set data
+                this.lastRoundPrizePool = await response.json()
             } catch (error) {
                 throw error
             }
@@ -369,12 +388,16 @@ export const useGlobalStore = defineStore('global', {
 
                 const data = await response.json()
 
-                // Set data
+                // Show after 15 minutes
                 let date = new Date(data.start_at + 'Z'),
                     now = new Date()
 
                 if (now.getTime() - date.getTime() >= 3600000) {
+                    // Set data
                     this.lastWinners =  data.winners
+
+                    // Load last round prize poll
+                    this.loadLastRoundPrizePool(data.github_link)
                 }
             } catch (error) {
                 throw error
@@ -545,7 +568,7 @@ export const useGlobalStore = defineStore('global', {
                         "x-token": token
                     },
                     body: JSON.stringify({
-                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${4}.json`,
+                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${5}.json`,
                         start_at: startAt
                     })
                 })

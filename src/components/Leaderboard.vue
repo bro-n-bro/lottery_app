@@ -28,7 +28,7 @@
                     <!-- Winners -->
                     <div class="list" v-else-if="store.lastWinners.length">
                         <!-- Winner -->
-                        <a :href="`https://www.stargaze.zone/p/${convertAddress(winner.initial_delegator.address, 'stars')}/tokens`" target="_blank" rel="noopener nofollow" class="item" v-for="(winner, index) in store.lastWinners" :key="winner.id">
+                        <a :href="`https://www.stargaze.zone/p/${convertAddress(winner.initial_delegator.address, 'stars')}/tokens`" target="_blank" rel="noopener nofollow" class="item" v-for="winner in store.lastWinners" :key="winner.id">
                             <div class="number"></div>
 
                             <div class="address">{{ winner.initial_delegator.address.slice(0, 5) + '...' + winner.initial_delegator.address.slice(-6) }}</div>
@@ -156,7 +156,7 @@
     {
         position: relative;
 
-        margin-bottom: 80px;
+        margin-bottom: 120px;
         padding: 24px 0 55px;
     }
 
@@ -565,6 +565,12 @@
 
     @media print, (max-width: 1279px)
     {
+        .leaderboard
+        {
+            margin-bottom: 100px;
+        }
+
+
         .leaderboard .title
         {
             font-size: 32px;
@@ -787,7 +793,7 @@
     {
         .leaderboard
         {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
 

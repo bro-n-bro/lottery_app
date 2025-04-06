@@ -23,6 +23,11 @@
     <TheLeaderboard />
     </KeepAlive>
 
+    <!-- Last round winners -->
+    <KeepAlive>
+    <TheLastRoundWinners v-if="store.lastRoundPrizePool" />
+    </KeepAlive>
+
     <!-- Our bros -->
     <KeepAlive>
     <TheOurBros />
@@ -47,6 +52,7 @@
     import TheReferrals from '@/components/Referrals.vue'
     import ThePrizePool from '@/components/PrizePool.vue'
     import TheLeaderboard from '@/components/Leaderboard.vue'
+    import TheLastRoundWinners from '@/components/LastRoundWinners.vue'
     import TheOurBros from '@/components/OurBros.vue'
     import TheLoader from '@/components/Loader.vue'
     import TheRegisterModal from '@/components/modal/RegisterModal.vue'
