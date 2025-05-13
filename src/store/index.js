@@ -568,7 +568,7 @@ export const useGlobalStore = defineStore('global', {
                         "x-token": token
                     },
                     body: JSON.stringify({
-                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${9}.json`,
+                        github_link: `https://raw.githubusercontent.com/bro-n-bro/lottery_app/dev/public/prize_pools/round_${10}.json`,
                         start_at: startAt
                     })
                 })
