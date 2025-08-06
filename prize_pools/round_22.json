@@ -1,0 +1,38 @@
+[
+       {
+        "name": "Sin Garden #101",
+        "collection_name": "Sin Garden",
+        "collection_link": "https://www.stargaze.zone/m/singardennft/tokens",
+        "image": "https://i.stargaze-apis.com/3OwpqJDK27ilgS-hsTW6M01RMywGA0xQWeCW1v7gJC4/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeidnmywwa5q7furk7b4cfnjcne7t4nzoo4huknmfhixvjekdmwoqlu/101.png",
+        "best_offer": false
+    },
+    {
+        "name": "Stamp #3141",
+        "collection_name": "Stamps",
+        "collection_link": "https://www.stargaze.zone/m/stamps/tokens",
+        "image": "https://i.stargaze-apis.com/BNtQnewAtlazfW0MkhkYRR1XHg9Q4IxoN717u5gFdco/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeifjyejf6s4lnnqyapkyziyadubsa4topvh3dyicn374b4vukzpiam/5402.jpg",
+        "best_offer": false
+    },
+        {
+        "name": "LlamaZone #3185",
+        "collection_name": "Llama Zone",
+        "collection_link": "https://www.stargaze.zone/m/thellamazone/tokens",
+        "image": "https://i.stargaze-apis.com/tpbcob_vk006c4yTG1SVrvSB065HC-0uiidWUeRt7fE/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://QmSKfcvU4vtbHHkcR52w4JW18KTx1tmGyLtDrXB6zUyaUX/3185.png",
+        "best_offer": false
+    },
+      {
+        "name": "MiAmigos 770",
+        "collection_name": "MIAMIGOS",
+        "collection_link": "https://www.stargaze.zone/m/stars1lxl4hrx2cfl0qujl0xyz0jtlzftn3y84rzyn3jgshfznjmvfplzs6pplac/tokens",
+        "image": "https://i.stargaze-apis.com/0h9602fPHlcHs2kbYwhD-WKUy66lY8RrtekGsYqvfCM/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeicbuknrt2r6vffxsgwbs2byrff53yxtwv5gqhc6xlgzc65ruxthba/770.JPG",
+        "best_offer": false
+    },
+    {
+        "name": "Raccoon#125",
+        "collection_name": "CosmoNibble Collection",
+        "collection_link": "https://www.stargaze.zone/m/cosmonibblecollection/tokens",
+        "image": "https://i.stargaze-apis.com/k7h_PbvM-3UfPznJ-l9kb40vybhGr_HvnOHagu6crgw/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeiafmamw5xngqnz2bgyvnjqeew6bz3545wfhzmr55fmu4esyvpcd6e/125.jpeg",
+        "best_offer": false
+    }
+
+]
