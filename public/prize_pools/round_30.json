@@ -1,0 +1,38 @@
+[
+       {
+        "name": "Shinoid #1061",
+        "collection_name": "Shinoids",
+        "collection_link": "https://www.stargaze.zone/m/shinoids/tokens",
+        "image": "https://i.stargaze-apis.com/0m3As5MViEB5HzNHSFMFyB-ffBd8IVt0SvFohkYYQHI/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://QmR2anPcCWHydgNGoXJxP94ZFEt8V7SRidWm6gMdkiCcDB/1061.png",
+        "best_offer": false
+    },
+    {
+        "name": "Binja 926",
+        "collection_name": "BINJAS",
+        "collection_link": "https://www.stargaze.zone/m/stars10w3px52pqcnnx9jt0gr04p6ztdhqc5wq9sdeqjzc43k6pxhut69qzpzf0y/tokens",
+        "image": "https://i.stargaze-apis.com/73zeK_OBeFDQC6lKwwEuIkR3W-CemEGFBklMKL4JPb0/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://QmT6wDkrj4W1AadBLVx9DeT3hfUPS1TK5eQf5Ln5hvW9Tz/926.png",
+        "best_offer": false
+    },
+        {
+        "name": "LlamaZone #1782",
+        "collection_name": "Llama Zone",
+        "collection_link": "https://www.stargaze.zone/m/thellamazone/tokens",
+        "image": "https://i.stargaze-apis.com/HbXR-d3Cw6u4Xp2mriM_c_KIWj_lJ-I7KrRxh87yeQc/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://QmSKfcvU4vtbHHkcR52w4JW18KTx1tmGyLtDrXB6zUyaUX/1782.png",
+        "best_offer": false
+    },
+      {
+        "name": "MiAmigos 1139",
+        "collection_name": "MIAMIGOS",
+        "collection_link": "https://www.stargaze.zone/m/stars1lxl4hrx2cfl0qujl0xyz0jtlzftn3y84rzyn3jgshfznjmvfplzs6pplac/tokens",
+        "image": "https://i.stargaze-apis.com/z4pHYFsVXiRB02_-b6iXQ9fYD44UUYbBfcj0h_HoZ5I/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeicbuknrt2r6vffxsgwbs2byrff53yxtwv5gqhc6xlgzc65ruxthba/1139.JPG",
+        "best_offer": false
+    },
+    {
+        "name": "In His Mind #362",
+        "collection_name": "In His Mind",
+        "collection_link": "https://www.stargaze.zone/m/stars13g7jwt4eyuwtpk5k8sxqpyv3mr23rldz3ajf7wjd8zh439seypys3gc687/tokens",
+        "image": "https://i.stargaze-apis.com/HRdSHGow43jORbQpsSECAT3-EfcVgjxxYjitOdkjXQE/f:jpg/resize:fit:700:::/dpr:2/plain/ipfs://bafybeiakr35vwgvwoaipxxhynpiyoehvcu4vka3wt6kzbggio2ujgg7ilu/inhismind.png",
+        "best_offer": false
+    }
+
+]
